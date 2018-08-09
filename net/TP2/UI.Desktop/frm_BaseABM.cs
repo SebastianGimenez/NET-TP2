@@ -15,7 +15,11 @@ namespace UI.Desktop
         public frm_BaseABM()
         {
             InitializeComponent();
+            bs = new BindingSource();
         }
+
+        protected BindingSource bs;
+      
 
         protected virtual void alta() { }
 
@@ -24,11 +28,13 @@ namespace UI.Desktop
         private void btn_alta_Click(object sender, EventArgs e)
         {
             this.alta();
+            bs.ResetBindings(false);
         }
 
         private void btn_baja_Click(object sender, EventArgs e)
         {
             this.baja();
+            bs.ResetBindings(false);
         }
 
         private void btn_volver_Click(object sender, EventArgs e)
