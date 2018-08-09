@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA452636-D917-42DC-9742-3BC275D3BD7D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UI.Desktop</RootNamespace>
+    <AssemblyName>UI.Desktop</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frm_ABMAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ABMAlumno.Designer.cs">
+      <DependentUpon>frm_ABMAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ABMcomision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ABMcomision.Designer.cs">
+      <DependentUpon>frm_ABMcomision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ABMcurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ABMcurso.Designer.cs">
+      <DependentUpon>frm_ABMcurso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ABMdocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ABMdocente.Designer.cs">
+      <DependentUpon>frm_ABMdocente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ABMespecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ABMespecialidad.Designer.cs">
+      <DependentUpon>frm_ABMespecialidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ABMmateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ABMmateria.Designer.cs">
+      <DependentUpon>frm_ABMmateria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ABMplan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ABMplan.Designer.cs">
+      <DependentUpon>frm_ABMplan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_AgregaDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_AgregaDocente.Designer.cs">
+      <DependentUpon>frm_AgregaDocente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_AltaAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_AltaAlumno.Designer.cs">
+      <DependentUpon>frm_AltaAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_AltaComision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_AltaComision.Designer.cs">
+      <DependentUpon>frm_AltaComision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_AltaCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_AltaCurso.Designer.cs">
+      <DependentUpon>frm_AltaCurso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_AltaDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_AltaDocente.Designer.cs">
+      <DependentUpon>frm_AltaDocente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_AltaEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_AltaEspecialidad.Designer.cs">
+      <DependentUpon>frm_AltaEspecialidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_AltaMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_AltaMateria.Designer.cs">
+      <DependentUpon>frm_AltaMateria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_AltaPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_AltaPlan.Designer.cs">
+      <DependentUpon>frm_AltaPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_bajaAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_bajaAlumno.Designer.cs">
+      <DependentUpon>frm_bajaAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_BajaComision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_BajaComision.Designer.cs">
+      <DependentUpon>frm_BajaComision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_BajaCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_BajaCurso.Designer.cs">
+      <DependentUpon>frm_BajaCurso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_BajaDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_BajaDocente.Designer.cs">
+      <DependentUpon>frm_BajaDocente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_BajaEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_BajaEspecialidad.Designer.cs">
+      <DependentUpon>frm_BajaEspecialidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_BajaMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_BajaMateria.Designer.cs">
+      <DependentUpon>frm_BajaMateria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_BajaPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_BajaPlan.Designer.cs">
+      <DependentUpon>frm_BajaPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_BaseABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_BaseABM.Designer.cs">
+      <DependentUpon>frm_BaseABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_BaseMod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_BaseMod.Designer.cs">
+      <DependentUpon>frm_BaseMod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Principal.Designer.cs">
+      <DependentUpon>frm_Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_ABMAlumno.resx">
+      <DependentUpon>frm_ABMAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ABMdocente.resx">
+      <DependentUpon>frm_ABMdocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_AgregaDocente.resx">
+      <DependentUpon>frm_AgregaDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_AltaAlumno.resx">
+      <DependentUpon>frm_AltaAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_AltaComision.resx">
+      <DependentUpon>frm_AltaComision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_AltaCurso.resx">
+      <DependentUpon>frm_AltaCurso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_AltaDocente.resx">
+      <DependentUpon>frm_AltaDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_AltaEspecialidad.resx">
+      <DependentUpon>frm_AltaEspecialidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_AltaMateria.resx">
+      <DependentUpon>frm_AltaMateria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_AltaPlan.resx">
+      <DependentUpon>frm_AltaPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_bajaAlumno.resx">
+      <DependentUpon>frm_bajaAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_BajaComision.resx">
+      <DependentUpon>frm_BajaComision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_BajaCurso.resx">
+      <DependentUpon>frm_BajaCurso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_BajaDocente.resx">
+      <DependentUpon>frm_BajaDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_BajaEspecialidad.resx">
+      <DependentUpon>frm_BajaEspecialidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_BajaMateria.resx">
+      <DependentUpon>frm_BajaMateria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_BajaPlan.resx">
+      <DependentUpon>frm_BajaPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_BaseABM.resx">
+      <DependentUpon>frm_BaseABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_BaseMod.resx">
+      <DependentUpon>frm_BaseMod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Principal.resx">
+      <DependentUpon>frm_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business.Entities\Business.Entities.csproj">
+      <Project>{8d874991-409b-41c1-b7b8-b21a5b2c793d}</Project>
+      <Name>Business.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Business.Logic\Business.Logic.csproj">
+      <Project>{5b15c3aa-fedb-4e51-91c1-b55518d21dd0}</Project>
+      <Name>Business.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
