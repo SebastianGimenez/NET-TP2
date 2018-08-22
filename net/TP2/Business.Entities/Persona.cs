@@ -24,6 +24,7 @@ namespace Business.Entities
         string dni;
         string email;
         string telefono;
+        int idPersona;
         //DateTime fechaNac;
 
         public string Nombre
@@ -56,6 +57,12 @@ namespace Business.Entities
         {
             get { return this.email; }
             set { this.email = value; }
+        }
+
+        public int IDPersona
+        {
+            get { return this.idPersona; }
+            set { this.idPersona = value; }
         }
         public string Telefono
         {

@@ -35,12 +35,13 @@ namespace Data.Database
             string nombreUsuario = us.NombreUsuario;
             string pass = us.Contraseña;
             int tipo = (int)us.TipoUsuario;
+            int id = ((Business.Entities.Persona)(us)).IDPersona;
             try
             {
-                SqlCommand cmd = new SqlCommand("insert into dbo.Usuario(NombreUsuario,Contraseña,TipoUsuario)" +
+                SqlCommand cmd = new SqlCommand("insert into dbo.Usuario(NombreUsuario,Contraseña,TipoUsuario,idPersona)" +
                     " values('" + nombreUsuario + "','"
                     + pass + "'," +
-                    tipo +
+                    tipo + "," + id +
                     ");",Conexion.getInstance().Conection);
                 cmd.ExecuteNonQuery();
                 Conexion.getInstance().Disconnect();

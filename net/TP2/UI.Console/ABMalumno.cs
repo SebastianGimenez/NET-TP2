@@ -29,8 +29,32 @@ namespace UI.Console
             System.Console.Write("ingrese el telefono: ");
             string telefono = System.Console.ReadLine();
             Business.Entities.Alumno al = new Business.Entities.Alumno(nombre, apellido, legajo, dni, email, telefono);
-            Business.Logic.ABMalumno.altaAlumno(al);
-        }
+            int idPersona = Business.Logic.ABMalumno.altaAlumno(al);
+            if(idPersona != -1) { 
+            al.IDPersona = idPersona;
+            bool valid = true;
+            string username = "";
+            string password = "";
+            do
+            {
+                System.Console.Clear();
+                if (!valid)
+                    System.Console.WriteLine("Nombre de usuario ya utilizado o invalido");
+                System.Console.Write("Ingrese un nombre de usuario : ");
+                username = System.Console.ReadLine();
+                System.Console.Write("Ingrese una contraseña: ");
+                password = System.Console.ReadLine();
+                valid = Business.Logic.ABMUsuario.checkUserNameAndPassword(username, password);
+            } while (valid == false);
+            Business.Logic.ABMUsuario.altaUsuario(username, password, al);
+            }
+            else
+            {
+                System.Console.WriteLine("Fallo la creacion de Alumno");
+                System.Console.ReadKey();
+            }
+        
+    }
 
         override
         protected void listar()
@@ -104,22 +128,34 @@ namespace UI.Console
             }
         }
 
-        private bool borrarAlumno(Business.Entities.Alumno al)
-        {
-        
-            return Business.Logic.ABMalumno.borrarAlumno(al.Legajo);
-         
-        }
+     
         override
         protected void modi()
         {
             Business.Entities.Alumno alu = buscarAlumno();
-            if(alu != null)
+            if (alu != null)
             {
-                bool borrado = borrarAlumno(alu);
-                if (borrado)
+              
+
+
+                System.Console.Write("ingrese el nombre: ");
+                alu.Nombre = System.Console.ReadLine();
+                System.Console.Write("ingrese el apellido: ");
+                alu.Apellido = System.Console.ReadLine();
+                System.Console.Write("ingrese el dni: ");
+                alu.Dni = System.Console.ReadLine();
+                System.Console.Write("ingrese el email: ");
+                alu.Email = System.Console.ReadLine();
+                System.Console.Write("ingrese el telefono: ");
+                alu.Telefono = System.Console.ReadLine();
+                System.Console.Clear();
+
+                if (Business.Logic.ABMalumno.modi(alu)) {
+                    System.Console.WriteLine("Alumno modificado con exito!");
+                }
+                else
                 {
-                    alta();
+                    System.Console.WriteLine("Errrrrrrrrroorrrrr ");
                 }
             }
         }

@@ -11,24 +11,27 @@ namespace Business.Logic
     public class ABMalumno
 
     {
-        public static void altaAlumno(Business.Entities.Alumno al) {
-            Data.Database.Alumnos.getInstance().altaAlumno(al);
+        public static int altaAlumno(Business.Entities.Alumno al) {
+            return Data.Database.AlumnoDB.getInstance().altaAlumno(al);
          }
         public static List<Business.Entities.Alumno> listarAlumnos() {
-        return Data.Database.Alumnos.getInstance().listarAlumnos();
+        return Data.Database.AlumnoDB.getInstance().listarAlumnos();
         }
 
         public static Business.Entities.Alumno buscarAlumno(string legajo)
         {
-           return Data.Database.Alumnos.getInstance().buscarAlumno(legajo);
+           return Data.Database.AlumnoDB.getInstance().buscarAlumno(legajo);
         }
 
         public static bool borrarAlumno(string legajo)
         {
-            return Data.Database.Alumnos.getInstance().borrarAlumno(legajo);
+            return Data.Database.AlumnoDB.getInstance().borrarAlumno(legajo);
         }
 
-        
+        public static bool modi(Alumno alu)
+        {
+            return Data.Database.AlumnoDB.getInstance().modi(alu);
+        }
     }
     
 }
