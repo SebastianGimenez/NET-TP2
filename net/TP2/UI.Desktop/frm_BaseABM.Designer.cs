@@ -69,6 +69,7 @@
             this.btn_modi.TabIndex = 3;
             this.btn_modi.Text = "MODIFICACION";
             this.btn_modi.UseVisualStyleBackColor = true;
+            this.btn_modi.Click += new System.EventHandler(this.btn_modi_Click);
             // 
             // btn_baja
             // 

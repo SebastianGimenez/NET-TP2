@@ -35,10 +35,14 @@ namespace UI.Desktop
                     Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, al);
                     this.Close();
                 }
+                else
+                {
+                    ErrorManager.showError(this.Owner, "No se pudo cargar el usuario", "1");
+                }
             }
             else
             {
-                DialogResult res = MessageBox.Show(this.Owner, "No se pudo guardar con exito", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ErrorManager.showError(this.Owner, "No se pudo cargar el alumno", "0");
             }
             this.saved = true;
             

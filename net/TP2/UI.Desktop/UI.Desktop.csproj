@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErrorManager.cs" />
     <Compile Include="frm_ABMAlumno.cs">
       <SubType>Form</SubType>
     </Compile>

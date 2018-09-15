@@ -30,6 +30,19 @@ namespace UI.Desktop
             grd_view.DataSource = Business.Logic.ABMalumno.listarAlumnos();
         }
 
+        override
+        protected void modi()
+        {
+
+            DataGridViewRow row = grd_view.CurrentRow;
+            DataGridViewCellCollection celdas = row.Cells;
+            for(int i = 0; i < celdas.Count; i++)
+            {
+                MessageBox.Show(this.Owner, celdas[i].ToString(), "");
+            }
+            new frm_AltaAlumno().ShowDialog();
+
+        }
 
 
         public frm_ABMAlumno() 

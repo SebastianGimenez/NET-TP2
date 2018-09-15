@@ -25,6 +25,9 @@ namespace UI.Desktop
 
         protected virtual void baja() { }
 
+        protected virtual void modi() { }
+
+
         private void btn_alta_Click(object sender, EventArgs e)
         {
             this.alta();
@@ -40,6 +43,12 @@ namespace UI.Desktop
         private void btn_volver_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_modi_Click(object sender, EventArgs e)
+        {
+            this.modi();
+            bs.ResetBindings(false);
         }
     }
 }
