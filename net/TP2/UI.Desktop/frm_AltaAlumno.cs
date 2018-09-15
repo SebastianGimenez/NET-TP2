@@ -25,10 +25,23 @@ namespace UI.Desktop
         protected void guardar()
         {
             Business.Entities.Alumno al = new Business.Entities.Alumno(txt_nombre.Text,txt_apellido.Text, txt_legajo.Text, txt_dni.Text, txt_email.Text, txt_telefono.Text);
-            Business.Logic.ABMalumno.altaAlumno(al);
-   
+            int id= Business.Logic.ABMalumno.altaAlumno(al);
+            if (id != -1)
+            {
+                al.IDPersona = id;
+                bool valid = Business.Logic.ABMUsuario.checkUserNameAndPassword(txtUsuario.Text, txtContraseña.Text);
+                if (valid)
+                {
+                    Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, al);
+                    this.Close();
+                }
+            }
+            else
+            {
+                DialogResult res = MessageBox.Show(this.Owner, "No se pudo guardar con exito", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             this.saved = true;
-            this.Close();
+            
         }
 
         override
