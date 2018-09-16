@@ -40,12 +40,12 @@
             this.txt_nombre = new System.Windows.Forms.TextBox();
             this.txt_telefono = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.txtContraseña = new System.Windows.Forms.TextBox();
-            this.lblUsuario = new System.Windows.Forms.Label();
+            this.grp_datosAlumno = new System.Windows.Forms.GroupBox();
             this.lblContraseña = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.txtContraseña = new System.Windows.Forms.TextBox();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.grp_datosAlumno.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_guardar
@@ -152,54 +152,31 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre";
             // 
-            // groupBox1
+            // grp_datosAlumno
             // 
-            this.groupBox1.Controls.Add(this.lblContraseña);
-            this.groupBox1.Controls.Add(this.lblUsuario);
-            this.groupBox1.Controls.Add(this.txtContraseña);
-            this.groupBox1.Controls.Add(this.txtUsuario);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txt_telefono);
-            this.groupBox1.Controls.Add(this.txt_nombre);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txt_email);
-            this.groupBox1.Controls.Add(this.txt_apellido);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txt_dni);
-            this.groupBox1.Controls.Add(this.txt_legajo);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(340, 214);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos Alumno";
-            // 
-            // txtUsuario
-            // 
-            this.txtUsuario.Location = new System.Drawing.Point(13, 188);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(135, 20);
-            this.txtUsuario.TabIndex = 12;
-            // 
-            // txtContraseña
-            // 
-            this.txtContraseña.Location = new System.Drawing.Point(179, 187);
-            this.txtContraseña.Name = "txtContraseña";
-            this.txtContraseña.Size = new System.Drawing.Size(136, 20);
-            this.txtContraseña.TabIndex = 13;
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(13, 169);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(43, 13);
-            this.lblUsuario.TabIndex = 14;
-            this.lblUsuario.Text = "Usuario";
+            this.grp_datosAlumno.Controls.Add(this.lblContraseña);
+            this.grp_datosAlumno.Controls.Add(this.lblUsuario);
+            this.grp_datosAlumno.Controls.Add(this.txtContraseña);
+            this.grp_datosAlumno.Controls.Add(this.txtUsuario);
+            this.grp_datosAlumno.Controls.Add(this.label1);
+            this.grp_datosAlumno.Controls.Add(this.txt_telefono);
+            this.grp_datosAlumno.Controls.Add(this.txt_nombre);
+            this.grp_datosAlumno.Controls.Add(this.label5);
+            this.grp_datosAlumno.Controls.Add(this.label2);
+            this.grp_datosAlumno.Controls.Add(this.txt_email);
+            this.grp_datosAlumno.Controls.Add(this.txt_apellido);
+            this.grp_datosAlumno.Controls.Add(this.label6);
+            this.grp_datosAlumno.Controls.Add(this.label3);
+            this.grp_datosAlumno.Controls.Add(this.txt_dni);
+            this.grp_datosAlumno.Controls.Add(this.txt_legajo);
+            this.grp_datosAlumno.Controls.Add(this.label4);
+            this.grp_datosAlumno.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grp_datosAlumno.Location = new System.Drawing.Point(0, 0);
+            this.grp_datosAlumno.Name = "grp_datosAlumno";
+            this.grp_datosAlumno.Size = new System.Drawing.Size(340, 214);
+            this.grp_datosAlumno.TabIndex = 14;
+            this.grp_datosAlumno.TabStop = false;
+            this.grp_datosAlumno.Text = "Datos Alumno";
             // 
             // lblContraseña
             // 
@@ -210,18 +187,41 @@
             this.lblContraseña.TabIndex = 15;
             this.lblContraseña.Text = "Contraseña";
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(13, 169);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(43, 13);
+            this.lblUsuario.TabIndex = 14;
+            this.lblUsuario.Text = "Usuario";
+            // 
+            // txtContraseña
+            // 
+            this.txtContraseña.Location = new System.Drawing.Point(179, 187);
+            this.txtContraseña.Name = "txtContraseña";
+            this.txtContraseña.Size = new System.Drawing.Size(136, 20);
+            this.txtContraseña.TabIndex = 13;
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Location = new System.Drawing.Point(13, 188);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(135, 20);
+            this.txtUsuario.TabIndex = 12;
+            // 
             // frm_AltaAlumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(340, 264);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grp_datosAlumno);
             this.Name = "frm_AltaAlumno";
             this.Text = "Alta Alumno";
             this.Controls.SetChildIndex(this.btn_guardar, 0);
             this.Controls.SetChildIndex(this.btn_cancelar, 0);
-            this.Controls.SetChildIndex(this.groupBox1, 0);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Controls.SetChildIndex(this.grp_datosAlumno, 0);
+            this.grp_datosAlumno.ResumeLayout(false);
+            this.grp_datosAlumno.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -240,7 +240,7 @@
         private System.Windows.Forms.TextBox txt_nombre;
         private System.Windows.Forms.TextBox txt_telefono;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grp_datosAlumno;
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.TextBox txtContraseña;

@@ -36,11 +36,23 @@ namespace UI.Desktop
 
             DataGridViewRow row = grd_view.CurrentRow;
             DataGridViewCellCollection celdas = row.Cells;
-            for(int i = 0; i < celdas.Count; i++)
-            {
-                MessageBox.Show(this.Owner, celdas[i].ToString(), "");
-            }
-            new frm_AltaAlumno().ShowDialog();
+            Business.Entities.Alumno al = new Business.Entities.Alumno(
+                  celdas["nombre"].Value.ToString(),
+                   celdas["apellido"].Value.ToString(),
+                    celdas["legajo"].Value.ToString(),
+                     celdas["dni"].Value.ToString(),
+                      celdas["email"].Value.ToString(),
+                       celdas["telefono"].Value.ToString()
+                  );
+            al.NombreUsuario = celdas["nombreusuario"].Value.ToString();
+            al.Contraseña = celdas["contraseña"].Value.ToString();
+            int idpersona = (int)celdas["IDPersona"].Value;
+            al.IDPersona = idpersona;
+
+
+
+            new frm_AltaAlumno(al).ShowDialog();
+            grd_view.DataSource = Business.Logic.ABMalumno.listarAlumnos();
 
         }
 

@@ -69,8 +69,15 @@ namespace Data.Database
                 string telefono = al.Telefono;
                 string mail = al.Email;
                 int tipo = (int)al.TipoUsuario;
+                string usuario = al.NombreUsuario;
+                string contra = al.Contraseña;
+                int idpersona = al.IDPersona;
                 SqlCommand cmd = new SqlCommand("update dbo.Persona set nombre='" + nombre + "',apellido='"
-                    + apellido +  "',dni='" + dni + "',telefono='" + telefono + "',mail='" + mail + "' where  CONVERT(VARCHAR,legajo)='" + legajo + "'", Conexion.getInstance().Conection);
+                    + apellido +  "',dni='" + dni + "',telefono='" + telefono + "',mail='" + mail +
+                    "' where  CONVERT(VARCHAR,legajo)='" + legajo + "'", Conexion.getInstance().Conection);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand("update dbo.Usuario set nombreusuario=' " + usuario + "',contraseña='" + contra +
+                    "' where idPersona='" + idpersona + "'", Conexion.getInstance().Conection);
                 cmd.ExecuteNonQuery();
                 Conexion.getInstance().Disconnect();
                 return true;
@@ -108,7 +115,7 @@ namespace Data.Database
                 Conexion.getInstance().Connect();
                 List<Business.Entities.Alumno> alumnos = new List<Business.Entities.Alumno>();
 
-                SqlCommand cmd = new SqlCommand("select * from dbo.Persona", Conexion.getInstance().Conection);
+                SqlCommand cmd = new SqlCommand("select * from dbo.Persona pe inner join dbo.Usuario us on pe.idPersona=us.idPersona", Conexion.getInstance().Conection);
                 SqlDataReader reader = cmd.ExecuteReader();
        
                 while (reader.Read())
@@ -120,7 +127,14 @@ namespace Data.Database
                     String dni = reader.GetString(3);
                     String telefono = reader.GetString(4);
                     String mail = reader.GetString(5);
-                    alumnos.Add(new Business.Entities.Alumno(nombre, apellido, legajo, dni, mail, telefono));
+                    int id = (int)reader.GetValue(6);
+                    String usu = reader.GetString(7);
+                    String cont = reader.GetString(8);
+                    Business.Entities.Alumno al = new Business.Entities.Alumno(nombre, apellido, legajo, dni, mail, telefono);
+                    al.NombreUsuario = usu;
+                    al.Contraseña = cont;
+                    al.IDPersona =id;
+                    alumnos.Add(al);
                 }
 
                 Conexion.getInstance().Disconnect();
