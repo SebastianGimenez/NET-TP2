@@ -1,0 +1,36 @@
+﻿
+body {
+    text-align:center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 { color:darkslategray;
+     font-size:20px;
+
+}
+
+form {
+    text-align:center;
+    margin-top:10px;
+   
+}
+
+
+label {
+    float: left;
+    width: 15%;
+}
+
+
+input{
+    margin-left: 10px;
+}
+input {
+    width: 200px;
+    margin-top:30px;
+
+}
+table {
+    margin-top:30px;
+    margin-left:10%;
+}

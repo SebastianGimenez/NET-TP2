@@ -25,11 +25,6 @@ namespace Business.Logic
         {
             //reglas de negocio de usuario y contraseña aca
             if (username.Length == 0 || password.Length == 0) return false;
-            return checkValidUser(username);
-        }
-
-        public static bool checkValidUser(string username)
-        {
             return !Data.Database.Usuarios.getInstance().userExist(username);
         }
     }

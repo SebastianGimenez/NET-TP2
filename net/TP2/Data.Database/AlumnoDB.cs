@@ -154,18 +154,24 @@ namespace Data.Database
                 Conexion.getInstance().Connect();
                 Business.Entities.Alumno al;
 
-                SqlCommand cmd = new SqlCommand("select * from dbo.Persona where CONVERT(VARCHAR,legajo)='" + legajo + "'", Conexion.getInstance().Conection);
+                SqlCommand cmd = new SqlCommand("select * from dbo.Persona pe inner join dbo.Usuario us on pe.idPersona=us.idPersona where CONVERT(VARCHAR,legajo)='" + legajo + "'", Conexion.getInstance().Conection);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 reader.Read();
                 
 
-                    String nombre = reader.GetString(0);
-                    String apellido = reader.GetString(1);
-                    String dni = reader.GetString(3);
-                    String telefono = reader.GetString(4);
-                    String mail = reader.GetString(5);
+                    string nombre = reader.GetString(0);
+                    string apellido = reader.GetString(1);
+                    string dni = reader.GetString(3);
+                    string telefono = reader.GetString(4);
+                    string mail = reader.GetString(5);
+                    int id = (int)reader.GetValue(6);
+                    string usu = reader.GetString(7);
+                    string cont = reader.GetString(8);  
                     al= new Business.Entities.Alumno(nombre, apellido, legajo, dni, mail, telefono);
+                    al.NombreUsuario = usu;
+                    al.Contraseña = cont;
+                    al.IDPersona = id;
                 
 
                 Conexion.getInstance().Disconnect();
