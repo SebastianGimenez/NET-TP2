@@ -13,10 +13,32 @@ namespace UI.Desktop
     public partial class frm_AltaMateria : frm_BaseMod
     {
         private bool saved;
+        private bool ismodi;
+        private Business.Entities.Materia materia;
         public frm_AltaMateria()
         {
+            ismodi = false;
             saved = false;
             InitializeComponent();
+            this.cmbPlanes.DataSource = Business.Logic.ABMplan.listarPlanes();
+            this.cmbPlanes.ValueMember = "idPlan";
+            this.cmbPlanes.DisplayMember = "nombrePlan";
+
+        }
+        public frm_AltaMateria(Business.Entities.Materia mate)
+        {
+            ismodi = true;
+            saved = false;
+            InitializeComponent();
+            this.cmbPlanes.DataSource = Business.Logic.ABMplan.listarPlanes();
+            this.cmbPlanes.ValueMember = "idPlan";
+            this.cmbPlanes.DisplayMember = "nombrePlan";
+            this.cmbPlanes.SelectedValue = Business.Logic.ABMmateria.buscarPlanDeMateria(mate.IdMateria);
+            this.txtNombre.Text = mate.Nombre;
+            this.txtDescripcion.Text = mate.Descripcion;
+            this.txtHsSemanales.Text = mate.HorasSemanales.ToString();
+            this.txtHsTotales.Text = mate.HorasTotales.ToString();
+            materia = mate;
 
         }
 
@@ -25,12 +47,29 @@ namespace UI.Desktop
         override
         protected void guardar()
         {
-            Business.Entities.Materia mat = new Business.Entities.Materia(txtNombre.Text,txtDescripcion.Text,int.Parse(txtHsSemanales.Text),int.Parse(txtHsTotales.Text));
-            bool guardado = Business.Logic.ABMmateria.altaMateria(mat, txtPlan.Text);
-            if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
-            else { MessageBox.Show(this.Owner, "No se pudo encontrar Plan con ese nombre :(", "Sin Exito", MessageBoxButtons.OK); }
-            this.saved = true;
-            this.Close();
+            Business.Entities.Materia mat = new Business.Entities.Materia(txtNombre.Text, txtDescripcion.Text, int.Parse(txtHsSemanales.Text), int.Parse(txtHsTotales.Text));
+            Business.Entities.Plan plan = new Business.Entities.Plan();
+            plan.IdPlan = (int)cmbPlanes.SelectedValue;
+            mat.Plan = plan;
+            if (ismodi)
+            {
+                mat.IdMateria = materia.IdMateria;
+                bool guardado = Business.Logic.ABMmateria.modificarMateria(mat);
+                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar la materia", "Sin Exito", MessageBoxButtons.OK); }
+                this.saved = true;
+                this.Close();
+
+            }
+            else
+            {
+
+                bool guardado = Business.Logic.ABMmateria.altaMateria(mat);
+                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo guardar materia", "Sin Exito", MessageBoxButtons.OK); }
+                this.saved = true;
+                this.Close();
+            }
         }
 
         override
@@ -63,6 +102,12 @@ namespace UI.Desktop
                         break;
                 }
             }
+        }
+
+        private void frm_AltaMateria_Load(object sender, EventArgs e)
+        {
+            if (ismodi)
+            { this.Text = "Modificar"; }
         }
     }
 }

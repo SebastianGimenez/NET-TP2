@@ -8,11 +8,14 @@ namespace Business.Entities
 {
     public class Materia
     {
+        int idMateria;
         string nombre;
         string descripcion;
         int horasSemanales;
         int horasTotales;
         Plan plan;
+
+        public Materia() { }
 
         public override string ToString()
         {
@@ -28,6 +31,13 @@ namespace Business.Entities
         {
             this.plan = plan;
         }
+
+        public int IdMateria
+        {
+            get { return this.idMateria; }
+            set { this.idMateria = value; }
+        }
+
 
         public string Nombre
         {

@@ -8,28 +8,36 @@ namespace Business.Logic
 {
     public class ABMplan
     {
-        public static bool altaPlan(Business.Entities.Plan plan, string nombreEsp)
+        public static bool altaPlan(Business.Entities.Plan plan)
         {
-            Business.Entities.Especialidad especi = Business.Logic.ABMespecialidad.buscarEspecialidad(nombreEsp);
-            if (especi != null)
-            {
-                plan.agregarEspecialidad(especi);
-                Data.Database.Planes.getInstance().altaPlan(plan);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            //validar que exista la especialidad
+             return Data.Database.PlanDB.getInstance().altaPlan(plan);
+        }
+
+        public static int buscarEspDelPlan(int idPlan)
+        {
+            return Data.Database.PlanDB.getInstance().buscarEspDelPlan(idPlan);
         }
 
         public static int contarPlanes()
         {
-            return listarPlanes().Count;
+            try
+            {
+                return listarPlanes().Count;
+            }
+            catch
+            {
+                return 0;
+            }
         }
         public static List<Business.Entities.Plan> listarPlanes()
         {
-            return Data.Database.Planes.getInstance().listarPlanes();
+            return Data.Database.PlanDB.getInstance().listarPlanes();
+        }
+
+        public static List<Business.Entities.Plan> listarPlanesPorNombre(string nombre)
+        {
+            return Data.Database.PlanDB.getInstance().listarPlanesPorNombre(nombre);
         }
 
         public static Business.Entities.Plan buscarPlan(string nombre)
@@ -37,9 +45,15 @@ namespace Business.Logic
             return Data.Database.Planes.getInstance().buscarPlan(nombre);
         }
 
-        public static bool borrarPlan(string nombre)
+        public static bool borrarPlan(int id)
         {
-            return Data.Database.Planes.getInstance().borrarPlan(nombre);
+            return Data.Database.PlanDB.getInstance().borrarPlan(id);
+        }
+
+        public static bool modificarPlan(Business.Entities.Plan plan)
+        {
+            return Data.Database.PlanDB.getInstance().modificarPlan(plan);
+
         }
     }
 }

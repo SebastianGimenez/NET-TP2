@@ -14,6 +14,7 @@ namespace Business.Logic
         public static int altaAlumno(Business.Entities.Alumno al) {
             return Data.Database.AlumnoDB.getInstance().altaAlumno(al);
          }
+
         public static List<Business.Entities.Alumno> listarAlumnos() {
         return Data.Database.AlumnoDB.getInstance().listarAlumnos();
         }
@@ -31,6 +32,10 @@ namespace Business.Logic
         public static bool modi(Alumno alu)
         {
             return Data.Database.AlumnoDB.getInstance().modi(alu);
+        }
+        public static List<Business.Entities.Alumno> listarAlumnosPorLegajo(string legajo)
+        {
+            return Data.Database.AlumnoDB.getInstance().listarAlumnosPorLegajo(legajo);
         }
     }
     

@@ -10,7 +10,8 @@ namespace Business.Entities
     {
         string nombreComision;
         string aula;
-
+        int idComision;
+        public Comision() { }
         public override string ToString()
         {
             return this.nombreComision;
@@ -21,7 +22,11 @@ namespace Business.Entities
             this.aula = aula;
         }
 
-
+        public int IdComision
+        {
+            get { return this.idComision; }
+            set { this.idComision = value; }
+        }
         public string NombreComision
         {
             get { return this.nombreComision; }

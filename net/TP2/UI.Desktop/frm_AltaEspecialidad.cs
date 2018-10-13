@@ -13,11 +13,23 @@ namespace UI.Desktop
     public partial class frm_AltaEspecialidad : frm_BaseMod
     {
         private bool saved;
+        private bool ismodi;
+        private Business.Entities.Especialidad especialidad;
         public frm_AltaEspecialidad()
         {
             saved = false;
             InitializeComponent();
+            ismodi = false;
 
+        }
+        public frm_AltaEspecialidad(Business.Entities.Especialidad esp)
+        {
+            saved = false;
+            InitializeComponent();
+            ismodi = true;
+            txtNombre.Text = esp.NombreEspecialidad;
+            txtDescripcion.Text = esp.Descripcion;
+            especialidad = esp;
         }
 
 
@@ -25,10 +37,27 @@ namespace UI.Desktop
         override
         protected void guardar()
         {
-            Business.Entities.Especialidad esp = new Business.Entities.Especialidad(txtNombre.Text, txtDescripcion.Text);
-            Business.Logic.ABMespecialidad.altaEspecialidad(esp);
-            this.saved = true;
-            this.Close();
+            Business.Entities.Especialidad esp = new Business.Entities.Especialidad(this.txtNombre.Text, this.txtDescripcion.Text);
+            if (ismodi)
+            {
+                esp.IdEspecialidad = especialidad.IdEspecialidad;
+                bool modi=Business.Logic.ABMespecialidad.modificarEspecialidad(esp);
+                if (modi) { MessageBox.Show(this.Owner, "Modificado con exito", "Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar ", "Sin Exito", MessageBoxButtons.OK); }
+                this.saved = true;
+                this.Close();
+            }
+            else
+            {
+                bool guardado=Business.Logic.ABMespecialidad.altaEspecialidad(esp);
+                this.saved = true;
+                if (guardado)
+                {
+                    MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK);
+                }
+                else { { MessageBox.Show(this.Owner, "No se pudo guardar", "Fracaso", MessageBoxButtons.OK); } }
+                this.Close();
+            }
         }
 
         override
@@ -60,6 +89,14 @@ namespace UI.Desktop
                         this.Close();
                         break;
                 }
+            }
+        }
+
+        private void frm_AltaEspecialidad_Load(object sender, EventArgs e)
+        {
+            if (ismodi)
+            {
+                this.Text = "Modificacion";
             }
         }
     }

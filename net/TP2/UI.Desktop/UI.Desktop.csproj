@@ -46,6 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ErrorManager.cs" />
+    <Compile Include="frm_ABM_DocenteCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ABM_DocenteCurso.Designer.cs">
+      <DependentUpon>frm_ABM_DocenteCurso.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_ABMAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,12 +94,6 @@
     <Compile Include="frm_ABMplan.Designer.cs">
       <DependentUpon>frm_ABMplan.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_AgregaDocente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_AgregaDocente.Designer.cs">
-      <DependentUpon>frm_AgregaDocente.cs</DependentUpon>
-    </Compile>
     <Compile Include="frm_AltaAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +117,12 @@
     </Compile>
     <Compile Include="frm_AltaDocente.Designer.cs">
       <DependentUpon>frm_AltaDocente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_AltaDocenteCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_AltaDocenteCurso.Designer.cs">
+      <DependentUpon>frm_AltaDocenteCurso.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_AltaEspecialidad.cs">
       <SubType>Form</SubType>
@@ -160,6 +166,12 @@
     <Compile Include="frm_BajaDocente.Designer.cs">
       <DependentUpon>frm_BajaDocente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_BajaDocenteCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_BajaDocenteCurso.Designer.cs">
+      <DependentUpon>frm_BajaDocenteCurso.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_BajaEspecialidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,11 +213,26 @@
     <EmbeddedResource Include="frm_ABMAlumno.resx">
       <DependentUpon>frm_ABMAlumno.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_ABMcomision.resx">
+      <DependentUpon>frm_ABMcomision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ABMcurso.resx">
+      <DependentUpon>frm_ABMcurso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_ABMdocente.resx">
       <DependentUpon>frm_ABMdocente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_AgregaDocente.resx">
-      <DependentUpon>frm_AgregaDocente.cs</DependentUpon>
+    <EmbeddedResource Include="frm_ABMespecialidad.resx">
+      <DependentUpon>frm_ABMespecialidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ABMmateria.resx">
+      <DependentUpon>frm_ABMmateria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ABMplan.resx">
+      <DependentUpon>frm_ABMplan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ABM_DocenteCurso.resx">
+      <DependentUpon>frm_ABM_DocenteCurso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_AltaAlumno.resx">
       <DependentUpon>frm_AltaAlumno.cs</DependentUpon>
@@ -218,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_AltaDocente.resx">
       <DependentUpon>frm_AltaDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_AltaDocenteCurso.resx">
+      <DependentUpon>frm_AltaDocenteCurso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_AltaEspecialidad.resx">
       <DependentUpon>frm_AltaEspecialidad.cs</DependentUpon>
@@ -239,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_BajaDocente.resx">
       <DependentUpon>frm_BajaDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_BajaDocenteCurso.resx">
+      <DependentUpon>frm_BajaDocenteCurso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_BajaEspecialidad.resx">
       <DependentUpon>frm_BajaEspecialidad.cs</DependentUpon>

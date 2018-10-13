@@ -13,26 +13,77 @@ namespace UI.Desktop
     public partial class frm_AltaDocente : frm_BaseMod
     {
         private bool saved;
+        private bool ismodi;
+        private Business.Entities.Docente docente;
         public frm_AltaDocente()
         {
             saved = false;
+            ismodi = false;
             InitializeComponent();
 
         }
 
-
-
-        override
-        protected void guardar()
+        public frm_AltaDocente(Business.Entities.Docente doc)
         {
-            Business.Entities.Docente doc = new Business.Entities.Docente(txt_nombre.Text, txt_apellido.Text, txt_legajo.Text, txt_dni.Text, txt_email.Text, txt_telefono.Text);
-            Business.Logic.ABMdocente.altaDocente(doc);
-            this.saved = true;
-            this.Close();
+            saved = false;
+            InitializeComponent();
+            ismodi = true;
+            txtUsuario.Text = doc.NombreUsuario;
+            txtContraseña.Text = doc.Contraseña;
+            txt_apellido.Text = doc.Apellido;
+            txt_dni.Text = doc.Dni;
+            txt_legajo.Text = doc.Legajo;
+            txt_legajo.Enabled = false;
+            txt_nombre.Text = doc.Nombre;
+            txt_telefono.Text = doc.Telefono;
+            txt_email.Text = doc.Email;
+            docente = doc;
         }
 
-        override
-        protected void onclosing(object sender, FormClosingEventArgs e)
+
+
+        override protected void guardar()
+        {
+
+            Business.Entities.Docente doc = new Business.Entities.Docente(txt_nombre.Text, txt_apellido.Text, txt_legajo.Text, txt_dni.Text, txt_email.Text, txt_telefono.Text);
+            if (ismodi)
+            {
+                doc.IDPersona = docente.IDPersona;
+                doc.NombreUsuario = txtUsuario.Text;
+                doc.Contraseña = txtContraseña.Text;
+                bool modi = Business.Logic.ABMdocente.modi(doc);
+                if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar ", "Sin Exito", MessageBoxButtons.OK); }
+                this.saved = true;
+                this.Close();
+            }
+            else
+            {
+                int id = Business.Logic.ABMdocente.altaDocente(doc);
+                if (id != -1)
+                {
+                    doc.IDPersona = id;
+                    bool valid = Business.Logic.ABMUsuario.checkUserNameAndPassword(txtUsuario.Text, txtContraseña.Text);
+                    if (valid)
+                    {
+                        Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, doc);
+                        this.saved = true;
+                        { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
+                        this.Close();
+                    }
+                    else
+                    {
+                        ErrorManager.showError(this.Owner, "No se pudo cargar el usuario", "1");
+                    }
+                }
+                else
+                {
+                    ErrorManager.showError(this.Owner, "No se pudo cargar el docente", "0");
+                }
+            }
+        }
+
+        override protected void onclosing(object sender, FormClosingEventArgs e)
         {
             if (!this.saved)
             {
@@ -48,7 +99,7 @@ namespace UI.Desktop
         }
 
         override
-         protected void cancelar()
+        protected void cancelar()
         {
             if (!this.saved)
             {
@@ -61,6 +112,12 @@ namespace UI.Desktop
                         break;
                 }
             }
+        }
+
+        private void frm_AltaDocente_Load(object sender, EventArgs e)
+        {
+            if (ismodi)
+            { this.Text = "Modificar"; }
         }
     }
 }

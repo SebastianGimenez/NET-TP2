@@ -17,15 +17,25 @@ namespace UI.Desktop
         {
             saved = false;
             InitializeComponent();
+       
 
         }
-
+        public frm_BajaEspecialidad(int id)
+        {
+            saved = false;
+            InitializeComponent();
+            this.txtNombre.Enabled = false;
+            this.cmb_IdEsp.DataSource = Business.Logic.ABMespecialidad.listarEspecialidades();
+            this.cmb_IdEsp.DisplayMember = "idEspecialidad";
+            this.cmb_IdEsp.ValueMember = "idEspecialidad";
+            this.cmb_IdEsp.SelectedValue = id;
+        }
 
 
         override
         protected void guardar()
         {
-            bool borrado=Business.Logic.ABMespecialidad.borrarEspecialidad(txtNombre.Text);
+            bool borrado=Business.Logic.ABMespecialidad.borrarEspecialidad((int)this.cmb_IdEsp.SelectedValue);
             if (borrado) { MessageBox.Show(this.Owner, "Borrado con exito", "Exito", MessageBoxButtons.OK); }
             else  { MessageBox.Show(this.Owner, "No se pudo encontrar :(", "Sin Exito", MessageBoxButtons.OK); } 
             this.saved = true;
@@ -62,6 +72,17 @@ namespace UI.Desktop
                         break;
                 }
             }
+        }
+
+        private void cmbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmb_IdEsp_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Business.Entities.Especialidad esp = (Business.Entities.Especialidad)cmb_IdEsp.SelectedItem;
+            this.txtNombre.Text = esp.NombreEspecialidad;
         }
     }
 }

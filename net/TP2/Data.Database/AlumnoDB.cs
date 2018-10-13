@@ -115,7 +115,7 @@ namespace Data.Database
                 Conexion.getInstance().Connect();
                 List<Business.Entities.Alumno> alumnos = new List<Business.Entities.Alumno>();
 
-                SqlCommand cmd = new SqlCommand("select * from dbo.Persona pe inner join dbo.Usuario us on pe.idPersona=us.idPersona", Conexion.getInstance().Conection);
+                SqlCommand cmd = new SqlCommand("select * from dbo.Persona pe inner join dbo.Usuario us on pe.idPersona=us.idPersona where tipoUsuario=1", Conexion.getInstance().Conection);
                 SqlDataReader reader = cmd.ExecuteReader();
        
                 while (reader.Read())
@@ -147,6 +147,44 @@ namespace Data.Database
             }
         }
 
+        public List<Business.Entities.Alumno> listarAlumnosPorLegajo(string lega)
+        {
+            try
+            {
+                Conexion.getInstance().Connect();
+                List<Business.Entities.Alumno> alumnos = new List<Business.Entities.Alumno>();
+                string legajo = "%"+lega+"%";
+                SqlCommand cmd = new SqlCommand("select * from dbo.Persona pe inner join dbo.Usuario us on pe.idPersona=us.idPersona where tipoUsuario=1 AND CONVERT(VARCHAR,legajo) like '" + legajo+"'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    String nombre = reader.GetString(0);
+                    String apellido = reader.GetString(1);
+                    String legaj = reader.GetString(2);
+                    String dni = reader.GetString(3);
+                    String telefono = reader.GetString(4);
+                    String mail = reader.GetString(5);
+                    int id = (int)reader.GetValue(6);
+                    String usu = reader.GetString(7);
+                    String cont = reader.GetString(8);
+                    Business.Entities.Alumno al = new Business.Entities.Alumno(nombre, apellido, legaj, dni, mail, telefono);
+                    al.NombreUsuario = usu;
+                    al.Contraseña = cont;
+                    al.IDPersona = id;
+                    alumnos.Add(al);
+                }
+
+                Conexion.getInstance().Disconnect();
+                return alumnos;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
+            }
+        }
         public  Business.Entities.Alumno buscarAlumno(string legajo)
         {
             try

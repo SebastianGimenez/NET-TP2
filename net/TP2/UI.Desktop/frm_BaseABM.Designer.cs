@@ -40,13 +40,12 @@
             // 
             this.grd_view.AllowUserToAddRows = false;
             this.grd_view.AllowUserToDeleteRows = false;
-            this.grd_view.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.grd_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grd_view.Location = new System.Drawing.Point(2, 12);
+            this.grd_view.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grd_view.Location = new System.Drawing.Point(0, 0);
             this.grd_view.Name = "grd_view";
             this.grd_view.ReadOnly = true;
-            this.grd_view.Size = new System.Drawing.Size(524, 254);
+            this.grd_view.Size = new System.Drawing.Size(527, 254);
             this.grd_view.TabIndex = 0;
             // 
             // btn_volver

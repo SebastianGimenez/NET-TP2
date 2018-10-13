@@ -10,31 +10,33 @@ using System.Windows.Forms;
 
 namespace UI.Desktop
 {
-    public partial class frm_AgregaDocente : frm_BaseMod
+    public partial class frm_AltaDocenteCurso : Form
     {
         private bool saved;
-        Business.Entities.Curso cur;
-
-        public frm_AgregaDocente(Business.Entities.Curso curso)
-        {   cur = curso;
-            saved = false;
-            InitializeComponent();
-        }
-
-
-
-        override
-         protected void guardar()
+        private Business.Entities.Curso curso;
+        public frm_AltaDocenteCurso(Business.Entities.Curso cur)
         {
-            bool guardado = Business.Logic.ABMcurso.validarDocente(cur, txtNombre.Text);
-            if (!guardado) { MessageBox.Show(this.Owner, "Docente no encontrado", "Sin Exito", MessageBoxButtons.OK); }
-
-            else { MessageBox.Show(this.Owner, "Docente registrado", "Exito", MessageBoxButtons.OK); }
-            this.saved = true;
-            this.Close();
+            InitializeComponent();
+            this.txt_NombreCurso.Text = cur.Nombre;
+            this.txt_NombreCurso.Enabled = false;
+            this.cmb_Legajos.DataSource = Business.Logic.ABMdocente.listarDocentes();
+            this.cmb_Legajos.DisplayMember = "legajo";
+            this.cmb_Legajos.ValueMember = "iDPersona";
+            curso = cur;
         }
 
-        override
+        private void btn_agregar_Click(object sender, EventArgs e)
+        {
+            Business.Entities.Docente doc = (Business.Entities.Docente)this.cmb_Legajos.SelectedItem;
+            bool agregado = Business.Logic.ABMcurso.agregarDocenteCurso(doc, curso);
+            if (agregado)
+            { MessageBox.Show(this.Owner, "Agregado con exito", "Exito", MessageBoxButtons.OK); }
+            else { MessageBox.Show(this.Owner, "No se pudo agregar ", "Sin Exito", MessageBoxButtons.OK); }
+            this.Close();
+
+        }
+
+      
         protected void onclosing(object sender, FormClosingEventArgs e)
         {
             if (!this.saved)
@@ -50,8 +52,7 @@ namespace UI.Desktop
             }
         }
 
-        override
-         protected void cancelar()
+        private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             if (!this.saved)
             {
@@ -64,6 +65,11 @@ namespace UI.Desktop
                         break;
                 }
             }
+        }
+
+        private void frm_AltaDocenteCurso_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

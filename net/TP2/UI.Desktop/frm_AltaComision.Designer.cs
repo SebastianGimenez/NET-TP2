@@ -32,20 +32,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtAula = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_guardar
             // 
-            this.btn_guardar.Location = new System.Drawing.Point(120, 414);
+            this.btn_guardar.Location = new System.Drawing.Point(88, 257);
             // 
             // btn_cancelar
             // 
-            this.btn_cancelar.Location = new System.Drawing.Point(246, 414);
+            this.btn_cancelar.Location = new System.Drawing.Point(214, 257);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(62, 163);
+            this.label1.Location = new System.Drawing.Point(39, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 2;
@@ -54,7 +56,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(65, 212);
+            this.label2.Location = new System.Drawing.Point(42, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 3;
@@ -62,37 +64,46 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(138, 156);
+            this.txtNombre.Location = new System.Drawing.Point(115, 54);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(161, 20);
             this.txtNombre.TabIndex = 4;
             // 
             // txtAula
             // 
-            this.txtAula.Location = new System.Drawing.Point(138, 209);
+            this.txtAula.Location = new System.Drawing.Point(115, 107);
             this.txtAula.Name = "txtAula";
             this.txtAula.Size = new System.Drawing.Size(161, 20);
             this.txtAula.TabIndex = 5;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtAula);
+            this.groupBox1.Controls.Add(this.txtNombre);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 27);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(324, 209);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos Comision";
             // 
             // frm_AltaComision
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 450);
-            this.Controls.Add(this.txtAula);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(346, 293);
+            this.Controls.Add(this.groupBox1);
             this.Name = "frm_AltaComision";
             this.Text = "frm_AltaComision";
+            this.Load += new System.EventHandler(this.frm_AltaComision_Load);
             this.Controls.SetChildIndex(this.btn_guardar, 0);
             this.Controls.SetChildIndex(this.btn_cancelar, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.txtNombre, 0);
-            this.Controls.SetChildIndex(this.txtAula, 0);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -102,5 +113,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtAula;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

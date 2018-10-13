@@ -8,13 +8,17 @@ namespace Business.Logic
 {
     public class ABMespecialidad
     {
-        public static void altaEspecialidad(Business.Entities.Especialidad esp)
+        public static bool altaEspecialidad(Business.Entities.Especialidad esp)
         {
-            Data.Database.Especialidades.getInstance().altaEspecialidad(esp);
+            return Data.Database.EspecialidadDB.getInstance().altaEspecialidad(esp);
         }
         public static List<Business.Entities.Especialidad> listarEspecialidades()
         {
-            return Data.Database.Especialidades.getInstance().listarEspecialidades();
+            return Data.Database.EspecialidadDB.getInstance().listarEspecialidades();
+        }
+        public static List<Business.Entities.Especialidad> listarEspecialidadesPorNombre(String nombre)
+        {
+            return Data.Database.EspecialidadDB.getInstance().listarEspecialidadesPorNombre(nombre);
         }
 
         public static int contarEspecialidades()
@@ -22,14 +26,19 @@ namespace Business.Logic
             return listarEspecialidades().Count;
         }
 
+        public static bool modificarEspecialidad(Business.Entities.Especialidad esp)
+        {
+            return Data.Database.EspecialidadDB.getInstance().modificarEspecialidad(esp);
+        }
+
         public static Business.Entities.Especialidad buscarEspecialidad(string nombre)
         {
             return Data.Database.Especialidades.getInstance().buscarEspecialidad(nombre);
         }
 
-        public static bool borrarEspecialidad(string nombre)
+        public static bool borrarEspecialidad(int id)
         {
-            return Data.Database.Especialidades.getInstance().borrarEspecialidad(nombre);
+            return Data.Database.EspecialidadDB.getInstance().borrarEspecialidad(id);
         }
     }
 }

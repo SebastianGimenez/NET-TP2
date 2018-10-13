@@ -217,6 +217,7 @@
             this.Controls.Add(this.grp_datosAlumno);
             this.Name = "frm_AltaAlumno";
             this.Text = "Alta Alumno";
+            this.Load += new System.EventHandler(this.frm_AltaAlumno_Load);
             this.Controls.SetChildIndex(this.btn_guardar, 0);
             this.Controls.SetChildIndex(this.btn_cancelar, 0);
             this.Controls.SetChildIndex(this.grp_datosAlumno, 0);

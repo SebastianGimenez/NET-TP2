@@ -13,24 +13,57 @@ namespace UI.Desktop
     public partial class frm_AltaPlan : frm_BaseMod
     {
         private bool saved;
+        private bool ismodi;
+        private Business.Entities.Plan plan;
         public frm_AltaPlan()
         {
             saved = false;
             InitializeComponent();
-
+            this.cmbEspecialidades.DataSource = Business.Logic.ABMespecialidad.listarEspecialidades();
+            this.cmbEspecialidades.ValueMember = "idEspecialidad";
+            this.cmbEspecialidades.DisplayMember = "nombreEspecialidad";
         }
 
+        public frm_AltaPlan(Business.Entities.Plan pl)
+        {
+            saved = false;
+            InitializeComponent();
+            this.cmbEspecialidades.DataSource = Business.Logic.ABMespecialidad.listarEspecialidades();
+            this.cmbEspecialidades.ValueMember = "idEspecialidad";
+            this.cmbEspecialidades.DisplayMember = "nombreEspecialidad";
+            ismodi = true;
+            txtNombre.Text = pl.NombrePlan;
+            txtDescripcion.Text= pl.DescripcionPlan;
+            cmbEspecialidades.SelectedValue = Business.Logic.ABMplan.buscarEspDelPlan(pl.IdPlan);
+            plan = pl;
+        }
 
 
         override
         protected void guardar()
         {
-            Business.Entities.Plan plan = new Business.Entities.Plan(txtNombre.Text, txtDescripcion.Text);
-            bool guardado=Business.Logic.ABMplan.altaPlan(plan,txtEspecialidad.Text);
-            if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
-            else { MessageBox.Show(this.Owner, "No se pudo encontrar ESpecialidad con ese nombre :(", "Sin Exito", MessageBoxButtons.OK); }
-            this.saved = true;
-            this.Close();
+            Business.Entities.Plan pl = new Business.Entities.Plan(txtNombre.Text, txtDescripcion.Text);
+            Business.Entities.Especialidad esp = new Business.Entities.Especialidad();
+            esp.IdEspecialidad = (int)this.cmbEspecialidades.SelectedValue;
+            pl.Especialidad = esp;
+            if (ismodi)
+            {
+                pl.IdPlan = plan.IdPlan;
+                bool modi=Business.Logic.ABMplan.modificarPlan(pl);
+                if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar ", "Sin Exito", MessageBoxButtons.OK); }
+                this.saved = true;
+                this.Close();
+            }
+            else
+            {
+
+                bool guardado = Business.Logic.ABMplan.altaPlan(pl);
+                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo guardar", "Sin Exito", MessageBoxButtons.OK); }
+                this.saved = true;
+                this.Close();
+            }
         }
 
         override
@@ -62,6 +95,14 @@ namespace UI.Desktop
                         this.Close();
                         break;
                 }
+            }
+        }
+
+        private void frm_AltaPlan_Load(object sender, EventArgs e)
+        {
+            if (ismodi)
+            {
+                this.Text = "Modificacion";
             }
         }
     }

@@ -19,15 +19,24 @@ namespace UI.Desktop
             InitializeComponent();
 
         }
-
+        public frm_BajaComision(int id)
+        {
+            saved = false;
+            InitializeComponent();
+            txtNombre.Enabled = false;
+            cmbIdComision.DataSource = Business.Logic.ABMcomision.listarComisiones();
+            cmbIdComision.DisplayMember = "idComision";
+            cmbIdComision.ValueMember = "idComision";
+            cmbIdComision.SelectedValue = id;
+        }
 
 
         override
         protected void guardar()
         {
-            bool borrado = Business.Logic.ABMcomision.borrarComision(txtNombre.Text);
+            bool borrado = Business.Logic.ABMcomision.borrarComision((int)cmbIdComision.SelectedValue);
             if (borrado) { MessageBox.Show(this.Owner, "Borrado con exito", "Exito", MessageBoxButtons.OK); }
-            else { MessageBox.Show(this.Owner, "No se pudo encontrar :(", "Sin Exito", MessageBoxButtons.OK); }
+            else { MessageBox.Show(this.Owner, "No se pudo encontrar ", "Sin Exito", MessageBoxButtons.OK); }
             this.saved = true;
             this.Close();
         }
@@ -62,6 +71,12 @@ namespace UI.Desktop
                         break;
                 }
             }
+        }
+
+        private void cmbIdComision_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Business.Entities.Comision com = (Business.Entities.Comision)cmbIdComision.SelectedItem;
+            txtNombre.Text = com.NombreComision;
         }
     }
 }

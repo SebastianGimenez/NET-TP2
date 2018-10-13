@@ -10,39 +10,19 @@ using System.Windows.Forms;
 
 namespace UI.Desktop
 {
-    public partial class frm_BajaCurso : frm_BaseMod
+    public partial class frm_BajaDocenteCurso : Form
     {
         private bool saved;
-        public frm_BajaCurso()
+        private Business.Entities.Curso curso;
+        private Business.Entities.Docente docente;
+        public frm_BajaDocenteCurso(Business.Entities.Docente doc, Business.Entities.Curso cur)
         {
-            saved = false;
             InitializeComponent();
-
+            this.txt_legajo.Text = doc.Legajo;
+            this.txt_nombreCurso.Text = cur.Nombre;
+            curso = cur;
+            docente = doc;
         }
-
-        public frm_BajaCurso(int id)
-        {
-            saved = false;
-            InitializeComponent();
-            this.txtNombre.Enabled = false;
-            cmbIdCurso.DataSource = Business.Logic.ABMcurso.listarCursos();
-            cmbIdCurso.DisplayMember = "idCurso";
-            cmbIdCurso.ValueMember = "idCurso";
-            cmbIdCurso.SelectedValue = id;
-
-        }
-
-        override
-        protected void guardar()
-        {
-            bool borrado=Business.Logic.ABMcurso.borrarCurso((int)cmbIdCurso.SelectedValue);
-            if (borrado) { MessageBox.Show(this.Owner, "Borrado con exito", "Exito", MessageBoxButtons.OK); }
-            else { MessageBox.Show(this.Owner, "No se pudo encontrar ", "Sin Exito", MessageBoxButtons.OK); }
-            this.saved = true;
-            this.Close();
-        }
-
-        override
         protected void onclosing(object sender, FormClosingEventArgs e)
         {
             if (!this.saved)
@@ -58,8 +38,9 @@ namespace UI.Desktop
             }
         }
 
-        override
-         protected void cancelar()
+        
+
+        private void btn_Cancelar_Click_1(object sender, EventArgs e)
         {
             if (!this.saved)
             {
@@ -74,10 +55,14 @@ namespace UI.Desktop
             }
         }
 
-        private void cmbIdCurso_SelectedValueChanged(object sender, EventArgs e)
+        private void btn_Agregar_Click(object sender, EventArgs e)
         {
-            Business.Entities.Curso cur = (Business.Entities.Curso)cmbIdCurso.SelectedItem;
-            txtNombre.Text = cur.Nombre;
+      
+                bool borrado = Business.Logic.ABMcurso.borrarDocenteCurso(docente, curso);
+                if (borrado) { MessageBox.Show(this.Owner, "Dado de baja con exito", "Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo dar de baja ", "Sin Exito", MessageBoxButtons.OK); }
+                this.saved = true;
+                this.Close();     
         }
     }
 }

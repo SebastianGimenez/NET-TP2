@@ -25,8 +25,8 @@ namespace UI.Desktop
 
         public frm_AltaAlumno(Business.Entities.Alumno al)
         {
-            InitializeComponent();
             ismodi = true;
+            InitializeComponent();
             txtUsuario.Text = al.NombreUsuario;
             txtContraseña.Text = al.Contraseña;
             txt_apellido.Text = al.Apellido;
@@ -40,7 +40,6 @@ namespace UI.Desktop
         }
 
 
-
         override 
         protected void guardar()
         {
@@ -51,7 +50,9 @@ namespace UI.Desktop
                 al.IDPersona = alumno.IDPersona;
                 al.NombreUsuario = txtUsuario.Text;
                 al.Contraseña = txtContraseña.Text;
-                Business.Logic.ABMalumno.modi(al);
+                bool modi=Business.Logic.ABMalumno.modi(al);
+                if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar ", "Sin Exito", MessageBoxButtons.OK); }
                 this.Close();
             }
             else
@@ -64,6 +65,7 @@ namespace UI.Desktop
                     if (valid)
                     {
                         Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, al);
+                        MessageBox.Show(this.Owner, "Cargado con exito", "Exito", MessageBoxButtons.OK);
                         this.Close();
                     }
                     else
@@ -102,6 +104,13 @@ namespace UI.Desktop
             //agregar validacion antes de cancelar
             this.Close();
         }
-       
+
+        private void frm_AltaAlumno_Load(object sender, EventArgs e)
+        {
+            if (ismodi)
+            {
+                this.Text = "Modificar";
+            }
+        }
     }
 }

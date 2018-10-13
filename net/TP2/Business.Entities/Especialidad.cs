@@ -10,18 +10,26 @@ namespace Business.Entities
     {
         string nombreEspecialidad;
         string descripcionEspecialidad;
+        int idEspecialidad;
 
         public override string ToString()
         {
             return this.nombreEspecialidad;
         }
+        public Especialidad() { }
         public Especialidad(string nombre, string desc)
         {
             this.nombreEspecialidad = nombre;
             this.descripcionEspecialidad = desc;
         }
 
-       
+       public int IdEspecialidad
+       {
+            get { return this.idEspecialidad; }
+            set { this.idEspecialidad = value; }
+       }
+
+
         public string NombreEspecialidad
         {
             get { return this.nombreEspecialidad; }

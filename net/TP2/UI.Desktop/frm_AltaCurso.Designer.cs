@@ -32,25 +32,26 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCupo = new System.Windows.Forms.TextBox();
-            this.txtComision = new System.Windows.Forms.TextBox();
-            this.txtMateria = new System.Windows.Forms.TextBox();
+            this.cmbComision = new System.Windows.Forms.ComboBox();
+            this.cmbMateria = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_guardar
             // 
-            this.btn_guardar.Location = new System.Drawing.Point(106, 414);
+            this.btn_guardar.Location = new System.Drawing.Point(73, 329);
             // 
             // btn_cancelar
             // 
-            this.btn_cancelar.Location = new System.Drawing.Point(232, 414);
+            this.btn_cancelar.Location = new System.Drawing.Point(199, 329);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(96, 106);
+            this.label1.Location = new System.Drawing.Point(31, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 2;
@@ -59,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(96, 143);
+            this.label2.Location = new System.Drawing.Point(43, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 3;
@@ -68,7 +69,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(96, 177);
+            this.label3.Location = new System.Drawing.Point(26, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 4;
@@ -77,79 +78,74 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(96, 214);
+            this.label4.Location = new System.Drawing.Point(33, 192);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "Materia:";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(96, 259);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Agregar Docente";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(184, 99);
+            this.txtNombre.Location = new System.Drawing.Point(114, 48);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.Size = new System.Drawing.Size(121, 20);
             this.txtNombre.TabIndex = 7;
             // 
             // txtCupo
             // 
-            this.txtCupo.Location = new System.Drawing.Point(184, 136);
+            this.txtCupo.Location = new System.Drawing.Point(114, 96);
             this.txtCupo.Name = "txtCupo";
-            this.txtCupo.Size = new System.Drawing.Size(100, 20);
+            this.txtCupo.Size = new System.Drawing.Size(121, 20);
             this.txtCupo.TabIndex = 8;
             // 
-            // txtComision
+            // cmbComision
             // 
-            this.txtComision.Location = new System.Drawing.Point(184, 170);
-            this.txtComision.Name = "txtComision";
-            this.txtComision.Size = new System.Drawing.Size(100, 20);
-            this.txtComision.TabIndex = 9;
+            this.cmbComision.FormattingEnabled = true;
+            this.cmbComision.Location = new System.Drawing.Point(114, 146);
+            this.cmbComision.Name = "cmbComision";
+            this.cmbComision.Size = new System.Drawing.Size(121, 21);
+            this.cmbComision.TabIndex = 9;
             // 
-            // txtMateria
+            // cmbMateria
             // 
-            this.txtMateria.Location = new System.Drawing.Point(184, 207);
-            this.txtMateria.Name = "txtMateria";
-            this.txtMateria.Size = new System.Drawing.Size(100, 20);
-            this.txtMateria.TabIndex = 10;
+            this.cmbMateria.FormattingEnabled = true;
+            this.cmbMateria.Location = new System.Drawing.Point(114, 192);
+            this.cmbMateria.Name = "cmbMateria";
+            this.cmbMateria.Size = new System.Drawing.Size(121, 21);
+            this.cmbMateria.TabIndex = 10;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmbMateria);
+            this.groupBox1.Controls.Add(this.cmbComision);
+            this.groupBox1.Controls.Add(this.txtCupo);
+            this.groupBox1.Controls.Add(this.txtNombre);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(297, 281);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos Curso";
             // 
             // frm_AltaCurso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 450);
-            this.Controls.Add(this.txtMateria);
-            this.Controls.Add(this.txtComision);
-            this.Controls.Add(this.txtCupo);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(331, 365);
+            this.Controls.Add(this.groupBox1);
             this.Name = "frm_AltaCurso";
             this.Text = "frm_AltaCurso";
+            this.Load += new System.EventHandler(this.frm_AltaCurso_Load);
             this.Controls.SetChildIndex(this.btn_guardar, 0);
             this.Controls.SetChildIndex(this.btn_cancelar, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
-            this.Controls.SetChildIndex(this.txtNombre, 0);
-            this.Controls.SetChildIndex(this.txtCupo, 0);
-            this.Controls.SetChildIndex(this.txtComision, 0);
-            this.Controls.SetChildIndex(this.txtMateria, 0);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -159,10 +155,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtCupo;
-        private System.Windows.Forms.TextBox txtComision;
-        private System.Windows.Forms.TextBox txtMateria;
+        private System.Windows.Forms.ComboBox cmbComision;
+        private System.Windows.Forms.ComboBox cmbMateria;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

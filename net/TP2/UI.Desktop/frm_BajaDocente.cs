@@ -19,13 +19,25 @@ namespace UI.Desktop
             InitializeComponent();
 
         }
+        public frm_BajaDocente(string legajo)
+        {
+            saved = false;
+            InitializeComponent();
+            txtNombre.Enabled = false;
+            this.cmbLegajo.DataSource = Business.Logic.ABMdocente.listarDocentes();
+            this.cmbLegajo.DisplayMember = "Legajo";
+            this.cmbLegajo.ValueMember = "Legajo";
+            this.cmbLegajo.SelectedValue = legajo;
+        }
 
 
 
         override
         protected void guardar()
         {
-            Business.Logic.ABMdocente.borrarDocente(txtLegajo.Text);
+            bool borrado= Business.Logic.ABMdocente.borrarDocente(this.cmbLegajo.SelectedValue.ToString());
+            if (borrado) { MessageBox.Show(this.Owner, "Borrado con exito", "Exito", MessageBoxButtons.OK); }
+            else { MessageBox.Show(this.Owner, "No se pudo encontrar :(", "Sin Exito", MessageBoxButtons.OK); }
             this.saved = true;
             this.Close();
         }
@@ -60,6 +72,12 @@ namespace UI.Desktop
                         break;
                 }
             }
+        }
+
+        private void cmbLegajo_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Business.Entities.Docente doc = (Business.Entities.Docente)cmbLegajo.SelectedItem;
+            this.txtNombre.Text = doc.Apellido + ", " + doc.Nombre;
         }
     }
     }

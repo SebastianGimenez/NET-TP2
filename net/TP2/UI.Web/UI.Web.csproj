@@ -94,8 +94,6 @@
     <Content Include="ABMS\Alumnos\AltaAlumno.aspx" />
     <Content Include="ABMS\Alumnos\BajaAlumno.aspx" />
     <Content Include="ABMS\Alumnos\ModiAlumno.aspx" />
-    <Content Include="Ejemplo.aspx" />
-    <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -127,21 +125,9 @@
     <Compile Include="ABMS\Alumnos\ModiAlumno.aspx.designer.cs">
       <DependentUpon>ModiAlumno.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Ejemplo.aspx.cs">
-      <DependentUpon>Ejemplo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ejemplo.aspx.designer.cs">
-      <DependentUpon>Ejemplo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -150,11 +136,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Business.Entities\Business.Entities.csproj">
       <Project>{8d874991-409b-41c1-b7b8-b21a5b2c793d}</Project>

@@ -32,20 +32,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.RichTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_guardar
             // 
-            this.btn_guardar.Location = new System.Drawing.Point(542, 414);
+            this.btn_guardar.Location = new System.Drawing.Point(146, 336);
             // 
             // btn_cancelar
             // 
-            this.btn_cancelar.Location = new System.Drawing.Point(668, 414);
+            this.btn_cancelar.Location = new System.Drawing.Point(272, 336);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(149, 100);
+            this.label1.Location = new System.Drawing.Point(27, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 2;
@@ -54,7 +56,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(130, 158);
+            this.label2.Location = new System.Drawing.Point(8, 126);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 3;
@@ -62,38 +64,47 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(262, 100);
+            this.txtNombre.Location = new System.Drawing.Point(140, 68);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(220, 20);
             this.txtNombre.TabIndex = 4;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(262, 146);
+            this.txtDescripcion.Location = new System.Drawing.Point(140, 114);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(220, 113);
             this.txtDescripcion.TabIndex = 6;
             this.txtDescripcion.Text = "";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtDescripcion);
+            this.groupBox1.Controls.Add(this.txtNombre);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(6, 27);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(385, 282);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos Especialidad";
+            // 
             // frm_AltaEspecialidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(404, 372);
+            this.Controls.Add(this.groupBox1);
             this.Name = "frm_AltaEspecialidad";
             this.Text = "Alta especialidad";
+            this.Load += new System.EventHandler(this.frm_AltaEspecialidad_Load);
             this.Controls.SetChildIndex(this.btn_guardar, 0);
             this.Controls.SetChildIndex(this.btn_cancelar, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.txtNombre, 0);
-            this.Controls.SetChildIndex(this.txtDescripcion, 0);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -103,5 +114,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.RichTextBox txtDescripcion;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

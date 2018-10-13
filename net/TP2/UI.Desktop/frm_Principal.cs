@@ -97,5 +97,10 @@ namespace UI.Desktop
         {
 
         }
+
+        private void docenteCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frm_ABM_DocenteCurso().ShowDialog();
+        }
     }
 }

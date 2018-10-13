@@ -10,7 +10,16 @@ namespace Business.Entities
     {
         string nombrePlan;
         string descripcionPlan;
+        int idPlan;
         Especialidad especialidad;
+
+        public Plan() { }
+
+        public int IdPlan {
+            set { this.idPlan = value; }
+            get { return this.idPlan; }
+        }
+
         public override string ToString()
         {
             return this.nombrePlan;
@@ -25,6 +34,8 @@ namespace Business.Entities
         {
             this.especialidad = esp;
         }
+
+     
 
         public string NombrePlan
         {

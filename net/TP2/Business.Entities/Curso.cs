@@ -10,6 +10,7 @@ namespace Business.Entities
     {
         string nombre;
         int cupo;
+        int idCurso;
         Comision comision;
         Materia materia;
         List<Docente> docentes;
@@ -35,6 +36,13 @@ namespace Business.Entities
             this.docentes.Add(doc);
         }
 
+        public int IdCurso
+        {
+            get { return this.idCurso; }
+            set { this.idCurso = value; }
+        }
+            
+            
         public string Nombre
         {
             get { return this.nombre; }

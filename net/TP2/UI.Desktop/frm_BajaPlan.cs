@@ -20,12 +20,22 @@ namespace UI.Desktop
 
         }
 
-
+        public frm_BajaPlan(int id)
+        {  
+            InitializeComponent();
+            this.txtNombre.Enabled = false;
+            this.cmbIdPlan.DataSource = Business.Logic.ABMplan.listarPlanes();
+            this.cmbIdPlan.DisplayMember = "idPlan";
+            this.cmbIdPlan.ValueMember = "idPlan";
+            this.cmbIdPlan.SelectedValue = id;
+            saved = false;
+            
+        }
 
         override
         protected void guardar()
         {
-            bool borrado = Business.Logic.ABMplan.borrarPlan(txtNombre.Text);
+            bool borrado = Business.Logic.ABMplan.borrarPlan((int)this.cmbIdPlan.SelectedValue);
             if (borrado) { MessageBox.Show(this.Owner, "Borrado con exito", "Exito", MessageBoxButtons.OK); }
             else { MessageBox.Show(this.Owner, "No se pudo encontrar :(", "Sin Exito", MessageBoxButtons.OK); }
             this.saved = true;
@@ -62,6 +72,12 @@ namespace UI.Desktop
                         break;
                 }
             }
+        }
+
+        private void cmbIdPlan_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Business.Entities.Plan plan = (Business.Entities.Plan)this.cmbIdPlan.SelectedItem;
+            this.txtNombre.Text = plan.NombrePlan;
         }
     }
 }

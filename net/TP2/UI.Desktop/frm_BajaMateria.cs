@@ -19,13 +19,23 @@ namespace UI.Desktop
             InitializeComponent();
 
         }
+        public frm_BajaMateria(int idMateria)
+        {
+            saved = false;
+            InitializeComponent();
+            this.txtNombre.Enabled = false;
+            this.cmbIdMateria.DataSource = Business.Logic.ABMmateria.listarMaterias();
+            this.cmbIdMateria.DisplayMember = "idMateria";
+            this.cmbIdMateria.ValueMember = "idMateria";
+            this.cmbIdMateria.SelectedValue = idMateria;
+        }
 
 
 
         override
         protected void guardar()
         {
-            bool borrado = Business.Logic.ABMmateria.borrarMateria(txtNombre.Text);
+            bool borrado = Business.Logic.ABMmateria.borrarMateria((int)cmbIdMateria.SelectedValue);
             if (borrado) { MessageBox.Show(this.Owner, "Borrado con exito", "Exito", MessageBoxButtons.OK); }
             else { MessageBox.Show(this.Owner, "No se pudo encontrar :(", "Sin Exito", MessageBoxButtons.OK); }
             this.saved = true;
@@ -62,6 +72,12 @@ namespace UI.Desktop
                         break;
                 }
             }
+        }
+
+        private void cmbIdMateria_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Business.Entities.Materia mat = (Business.Entities.Materia)cmbIdMateria.SelectedItem;
+            txtNombre.Text = mat.Nombre;
         }
     }
 }

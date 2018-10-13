@@ -11,6 +11,8 @@ namespace Business.Entities
         string nombreUsuario;
         string contraseña;
         tipoUsuario tipoUsuario;
+        int idUsuario;
+
 
         protected Usuario(tipoUsuario tipo, string nombreUsuario, string contraseña)
         {

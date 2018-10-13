@@ -13,22 +13,47 @@ namespace UI.Desktop
     public partial class frm_AltaComision : frm_BaseMod
     {
         private bool saved;
+        private bool ismodi;
+        private Business.Entities.Comision comision;
         public frm_AltaComision()
         {
             saved = false;
             InitializeComponent();
+            ismodi = false;
 
+        }
+        public frm_AltaComision(Business.Entities.Comision com)
+        {
+            saved = false;
+            InitializeComponent();
+            ismodi = true;
+            txtNombre.Text = com.NombreComision;
+            txtAula.Text = com.Aula;
+            comision = com;
         }
 
 
-
         override
-        protected void guardar()
+               protected void guardar()
         {
-            Business.Entities.Comision com = new Business.Entities.Comision(txtNombre.Text, txtAula.Text);
-            Business.Logic.ABMcomision.altaComision(com);
-            this.saved = true;
-            this.Close();
+            Business.Entities.Comision com = new Business.Entities.Comision(this.txtNombre.Text, this.txtAula.Text);
+            if (ismodi)
+            {
+                com.IdComision = comision.IdComision;
+                bool modi=Business.Logic.ABMcomision.modificarComision(com);
+                if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar ", "Sin Exito", MessageBoxButtons.OK); }
+                this.saved = true;
+                this.Close();
+            }
+            else
+            {
+                bool agregado=Business.Logic.ABMcomision.altaComision(com);
+                if (agregado) { MessageBox.Show(this.Owner, "Agregado con exito", "Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo agregar ", "Sin Exito", MessageBoxButtons.OK); }
+                this.saved = true;
+                this.Close();
+            }
         }
 
         override
@@ -62,6 +87,12 @@ namespace UI.Desktop
                         break;
                 }
             }
+        }
+
+        private void frm_AltaComision_Load(object sender, EventArgs e)
+        {
+            if (ismodi)
+            { this.Text = "Modificar"; }
         }
     }
 }

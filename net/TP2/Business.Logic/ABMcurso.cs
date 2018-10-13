@@ -8,56 +8,32 @@ namespace Business.Logic
 {
     public class ABMcurso
     {
-        public static bool validarComision(Business.Entities.Curso cur, string com)
-        {
-            Business.Entities.Comision comi = ABMcomision.buscarComision(com);
-            if (comi != null)
-            {
-                cur.agregarComision(comi);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+    
 
-        public static bool validarMateria(Business.Entities.Curso cur,string mat)
+        public static bool altaCurso(Business.Entities.Curso cur)
         {
-            Business.Entities.Materia mate = ABMmateria.buscarMateria(mat);
-            if (mate != null)
-            {
-                cur.agregarMateria(mate);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public static bool validarDocente(Business.Entities.Curso cur,string doc)
-        {
-            Business.Entities.Docente doce = ABMdocente.buscarDocente(doc);
-            if (doce != null)
-            {
-                cur.agregarDocente(doce);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public static void altaCurso(Business.Entities.Curso cur)
-        {
-                Data.Database.Cursos.getInstance().altaCurso(cur);
+                return Data.Database.CursoDB.getInstance().altaCurso(cur);
           
         }
 
         public static List<Business.Entities.Curso> listarCursos()
         {
-            return Data.Database.Cursos.getInstance().listarCursos();
+            return Data.Database.CursoDB.getInstance().listarCursos();
+        }
+
+        public static List<Business.Entities.Curso> listarCursosPorNombre(string nombre)
+        {
+            return Data.Database.CursoDB.getInstance().listarCursosPorNombre(nombre);
+        }
+
+        public static int buscarComisionCurso(int idCurso)
+        {
+            return Data.Database.CursoDB.getInstance().buscarComisionCurso(idCurso);
+        }
+
+        public static int buscarMateriaCurso(int idCurso)
+        {
+            return Data.Database.CursoDB.getInstance().buscarMateriaCurso(idCurso);
         }
 
         public static Business.Entities.Curso buscarCurso(string nombre)
@@ -65,10 +41,27 @@ namespace Business.Logic
             return Data.Database.Cursos.getInstance().buscarCurso(nombre);
         }
 
-        public static bool borrarCurso(string nombre)
+        public static bool borrarCurso(int id)
         {
-            return Data.Database.Cursos.getInstance().borrarCurso(nombre);
+            return Data.Database.CursoDB.getInstance().borrarCurso(id);
         }
-
+        public static bool modificarCurso(Business.Entities.Curso curso)
+        {
+            return Data.Database.CursoDB.getInstance().modificarCurso(curso);
+        }
+        public static List<int> buscarDocentes(int idCurso)
+        {
+            return Data.Database.CursoDB.getInstance().buscarDocentes(idCurso);
+        }
+        public static bool agregarDocenteCurso(Business.Entities.Docente doc, Business.Entities.Curso cur)
+        {
+            //validar que ya no exista docente curso
+            return Data.Database.CursoDB.getInstance().agregarDocenteCurso(doc, cur);
+        }
+        public static bool borrarDocenteCurso(Business.Entities.Docente doc, Business.Entities.Curso cur)
+        {
+            //validar que ya no exista docente curso
+            return Data.Database.CursoDB.getInstance().borrarDocenteCurso(doc, cur);
+        }
     }
 }

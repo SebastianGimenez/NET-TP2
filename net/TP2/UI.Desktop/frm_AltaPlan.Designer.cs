@@ -33,21 +33,23 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.RichTextBox();
-            this.txtEspecialidad = new System.Windows.Forms.TextBox();
+            this.cmbEspecialidades = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_guardar
             // 
-            this.btn_guardar.Location = new System.Drawing.Point(308, 414);
+            this.btn_guardar.Location = new System.Drawing.Point(214, 414);
             // 
             // btn_cancelar
             // 
-            this.btn_cancelar.Location = new System.Drawing.Point(434, 414);
+            this.btn_cancelar.Location = new System.Drawing.Point(340, 414);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 91);
+            this.label1.Location = new System.Drawing.Point(115, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 2;
@@ -56,7 +58,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(143, 132);
+            this.label2.Location = new System.Drawing.Point(96, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 3;
@@ -65,7 +67,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(99, 258);
+            this.label3.Location = new System.Drawing.Point(52, 245);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 13);
             this.label3.TabIndex = 4;
@@ -73,49 +75,57 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(255, 83);
+            this.txtNombre.Location = new System.Drawing.Point(208, 70);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(196, 20);
             this.txtNombre.TabIndex = 5;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(255, 132);
+            this.txtDescripcion.Location = new System.Drawing.Point(208, 119);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(196, 96);
             this.txtDescripcion.TabIndex = 6;
             this.txtDescripcion.Text = "";
             // 
-            // txtEspecialidad
+            // cmbEspecialidades
             // 
-            this.txtEspecialidad.Location = new System.Drawing.Point(255, 251);
-            this.txtEspecialidad.Name = "txtEspecialidad";
-            this.txtEspecialidad.Size = new System.Drawing.Size(196, 20);
-            this.txtEspecialidad.TabIndex = 7;
+            this.cmbEspecialidades.FormattingEnabled = true;
+            this.cmbEspecialidades.Location = new System.Drawing.Point(208, 237);
+            this.cmbEspecialidades.Name = "cmbEspecialidades";
+            this.cmbEspecialidades.Size = new System.Drawing.Size(196, 21);
+            this.cmbEspecialidades.TabIndex = 7;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmbEspecialidades);
+            this.groupBox1.Controls.Add(this.txtDescripcion);
+            this.groupBox1.Controls.Add(this.txtNombre);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(11, 35);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(449, 323);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos Del Plan";
             // 
             // frm_AltaPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 450);
-            this.Controls.Add(this.txtEspecialidad);
-            this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(472, 450);
+            this.Controls.Add(this.groupBox1);
             this.Name = "frm_AltaPlan";
             this.Text = "Alta Plan";
+            this.Load += new System.EventHandler(this.frm_AltaPlan_Load);
             this.Controls.SetChildIndex(this.btn_guardar, 0);
             this.Controls.SetChildIndex(this.btn_cancelar, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.txtNombre, 0);
-            this.Controls.SetChildIndex(this.txtDescripcion, 0);
-            this.Controls.SetChildIndex(this.txtEspecialidad, 0);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -126,6 +136,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.RichTextBox txtDescripcion;
-        private System.Windows.Forms.TextBox txtEspecialidad;
+        private System.Windows.Forms.ComboBox cmbEspecialidades;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
