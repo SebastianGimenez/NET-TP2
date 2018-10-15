@@ -185,6 +185,32 @@ namespace Data.Database
                 return null;
             }
         }
+
+        public List<int> listarCursosDocente(int id)
+        {
+            try
+            {
+                int idDocente = id;
+                Conexion.getInstance().Connect();
+                List<int> idCursos = new List<int>();
+                SqlCommand cmd = new SqlCommand("select idCurso from dbo.Docente_Curso where idDocente ='" + idDocente + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int idCurso = (int)reader.GetValue(0);
+                    idCursos.Add(idCurso);
+                }
+                Conexion.getInstance().Disconnect();
+                return idCursos;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
+            }
+        }
+
         public Business.Entities.Docente buscarDocente(string legajo)
         {
             try

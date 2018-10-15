@@ -11,14 +11,28 @@ namespace Business.Logic
 
         public static bool altaMateria(Business.Entities.Materia ma)
         {
-            //validar que exista el plan
-               return Data.Database.MateriaDB.getInstance().altaMateria(ma);
+            Business.Entities.Plan plan = Business.Logic.ABMplan.buscarPlanPorId(ma.Plan.IdPlan);
+            if (plan != null)
+            {
+                Business.Entities.Materia mate = buscarMateriaPorNombre(ma.Nombre);
+                if (mate == null)
+                {
+                    return Data.Database.MateriaDB.getInstance().altaMateria(ma);
+                }
+            }
+            return false;
         }
 
         public static Business.Entities.Materia buscarMateriaPorId(int id)
         {
             return Data.Database.MateriaDB.getInstance().buscarMateriaPorId(id);
         }
+
+        public static Business.Entities.Materia buscarMateriaPorNombre(string nombre)
+        {
+            return Data.Database.MateriaDB.getInstance().buscarMateriaPorNombre(nombre);
+        }
+
         public static int contarMaterias()
         {
             return listarMaterias().Count;
@@ -46,11 +60,26 @@ namespace Business.Logic
 
         public static bool modificarMateria(Business.Entities.Materia mat)
         {
-            return Data.Database.MateriaDB.getInstance().modificarMateria(mat);
+            Business.Entities.Plan plan = Business.Logic.ABMplan.buscarPlanPorId(mat.Plan.IdPlan);
+            if (plan != null)
+            {
+                Business.Entities.Materia mate = buscarMateriaPorNombre(mat.Nombre);
+                if (mate == null || mate.IdMateria==mat.IdMateria)
+                {
+                    return Data.Database.MateriaDB.getInstance().modificarMateria(mat);
+                }
+            }
+            return false;
+            
         }
         public static int buscarPlanDeMateria(int idMateria)
         {
-            return Data.Database.MateriaDB.getInstance().buscarPlanDeMateria(idMateria);
+            Business.Entities.Materia mat = buscarMateriaPorId(idMateria);
+            if (mat != null)
+            {
+                return Data.Database.MateriaDB.getInstance().buscarPlanDeMateria(idMateria);
+            }
+            return -1;
         }
     }
 }

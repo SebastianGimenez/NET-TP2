@@ -19,6 +19,8 @@ namespace UI.Desktop
         {
             InitializeComponent();
             this.txt_legajo.Text = doc.Legajo;
+            this.txt_legajo.Enabled = false;
+            this.txt_nombreCurso.Enabled = false;
             this.txt_nombreCurso.Text = cur.Nombre;
             curso = cur;
             docente = doc;

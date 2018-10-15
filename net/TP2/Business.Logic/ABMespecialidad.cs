@@ -10,12 +10,19 @@ namespace Business.Logic
     {
         public static bool altaEspecialidad(Business.Entities.Especialidad esp)
         {
-            return Data.Database.EspecialidadDB.getInstance().altaEspecialidad(esp);
+            Business.Entities.Especialidad espe = buscarEspecialidad(esp.NombreEspecialidad);
+            if (espe == null)
+            {
+                return Data.Database.EspecialidadDB.getInstance().altaEspecialidad(esp);
+            }
+            return false;
         }
+
         public static List<Business.Entities.Especialidad> listarEspecialidades()
         {
             return Data.Database.EspecialidadDB.getInstance().listarEspecialidades();
         }
+
         public static List<Business.Entities.Especialidad> listarEspecialidadesPorNombre(String nombre)
         {
             return Data.Database.EspecialidadDB.getInstance().listarEspecialidadesPorNombre(nombre);
@@ -28,12 +35,23 @@ namespace Business.Logic
 
         public static bool modificarEspecialidad(Business.Entities.Especialidad esp)
         {
-            return Data.Database.EspecialidadDB.getInstance().modificarEspecialidad(esp);
+            Business.Entities.Especialidad espe = buscarEspecialidad(esp.NombreEspecialidad);
+            if (espe == null || espe.IdEspecialidad==esp.IdEspecialidad)
+            {
+                return Data.Database.EspecialidadDB.getInstance().modificarEspecialidad(esp);
+            }
+            return false;
+            
         }
 
         public static Business.Entities.Especialidad buscarEspecialidad(string nombre)
         {
-            return Data.Database.Especialidades.getInstance().buscarEspecialidad(nombre);
+            return Data.Database.EspecialidadDB.getInstance().buscarEspecialidadPorNombre(nombre);
+        }
+
+        public static Business.Entities.Especialidad buscarEspecialidadPorId(int id)
+        {
+            return Data.Database.EspecialidadDB.getInstance().buscarEspecialidadPorId(id);
         }
 
         public static bool borrarEspecialidad(int id)

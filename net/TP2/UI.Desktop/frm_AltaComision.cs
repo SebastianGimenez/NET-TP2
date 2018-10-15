@@ -42,7 +42,7 @@ namespace UI.Desktop
                 com.IdComision = comision.IdComision;
                 bool modi=Business.Logic.ABMcomision.modificarComision(com);
                 if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo modificar ", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otra comision con ese nombre ", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
             }
@@ -50,7 +50,7 @@ namespace UI.Desktop
             {
                 bool agregado=Business.Logic.ABMcomision.altaComision(com);
                 if (agregado) { MessageBox.Show(this.Owner, "Agregado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo agregar ", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo agregar, es probable que ya exista otra comision con el mismo nombre ", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
             }

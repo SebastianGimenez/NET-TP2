@@ -71,6 +71,7 @@
             // 
             // cmbIdMateria
             // 
+            this.cmbIdMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIdMateria.FormattingEnabled = true;
             this.cmbIdMateria.Location = new System.Drawing.Point(133, 123);
             this.cmbIdMateria.Name = "cmbIdMateria";

@@ -58,6 +58,7 @@
             // 
             this.txt_legajo.Location = new System.Drawing.Point(163, 143);
             this.txt_legajo.Name = "txt_legajo";
+            this.txt_legajo.ReadOnly = true;
             this.txt_legajo.Size = new System.Drawing.Size(139, 20);
             this.txt_legajo.TabIndex = 2;
             // 
@@ -65,6 +66,7 @@
             // 
             this.txt_nombreCurso.Location = new System.Drawing.Point(163, 191);
             this.txt_nombreCurso.Name = "txt_nombreCurso";
+            this.txt_nombreCurso.ReadOnly = true;
             this.txt_nombreCurso.Size = new System.Drawing.Size(139, 20);
             this.txt_nombreCurso.TabIndex = 3;
             // 

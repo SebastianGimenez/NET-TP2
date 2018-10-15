@@ -14,6 +14,7 @@ namespace Business.Entities
         Comision comision;
         Materia materia;
         List<Docente> docentes;
+        int nota;
 
         public Curso()
         { docentes = new List<Docente>(); }
@@ -35,7 +36,11 @@ namespace Business.Entities
         {   
             this.docentes.Add(doc);
         }
-
+        public int Nota
+        {
+            get { return nota; }
+            set { this.nota = value; }
+        }
         public int IdCurso
         {
             get { return this.idCurso; }

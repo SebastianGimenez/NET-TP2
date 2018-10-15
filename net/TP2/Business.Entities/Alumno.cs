@@ -10,8 +10,7 @@ namespace Business.Entities
     { const tipoUsuario tipo = tipoUsuario.ALUMNO;
         public Alumno(string nom, string ape, string legajo, string dni, string email, string telefono) :
             base(tipoUsuario.ALUMNO, nom, ape, legajo, dni, email, telefono)
-        { }
-        
+        { }        
        
     }
 }

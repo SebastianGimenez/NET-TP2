@@ -56,7 +56,6 @@ namespace Data.Database
                     int idPlan = (int)reader.GetValue(0);
                     String nombre = reader.GetString(1);
                     String desc = reader.GetString(2);
-                    int idEsp = (int)reader.GetValue(3);
                     Business.Entities.Plan plan = new Plan(nombre, desc);
                     plan.IdPlan = idPlan;
                     planes.Add(plan);
@@ -86,7 +85,7 @@ namespace Data.Database
                     int idPlan = (int)reader.GetValue(0);
                     String nombr = reader.GetString(1);
                     String desc = reader.GetString(2);
-                    int idEsp = (int)reader.GetValue(3);
+                    //int idEsp = (int)reader.GetValue(3);
                     Business.Entities.Plan plan = new Plan(nombr, desc);
                     plan.IdPlan = idPlan;
                     planes.Add(plan);
@@ -156,6 +155,56 @@ namespace Data.Database
             {
                 Conexion.getInstance().Disconnect();
                 return -1;
+            }
+
+        }
+        public Business.Entities.Plan buscarPlanPorId(int id)
+        {
+            try
+            {
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("select * from Planes where idPlan='" + id + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                
+                    int idPlan = (int)reader.GetValue(0);
+                    String nombr = reader.GetString(1);
+                    String desc = reader.GetString(2);
+                    Business.Entities.Plan plan = new Plan(nombr, desc);
+                    plan.IdPlan = idPlan;
+                
+                Conexion.getInstance().Disconnect();
+                return plan;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
+            }
+
+        }
+        public Business.Entities.Plan buscarPlanPorNombre(string nombre)
+        {
+            try
+            {
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("select * from Planes where CONVERT(VARCHAR,nombre)='" + nombre + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+
+                int idPlan = (int)reader.GetValue(0);
+                String nombr = reader.GetString(1);
+                String desc = reader.GetString(2);
+                Business.Entities.Plan plan = new Plan(nombr, desc);
+                plan.IdPlan = idPlan;
+
+                Conexion.getInstance().Disconnect();
+                return plan;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
             }
 
         }

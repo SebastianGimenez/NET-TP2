@@ -51,7 +51,7 @@ namespace UI.Desktop
                 pl.IdPlan = plan.IdPlan;
                 bool modi=Business.Logic.ABMplan.modificarPlan(pl);
                 if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo modificar ", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otro plan con ese nombre ", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
             }
@@ -60,7 +60,7 @@ namespace UI.Desktop
 
                 bool guardado = Business.Logic.ABMplan.altaPlan(pl);
                 if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo guardar", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo guardar, es probable que ya exista otro plan con ese nombre ", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
             }

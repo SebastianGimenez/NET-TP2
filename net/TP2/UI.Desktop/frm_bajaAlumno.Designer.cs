@@ -71,6 +71,7 @@
             // 
             // cmb_Legajo
             // 
+            this.cmb_Legajo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Legajo.FormattingEnabled = true;
             this.cmb_Legajo.Location = new System.Drawing.Point(168, 106);
             this.cmb_Legajo.Name = "cmb_Legajo";

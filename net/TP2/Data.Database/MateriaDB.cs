@@ -58,7 +58,7 @@ namespace Data.Database
                     string desc = reader.GetString(2);
                     int hsSem = (int)reader.GetValue(3);
                     int hsTot = (int)reader.GetValue(4);
-                    int idPlan = (int)reader.GetValue(5);
+                    //int idPlan = (int)reader.GetValue(5);
                     Business.Entities.Materia mat = new Materia(nombre, desc, hsSem, hsTot);
                     mat.IdMateria = idMateria;
                     //Business.Entities.Plan plan = new Plan();
@@ -190,7 +190,34 @@ namespace Data.Database
                 string desc = reader.GetString(2);
                 int hsSem = (int)reader.GetValue(3);
                 int hsTot = (int)reader.GetValue(4);
-                int idPlan = (int)reader.GetValue(5);
+                //int idPlan = (int)reader.GetValue(5);
+                Business.Entities.Materia mat = new Materia(nom, desc, hsSem, hsTot);
+                mat.IdMateria = idMateria;
+                Conexion.getInstance().Disconnect();
+                return mat;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
+
+            }
+
+        }
+        public Business.Entities.Materia buscarMateriaPorNombre(string nombre)
+        {
+            try
+            {
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("select * from dbo.Materia where CONVERT(VARCHAR,nombre) ='" + nombre + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int idMateria = (int)reader.GetValue(0);
+                string nom = reader.GetString(1);
+                string desc = reader.GetString(2);
+                int hsSem = (int)reader.GetValue(3);
+                int hsTot = (int)reader.GetValue(4);
+                //int idPlan = (int)reader.GetValue(5);
                 Business.Entities.Materia mat = new Materia(nom, desc, hsSem, hsTot);
                 mat.IdMateria = idMateria;
                 Conexion.getInstance().Disconnect();

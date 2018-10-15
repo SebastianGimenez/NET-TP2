@@ -136,6 +136,54 @@ namespace Data.Database
                 return false;
             }
         }
+        public Business.Entities.Especialidad buscarEspecialidadPorNombre(string nombre)
+        {
+            try
+            {
+                Conexion.getInstance().Connect();
+                string nom =nombre;
+                SqlCommand cmd = new SqlCommand("select * from especialidad where CONVERT(VARCHAR,nombre) = '" + nom + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                
+                    int idEspecialidad = (int)reader.GetValue(0);
+                    String nombr = reader.GetString(1);
+                    String desc = reader.GetString(2);
+                    Business.Entities.Especialidad esp = new Especialidad(nombr, desc);
+                    esp.IdEspecialidad = idEspecialidad;
+                
+                Conexion.getInstance().Disconnect();
+                return esp;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
+            }
+        }
+        public Business.Entities.Especialidad buscarEspecialidadPorId(int id)
+        {
+            try
+            {
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("select * from especialidad where idEspecialidad = '" + id + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
 
+                int idEspecialidad = (int)reader.GetValue(0);
+                String nombr = reader.GetString(1);
+                String desc = reader.GetString(2);
+                Business.Entities.Especialidad esp = new Especialidad(nombr, desc);
+                esp.IdEspecialidad = idEspecialidad;
+
+                Conexion.getInstance().Disconnect();
+                return esp;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
+            }
+        }
     }
 }

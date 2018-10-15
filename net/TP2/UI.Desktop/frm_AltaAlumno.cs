@@ -50,32 +50,34 @@ namespace UI.Desktop
                 al.IDPersona = alumno.IDPersona;
                 al.NombreUsuario = txtUsuario.Text;
                 al.Contraseña = txtContraseña.Text;
-                bool modi=Business.Logic.ABMalumno.modi(al);
+                bool modi = Business.Logic.ABMalumno.modi(al);
                 if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
                 else { MessageBox.Show(this.Owner, "No se pudo modificar ", "Sin Exito", MessageBoxButtons.OK); }
                 this.Close();
             }
             else
             {
-                int id = Business.Logic.ABMalumno.altaAlumno(al);
-                if (id != -1)
+                //Validar que exista usuario y contraseña
                 {
-                    al.IDPersona = id;
-                    bool valid = Business.Logic.ABMUsuario.checkUserNameAndPassword(txtUsuario.Text, txtContraseña.Text);
-                    if (valid)
+                    try
                     {
-                        Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, al);
-                        MessageBox.Show(this.Owner, "Cargado con exito", "Exito", MessageBoxButtons.OK);
-                        this.Close();
+                        int id = Business.Logic.ABMalumno.altaAlumno(al);
+                        if (id != -1)
+                        {
+                            al.IDPersona = id;
+                            Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, al);
+                            MessageBox.Show(this.Owner, "Cargado con exito", "Exito", MessageBoxButtons.OK);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(this.Owner, "No se pudo cargar, es probable que ya exista un alumno con ese legajo", "Sin Exito", MessageBoxButtons.OK);
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        ErrorManager.showError(this.Owner, "No se pudo cargar el usuario", "1");
+                        MessageBox.Show(this.Owner, "No se pudo cargar, es probable que ya exista un alumno con ese legajo", "Sin Exito", MessageBoxButtons.OK);
                     }
-                }
-                else
-                {
-                    ErrorManager.showError(this.Owner, "No se pudo cargar el alumno", "0");
                 }
             }
             this.saved = true;

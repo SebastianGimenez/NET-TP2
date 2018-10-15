@@ -31,7 +31,7 @@ namespace UI.Desktop
             bool agregado = Business.Logic.ABMcurso.agregarDocenteCurso(doc, curso);
             if (agregado)
             { MessageBox.Show(this.Owner, "Agregado con exito", "Exito", MessageBoxButtons.OK); }
-            else { MessageBox.Show(this.Owner, "No se pudo agregar ", "Sin Exito", MessageBoxButtons.OK); }
+            else { MessageBox.Show(this.Owner, "No se pudo agregar, es probable que el docente ya haya sido agregado al curso", "Sin Exito", MessageBoxButtons.OK); }
             this.Close();
 
         }

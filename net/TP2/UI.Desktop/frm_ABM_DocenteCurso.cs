@@ -24,6 +24,10 @@ namespace UI.Desktop
 
         private void btn_buscarDocentes_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void actualizarGrilla()
+        {
             try
             {
                 int idCurso = (int)cmb_curso.SelectedValue;
@@ -36,7 +40,7 @@ namespace UI.Desktop
                 }
                 grd_view.DataSource = docentes;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 grd_view.DataSource = null;
             }
@@ -47,7 +51,7 @@ namespace UI.Desktop
         { 
             Business.Entities.Curso cur = (Business.Entities.Curso)this.cmb_curso.SelectedItem;
             new frm_AltaDocenteCurso(cur).ShowDialog();
-            grd_view.DataSource = null;
+            this.actualizarGrilla();
         }
 
         override
@@ -69,7 +73,7 @@ namespace UI.Desktop
                 doc.IDPersona = idpersona;
                 Business.Entities.Curso cur = (Business.Entities.Curso)this.cmb_curso.SelectedItem;
                 new frm_BajaDocenteCurso(doc, cur).ShowDialog();
-                grd_view.DataSource = null;
+                this.actualizarGrilla();
             }
             catch (Exception)
             {
@@ -85,9 +89,19 @@ namespace UI.Desktop
                 int idComision = Business.Logic.ABMcurso.buscarComisionCurso(cur.IdCurso);
                 int idMateria = Business.Logic.ABMcurso.buscarMateriaCurso(cur.IdCurso);
                 Business.Entities.Comision com = Business.Logic.ABMcomision.buscarComisionPorId(idComision);
-                txtComision.Text = com.NombreComision;
-                Business.Entities.Materia mat = Business.Logic.ABMmateria.buscarMateriaPorId(idMateria);
-                txtMateria.Text = mat.Nombre;
+                if (com != null)
+                {
+                    txtComision.Text = com.NombreComision;
+                }
+                if (idMateria != -1)
+                {
+                    Business.Entities.Materia mat = Business.Logic.ABMmateria.buscarMateriaPorId(idMateria);
+                    if (mat != null)
+                    {
+                        txtMateria.Text = mat.Nombre;
+                    }
+                }
+                this.actualizarGrilla();
             }
         }
     }

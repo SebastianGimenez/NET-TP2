@@ -54,5 +54,28 @@ namespace Data.Database
             }
 
         }
+        public int validarUsuarioContraseña(string NombreUsuario,string Contraseña)
+        {
+            Conexion.getInstance().Connect();
+            string nombreUsuario = NombreUsuario;
+            string pass = Contraseña;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("select IdUsuario from dbo.Usuario where CONVERT(VARCHAR,NombreUsuario)='"+nombreUsuario+"', CONVERT(VARCHAR,Contraseña)='"+pass+"'",Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int id = (int)reader.GetValue(0);
+                Conexion.getInstance().Disconnect();
+                return id;
+            }
+            catch (Exception e)
+            {
+
+                Conexion.getInstance().Disconnect();
+                return -1;
+            }
+
+        }
+
     }
 }

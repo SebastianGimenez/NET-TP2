@@ -57,6 +57,29 @@ namespace Data.Database
 
         }
 
+        public bool inscribirCurso(int idCurso, int idPer)
+        {
+            try
+            {
+                int idcurso = idCurso;
+                int idpersona = idPer;
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("insert into dbo.Alumno_inscripcion(idCurso,idAlumno)" +
+                    " values('" + idcurso + "','"
+                    + idpersona + "')", Conexion.getInstance().Conection);
+                cmd.ExecuteNonQuery();
+                Conexion.getInstance().Disconnect();
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                Conexion.getInstance().Disconnect();
+                return false;
+            }
+        }
+
+
         public bool modi(Alumno al)
         {
             try
@@ -108,6 +131,24 @@ namespace Data.Database
             }
         }
 
+        public bool borrarCursoAlumno(int idCurso,int idAlumno)
+        {
+            try
+            {
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("delete from dbo.Alumno_Inscripcion where idCurso='" + idCurso + "' and idAlumno='"+idAlumno+"'", Conexion.getInstance().Conection);
+                cmd.ExecuteNonQuery();
+                Conexion.getInstance().Disconnect();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return false;
+            }
+
+        }
+
         public List<Business.Entities.Alumno> listarAlumnos()
         {
             try
@@ -147,7 +188,33 @@ namespace Data.Database
             }
         }
 
-        public List<Business.Entities.Alumno> listarAlumnosPorLegajo(string lega)
+
+        public List<int> listarCursosAlumno(int id)
+        {
+            try
+            {
+                int idAlumno = id;
+                Conexion.getInstance().Connect();
+                List<int> idCursos = new List<int>();
+                SqlCommand cmd = new SqlCommand("select idCurso from dbo.Alumno_Inscripcion where idAlumno ='" + idAlumno + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int idCurso = (int)reader.GetValue(0);
+                    idCursos.Add(idCurso);
+                }
+                Conexion.getInstance().Disconnect();
+                return idCursos;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
+            }
+        }
+
+            public List<Business.Entities.Alumno> listarAlumnosPorLegajo(string lega)
         {
             try
             {
@@ -216,6 +283,35 @@ namespace Data.Database
                 return al;
             }
             catch(Exception e) {
+                Conexion.getInstance().Disconnect();
+                return null;
+            }
+        }
+        public Business.Entities.Alumno buscarAlumnoPorId(int id)
+        {
+            try
+            {
+                int idper = id;
+                Conexion.getInstance().Connect();
+                Business.Entities.Alumno al;
+
+                SqlCommand cmd = new SqlCommand("select * from dbo.Persona where idPersona='" + idper + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                string nombre = reader.GetString(0);
+                string apellido = reader.GetString(1);
+                string legajo = reader.GetString(2);
+                string dni = reader.GetString(3);
+                string telefono = reader.GetString(4);
+                string mail = reader.GetString(5);
+                int idp = (int)reader.GetValue(6);
+                al = new Business.Entities.Alumno(nombre, apellido, legajo, dni, mail, telefono);
+                al.IDPersona = idp;
+                Conexion.getInstance().Disconnect();
+                return al;
+            }
+            catch (Exception e)
+            {
                 Conexion.getInstance().Disconnect();
                 return null;
             }

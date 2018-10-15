@@ -100,6 +100,7 @@
             // 
             // cmbComision
             // 
+            this.cmbComision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbComision.FormattingEnabled = true;
             this.cmbComision.Location = new System.Drawing.Point(114, 146);
             this.cmbComision.Name = "cmbComision";
@@ -108,6 +109,7 @@
             // 
             // cmbMateria
             // 
+            this.cmbMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMateria.FormattingEnabled = true;
             this.cmbMateria.Location = new System.Drawing.Point(114, 192);
             this.cmbMateria.Name = "cmbMateria";

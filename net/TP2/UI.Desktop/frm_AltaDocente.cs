@@ -53,35 +53,35 @@ namespace UI.Desktop
                 doc.Contraseña = txtContraseña.Text;
                 bool modi = Business.Logic.ABMdocente.modi(doc);
                 if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo modificar ", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otro docente con ese legajo ", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
             }
             else
-            {
-                int id = Business.Logic.ABMdocente.altaDocente(doc);
-                if (id != -1)
+            {   //Validar que no exista usu y contraseña
+                try
                 {
-                    doc.IDPersona = id;
-                    bool valid = Business.Logic.ABMUsuario.checkUserNameAndPassword(txtUsuario.Text, txtContraseña.Text);
-                    if (valid)
+                    int id = Business.Logic.ABMdocente.altaDocente(doc);
+                    if (id != -1)
                     {
-                        Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, doc);
+                        doc.IDPersona = id;
+                        bool val = Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, doc);
                         this.saved = true;
-                        { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
+                        MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK);
                         this.Close();
                     }
                     else
                     {
-                        ErrorManager.showError(this.Owner, "No se pudo cargar el usuario", "1");
+                        MessageBox.Show(this.Owner, "no se pudo guardar, es probable que exista otro docente con ese legajo", "Sin Exito", MessageBoxButtons.OK);
                     }
                 }
-                else
+                catch (Exception)
                 {
-                    ErrorManager.showError(this.Owner, "No se pudo cargar el docente", "0");
+                    MessageBox.Show(this.Owner, "No se pudo guardar", "Sin Exito", MessageBoxButtons.OK);
                 }
             }
         }
+          
 
         override protected void onclosing(object sender, FormClosingEventArgs e)
         {

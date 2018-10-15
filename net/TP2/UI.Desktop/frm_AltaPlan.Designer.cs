@@ -90,6 +90,7 @@
             // 
             // cmbEspecialidades
             // 
+            this.cmbEspecialidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEspecialidades.FormattingEnabled = true;
             this.cmbEspecialidades.Location = new System.Drawing.Point(208, 237);
             this.cmbEspecialidades.Name = "cmbEspecialidades";

@@ -65,8 +65,8 @@ namespace UI.Desktop
             {
                 cur.IdCurso = curso.IdCurso;
                 bool guardado = Business.Logic.ABMcurso.modificarCurso(cur);
-                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo modificar el curso", "Sin Exito", MessageBoxButtons.OK); }
+                if (guardado) { MessageBox.Show(this.Owner, "Modificado con exito", "Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar el curso, es probable que ya exista otro curso con ese mismo nombre", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
 
@@ -76,7 +76,7 @@ namespace UI.Desktop
 
                 bool guardado=Business.Logic.ABMcurso.altaCurso(cur);
                 if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo guardar curso", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo guardar curso, es probable que ya exista otro curso con ese nombre", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
             }

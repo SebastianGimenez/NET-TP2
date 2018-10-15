@@ -102,5 +102,25 @@ namespace UI.Desktop
         {
             new frm_ABM_DocenteCurso().ShowDialog();
         }
+
+        private void inscripcionACursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frm_InscripcionCursoAlumno().ShowDialog();
+        }
+
+        private void verMisCursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           new frm_CursosAlumno().ShowDialog();
+        }
+
+        private void verMisCursosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new frm_CursosDocente().ShowDialog();
+        }
+
+        private void puntuarAlumnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frm_PuntuarAlumno().ShowDialog();
+        }
     }
 }

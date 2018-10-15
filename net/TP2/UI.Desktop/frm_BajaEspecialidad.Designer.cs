@@ -68,6 +68,7 @@
             // 
             // cmb_IdEsp
             // 
+            this.cmb_IdEsp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_IdEsp.FormattingEnabled = true;
             this.cmb_IdEsp.Location = new System.Drawing.Point(184, 166);
             this.cmb_IdEsp.Name = "cmb_IdEsp";

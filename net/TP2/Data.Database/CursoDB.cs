@@ -43,6 +43,10 @@ namespace Data.Database
                 return false;
             }
         }
+
+
+
+
         public List<Business.Entities.Curso> listarCursos()
         {
             try
@@ -56,8 +60,8 @@ namespace Data.Database
                     int idCurso = (int)reader.GetValue(0);
                     string nombre = reader.GetString(1);
                     int cupo = (int)reader.GetValue(2);
-                    int idMateria = (int)reader.GetValue(3);
-                    int idComision = (int)reader.GetValue(4);
+                    //int idMateria = (int)reader.GetValue(3);
+                    //int idComision = (int)reader.GetValue(4);
                     Business.Entities.Curso cur = new Curso(nombre, cupo);
                     //agregar los valores del comision y de la materia
                     cur.IdCurso = idCurso;
@@ -150,6 +154,25 @@ namespace Data.Database
             }
         }
 
+        public bool modificarNotaAlumno(int idCurso,int idAlumno,int nota,string estado)
+        {
+            try
+            {
+
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("update dbo.Alumno_Inscripcion set nota='" + nota + "',condicion='"
+                    + estado + "'where idCurso='"+idCurso+"'and idAlumno='"+idAlumno+"'", Conexion.getInstance().Conection);
+                cmd.ExecuteNonQuery();
+                Conexion.getInstance().Disconnect();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return false;
+            }
+        }
+
         public bool agregarDocenteCurso(Business.Entities.Docente doc, Business.Entities.Curso cur)
         {
             try
@@ -189,6 +212,44 @@ namespace Data.Database
             }
 
         }
+        public int buscarDocenteCurso(Docente doc, Curso cur)
+        {
+            try
+            {
+                int idDocente = doc.IDPersona;
+                int idCurso = cur.IdCurso;
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("select idDocente_Curso from dbo.Docente_Curso where idCurso='" + idCurso + "'AND idDocente='" + idDocente + "'", Conexion.getInstance().Conection);
+                int id = Convert.ToInt32(cmd.ExecuteScalar());
+                Conexion.getInstance().Disconnect();
+                return id;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return -1;
+            }
+
+        }
+        public int buscarAlumnoCurso(int al, int cur)
+        {
+            try
+            {
+                int idAlumno = al;
+                int idCurso = cur;
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("select idInscripcion from dbo.Alumno_Inscripcion where idCurso='" + idCurso + "'AND idAlumno='" + idAlumno + "'", Conexion.getInstance().Conection);
+                int id = Convert.ToInt32(cmd.ExecuteScalar());
+                Conexion.getInstance().Disconnect();
+                return id;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return -1;
+            }
+
+        }
 
 
 
@@ -207,6 +268,48 @@ namespace Data.Database
                 }
                 Conexion.getInstance().Disconnect();
                 return idDocentes;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
+
+            }
+
+        }
+        public int buscarNotaAlumnoCurso(int idCurso,int idAlumno)
+        {
+            try
+            {
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("select nota from dbo.Alumno_Inscripcion where idCurso='" + idCurso + "'and idAlumno='"+idAlumno+"'", Conexion.getInstance().Conection);
+                int nota = Convert.ToInt32(cmd.ExecuteScalar());
+                Conexion.getInstance().Disconnect();
+                return nota;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return -1;
+            }
+
+        }
+
+        public List<int> buscarAlumnos(int idCurso)
+        {
+            try
+            {
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("select idAlumno from dbo.Alumno_Inscripcion where idCurso='" + idCurso + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                List<int> idAlumnos = new List<int>();
+                while (reader.Read())
+                {
+                    int id = (int)reader.GetValue(0);
+                    idAlumnos.Add(id);
+                }
+                Conexion.getInstance().Disconnect();
+                return idAlumnos;
             }
             catch (Exception e)
             {
@@ -249,6 +352,57 @@ namespace Data.Database
             {
                 Conexion.getInstance().Disconnect();
                 return -1;
+            }
+
+        }
+
+        public Business.Entities.Curso buscarCursoPorId(int id)
+        {
+            try
+            {
+                int idcurso = id;
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("select * from dbo.Curso where idCurso='" + idcurso + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int idCurso = (int)reader.GetValue(0);
+                string nom = reader.GetString(1);
+                int cupo = (int)reader.GetValue(2);
+                Business.Entities.Curso cur = new Curso(nom, cupo);
+                //agregar los valores del comision y de la materia
+                cur.IdCurso = idCurso;
+                Conexion.getInstance().Disconnect();
+                return cur;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
+            }
+
+        }
+        public Business.Entities.Curso buscarCursoPorNombre(string nombr)
+        {
+            try
+            {
+                string nombre = nombr;
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("select * from dbo.Curso where CONVERT(VARCHAR,nombre)='" + nombre + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int idCurso = (int)reader.GetValue(0);
+                string nom = reader.GetString(1);
+                int cupo = (int)reader.GetValue(2);
+                Business.Entities.Curso cur = new Curso(nom, cupo);
+                //agregar los valores del comision y de la materia
+                cur.IdCurso = idCurso;
+                Conexion.getInstance().Disconnect();
+                return cur;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
             }
 
         }

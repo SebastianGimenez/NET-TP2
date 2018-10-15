@@ -71,6 +71,7 @@
             // 
             // cmbIdCurso
             // 
+            this.cmbIdCurso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIdCurso.FormattingEnabled = true;
             this.cmbIdCurso.Location = new System.Drawing.Point(121, 140);
             this.cmbIdCurso.Name = "cmbIdCurso";

@@ -202,11 +202,41 @@
     <Compile Include="frm_BaseMod.Designer.cs">
       <DependentUpon>frm_BaseMod.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_CursosAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_CursosAlumno.Designer.cs">
+      <DependentUpon>frm_CursosAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_CursosDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_CursosDocente.Designer.cs">
+      <DependentUpon>frm_CursosDocente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_InscripcionCursoAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_InscripcionCursoAlumno.Designer.cs">
+      <DependentUpon>frm_InscripcionCursoAlumno.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_Principal.Designer.cs">
       <DependentUpon>frm_Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_PuntuacionAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_PuntuacionAlumno.Designer.cs">
+      <DependentUpon>frm_PuntuacionAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_PuntuarAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_PuntuarAlumno.Designer.cs">
+      <DependentUpon>frm_PuntuarAlumno.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -288,8 +318,23 @@
     <EmbeddedResource Include="frm_BaseMod.resx">
       <DependentUpon>frm_BaseMod.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_CursosAlumno.resx">
+      <DependentUpon>frm_CursosAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_CursosDocente.resx">
+      <DependentUpon>frm_CursosDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_InscripcionCursoAlumno.resx">
+      <DependentUpon>frm_InscripcionCursoAlumno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_Principal.resx">
       <DependentUpon>frm_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_PuntuacionAlumno.resx">
+      <DependentUpon>frm_PuntuacionAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_PuntuarAlumno.resx">
+      <DependentUpon>frm_PuntuarAlumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

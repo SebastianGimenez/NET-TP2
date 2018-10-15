@@ -78,5 +78,10 @@ namespace UI.Desktop
             Business.Entities.Comision com = (Business.Entities.Comision)cmbIdComision.SelectedItem;
             txtNombre.Text = com.NombreComision;
         }
+
+        private void cmbIdComision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

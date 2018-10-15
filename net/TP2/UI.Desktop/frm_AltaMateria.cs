@@ -56,7 +56,7 @@ namespace UI.Desktop
                 mat.IdMateria = materia.IdMateria;
                 bool guardado = Business.Logic.ABMmateria.modificarMateria(mat);
                 if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo modificar la materia", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar la materia, es probable que ya exista otra materia con ese nombre", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
 
@@ -66,7 +66,7 @@ namespace UI.Desktop
 
                 bool guardado = Business.Logic.ABMmateria.altaMateria(mat);
                 if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo guardar materia", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo guardar materia, es probable que ya exista otra materia con ese nombre", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
             }

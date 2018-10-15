@@ -71,6 +71,7 @@
             // 
             // cmbIdPlan
             // 
+            this.cmbIdPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIdPlan.FormattingEnabled = true;
             this.cmbIdPlan.Location = new System.Drawing.Point(132, 136);
             this.cmbIdPlan.Name = "cmbIdPlan";

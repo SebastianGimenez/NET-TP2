@@ -158,6 +158,29 @@ namespace Data.Database
                 return null;
             }
         }
+        public Business.Entities.Comision buscarComisionPorNombre(string nombre)
+        {
+            try
+            {
+                string nom = nombre;
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("select * from Comision where CONVERT(VARCHAR,nombre)='" + nom + "'", Conexion.getInstance().Conection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int idComision = (int)reader.GetValue(0);
+                String nombr = reader.GetString(1);
+                String aula = reader.GetString(2);
+                Business.Entities.Comision com = new Comision(nombr, aula);
+                com.IdComision = idComision;
+                Conexion.getInstance().Disconnect();
+                return com;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return null;
+            }
+        }
     }
 }
 

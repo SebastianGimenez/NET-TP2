@@ -71,11 +71,13 @@
             // 
             // cmbIdComision
             // 
+            this.cmbIdComision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIdComision.FormattingEnabled = true;
             this.cmbIdComision.Location = new System.Drawing.Point(117, 120);
             this.cmbIdComision.Name = "cmbIdComision";
             this.cmbIdComision.Size = new System.Drawing.Size(158, 21);
             this.cmbIdComision.TabIndex = 5;
+            this.cmbIdComision.SelectedIndexChanged += new System.EventHandler(this.cmbIdComision_SelectedIndexChanged);
             this.cmbIdComision.SelectedValueChanged += new System.EventHandler(this.cmbIdComision_SelectedValueChanged);
             // 
             // groupBox1

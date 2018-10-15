@@ -43,7 +43,7 @@ namespace UI.Desktop
                 esp.IdEspecialidad = especialidad.IdEspecialidad;
                 bool modi=Business.Logic.ABMespecialidad.modificarEspecialidad(esp);
                 if (modi) { MessageBox.Show(this.Owner, "Modificado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo modificar ", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otra especialidad con ese nombre ", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
             }
@@ -55,7 +55,7 @@ namespace UI.Desktop
                 {
                     MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK);
                 }
-                else { { MessageBox.Show(this.Owner, "No se pudo guardar", "Fracaso", MessageBoxButtons.OK); } }
+                else { { MessageBox.Show(this.Owner, "No se pudo guardar, es probable que ya exista otra especialidad con ese nombre", "Fracaso", MessageBoxButtons.OK); } }
                 this.Close();
             }
         }
