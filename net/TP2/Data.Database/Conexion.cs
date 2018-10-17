@@ -40,7 +40,7 @@ namespace Data.Database
             {
                 cn = new SqlConnection("Data Source=.;Initial Catalog='NET TP2';Integrated Security=True");
                 cn.Open();
-                Console.WriteLine("conectado");
+               
                 return true;
             }
             catch (SqlException ex) {

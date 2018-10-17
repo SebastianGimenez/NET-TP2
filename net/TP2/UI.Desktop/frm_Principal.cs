@@ -122,5 +122,34 @@ namespace UI.Desktop
         {
             new frm_PuntuarAlumno().ShowDialog();
         }
+
+        private void frm_Principal_Load(object sender, EventArgs e)
+        {
+            frm_Login frm = new frm_Login();
+            frm.IsLoggedIn = false;
+            frm.ShowDialog();
+
+            if (!frm.IsLoggedIn)
+            {
+                this.Close();
+                Application.Exit();
+                return;
+            }
+            else
+            {
+                switch (frm.Persona.TipoUsuario)
+                {
+                    case Business.Entities.tipoUsuario.ALUMNO:
+                        MessageBox.Show("login alumno");
+                        break;
+                    case Business.Entities.tipoUsuario.DOCENTE:
+                        MessageBox.Show("login docente");
+                        break;
+                    default:
+                        Application.Exit();
+                        break;
+                }
+            }
+        }
     }
 }

@@ -10,9 +10,9 @@ namespace Business.Logic
     public class ABMUsuario
 
     {
-        public static Usuario login(string usuario,string password)
+        public static Persona login(string usuario,string password)
         {
-            return Data.Database.Usuarios.getInstance().login(usuario,password);
+            return Data.Database.UsuarioDB.getInstance().login(usuario,password);
         }
 
         public static bool altaUsuario(string username,string password,Business.Entities.Usuario usu)

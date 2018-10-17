@@ -43,9 +43,9 @@
             this.verMisCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.docenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verMisCursosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.puntuarAlumnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuracionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.puntuarAlumnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -169,9 +169,16 @@
             // verMisCursosToolStripMenuItem1
             // 
             this.verMisCursosToolStripMenuItem1.Name = "verMisCursosToolStripMenuItem1";
-            this.verMisCursosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.verMisCursosToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
             this.verMisCursosToolStripMenuItem1.Text = "Ver mis cursos";
             this.verMisCursosToolStripMenuItem1.Click += new System.EventHandler(this.verMisCursosToolStripMenuItem1_Click);
+            // 
+            // puntuarAlumnosToolStripMenuItem
+            // 
+            this.puntuarAlumnosToolStripMenuItem.Name = "puntuarAlumnosToolStripMenuItem";
+            this.puntuarAlumnosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.puntuarAlumnosToolStripMenuItem.Text = "Puntuar Alumnos";
+            this.puntuarAlumnosToolStripMenuItem.Click += new System.EventHandler(this.puntuarAlumnosToolStripMenuItem_Click);
             // 
             // configuracionesToolStripMenuItem
             // 
@@ -184,15 +191,8 @@
             // usuarioToolStripMenuItem
             // 
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.usuarioToolStripMenuItem.Text = "Usuario";
-            // 
-            // puntuarAlumnosToolStripMenuItem
-            // 
-            this.puntuarAlumnosToolStripMenuItem.Name = "puntuarAlumnosToolStripMenuItem";
-            this.puntuarAlumnosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.puntuarAlumnosToolStripMenuItem.Text = "Puntuar Alumnos";
-            this.puntuarAlumnosToolStripMenuItem.Click += new System.EventHandler(this.puntuarAlumnosToolStripMenuItem_Click);
             // 
             // frm_Principal
             // 
@@ -205,6 +205,7 @@
             this.ShowIcon = false;
             this.Text = "App";
             this.Activated += new System.EventHandler(this.frm_Principal_Activated);
+            this.Load += new System.EventHandler(this.frm_Principal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
