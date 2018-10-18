@@ -15,9 +15,18 @@ namespace UI.Desktop
         public frm_CursosDocente()
         {
             InitializeComponent();
-            comboBox1.DataSource = Business.Logic.ABMdocente.listarDocentes();
-            comboBox1.DisplayMember = "legajo";
-            comboBox1.ValueMember = "idPersona";
+            if (frm_Principal.PersonaLogueada.TipoUsuario == Business.Entities.tipoUsuario.ADMIN)
+            {
+                comboBox1.DataSource = Business.Logic.ABMdocente.listarDocentes();
+                comboBox1.DisplayMember = "legajo";
+                comboBox1.ValueMember = "idPersona";
+            }
+            else
+            {
+                this.Controls.Remove(comboBox1);
+                this.Controls.Remove(label1);
+            }
+            actualizarGrid();
         }
 
 
@@ -25,8 +34,15 @@ namespace UI.Desktop
         {
             try
             {
-                List<int> idCursos = Business.Logic.ABMdocente.listarCursosDocente((int)comboBox1.SelectedValue);
-                //El combo se elimina y el metodo de arriba recibe el id del docente logueado
+                List<int> idCursos;
+                if (frm_Principal.PersonaLogueada.TipoUsuario == Business.Entities.tipoUsuario.ADMIN)
+                {
+                    idCursos = Business.Logic.ABMdocente.listarCursosDocente((int)comboBox1.SelectedValue);
+                }
+                else
+                {
+                    idCursos = Business.Logic.ABMdocente.listarCursosDocente(frm_Principal.PersonaLogueada.IDPersona);
+                }
                 List<Business.Entities.Curso> cursos = new List<Business.Entities.Curso>();
                 foreach (int i in idCursos)
                 {

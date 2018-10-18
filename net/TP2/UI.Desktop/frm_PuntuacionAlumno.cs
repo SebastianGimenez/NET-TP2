@@ -59,5 +59,10 @@ namespace UI.Desktop
             { cmb_Estado.SelectedItem = "Regular"; }
             else { cmb_Estado.SelectedItem = "Promovido"; }
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

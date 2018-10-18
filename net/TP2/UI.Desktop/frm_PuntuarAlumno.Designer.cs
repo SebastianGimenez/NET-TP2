@@ -40,8 +40,9 @@
             // 
             // grv_Alumnos
             // 
+            this.grv_Alumnos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grv_Alumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grv_Alumnos.Dock = System.Windows.Forms.DockStyle.Top;
             this.grv_Alumnos.Location = new System.Drawing.Point(0, 0);
             this.grv_Alumnos.Name = "grv_Alumnos";
             this.grv_Alumnos.Size = new System.Drawing.Size(495, 185);
