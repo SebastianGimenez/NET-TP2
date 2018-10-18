@@ -21,9 +21,9 @@ namespace UI.Desktop
 
         private void button1_Click(object sender, EventArgs e)
         {
-         
             if (txt_nombreUsuario.Text.Length > 0 && txt_password.Text.Length > 0)
             {
+              
                 Persona = Business.Logic.ABMUsuario.login(txt_nombreUsuario.Text, txt_password.Text);
                 if (Persona != null)
                 {
