@@ -146,7 +146,8 @@ namespace UI.Desktop
                         Application.Exit();
                         break;
                     case Business.Entities.tipoUsuario.DOCENTE:
-                        MessageBox.Show("login docente");
+                        new frm_Docente().ShowDialog();
+                        Application.Exit();
                         break;
                     case Business.Entities.tipoUsuario.ADMIN:
                         break;
