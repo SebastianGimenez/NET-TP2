@@ -15,9 +15,18 @@ namespace UI.Desktop
         public frm_CursosAlumno()
         {
             InitializeComponent();
+            if (frm_Principal.PersonaLogueada.TipoUsuario == Business.Entities.tipoUsuario.ADMIN)
+            { 
             comboBox1.DataSource = Business.Logic.ABMalumno.listarAlumnos();
             comboBox1.DisplayMember = "legajo";
             comboBox1.ValueMember = "idPersona";
+            }
+            else
+            {
+                this.Controls.Remove(comboBox1);
+              
+            }
+            actualizarGrid();
         }
 
 
@@ -25,14 +34,31 @@ namespace UI.Desktop
         {
             try
             {
-                List<int> idCursos = Business.Logic.ABMalumno.listarCursosAlumno((int)comboBox1.SelectedValue);
-                //el combo tiene que eliminarse y recibe solamente el id del alumno logueado
+                List<int> idCursos;
+
+
+                if (frm_Principal.PersonaLogueada.TipoUsuario == Business.Entities.tipoUsuario.ADMIN)
+                {
+                   idCursos = Business.Logic.ABMalumno.listarCursosAlumno((int)comboBox1.SelectedValue);
+                }
+                else
+                {
+                    idCursos = Business.Logic.ABMalumno.listarCursosAlumno(frm_Principal.PersonaLogueada.IDPersona);
+                }
                 List<Business.Entities.Curso> cursos = new List<Business.Entities.Curso>();
                 foreach (int i in idCursos)
                 {
                     Business.Entities.Curso cur = Business.Logic.ABMcurso.buscarCursoPorId(i);
                     cursos.Add(cur);
-                    int nota = Business.Logic.ABMcurso.buscarNotaAlumnoCurso(cur.IdCurso, (int)comboBox1.SelectedValue);
+                    int nota;
+                    if (frm_Principal.PersonaLogueada.TipoUsuario == Business.Entities.tipoUsuario.ADMIN)
+                    {
+                         nota = Business.Logic.ABMcurso.buscarNotaAlumnoCurso(cur.IdCurso, (int)comboBox1.SelectedValue);
+                    }
+                    else
+                    {
+                        nota = Business.Logic.ABMcurso.buscarNotaAlumnoCurso(cur.IdCurso, frm_Principal.PersonaLogueada.IDPersona);
+                    }
                     if (nota != -1)
                     {
                         cur.Nota = nota;
@@ -59,8 +85,15 @@ namespace UI.Desktop
                 DataGridViewRow row = grv_Cursos.CurrentRow;
                 DataGridViewCellCollection celdas = row.Cells;
                 int idCurso = (int)celdas["idCurso"].Value;
-                int idAlumno = (int)comboBox1.SelectedValue;
-
+                int idAlumno;
+                if (frm_Principal.PersonaLogueada.TipoUsuario == Business.Entities.tipoUsuario.ADMIN)
+                {
+                    idAlumno = (int)comboBox1.SelectedValue;
+                }
+                else
+                {
+                    idAlumno = frm_Principal.PersonaLogueada.IDPersona;
+                }
                 bool borrado = Business.Logic.ABMalumno.borrarCursoAlumno(idCurso, idAlumno);
                 if (borrado)
                 { MessageBox.Show("Borrado exitosamente", "Exito", MessageBoxButtons.OK); }

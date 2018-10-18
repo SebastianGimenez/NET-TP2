@@ -57,7 +57,8 @@ namespace UI.Desktop
             }
             else
             {
-                //Validar que exista usuario y contraseña
+                bool valido = Business.Logic.ABMUsuario.validarUsuario(txtUsuario.Text);
+                if (valido)
                 {
                     try
                     {
@@ -78,6 +79,10 @@ namespace UI.Desktop
                     {
                         MessageBox.Show(this.Owner, "No se pudo cargar, es probable que ya exista un alumno con ese legajo", "Sin Exito", MessageBoxButtons.OK);
                     }
+                }
+                else
+                {
+                    MessageBox.Show(this.Owner, "No se pudo cargar, es probable que ya exista un alumno con ese usuario", "Sin Exito", MessageBoxButtons.OK);
                 }
             }
             this.saved = true;

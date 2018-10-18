@@ -58,26 +58,34 @@ namespace UI.Desktop
                 this.Close();
             }
             else
-            {   //Validar que no exista usu y contraseña
-                try
+            {
+                bool valido = Business.Logic.ABMUsuario.validarUsuario(txtUsuario.Text);
+                if (valido)
                 {
-                    int id = Business.Logic.ABMdocente.altaDocente(doc);
-                    if (id != -1)
+                    try
                     {
-                        doc.IDPersona = id;
-                        bool val = Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, doc);
-                        this.saved = true;
-                        MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK);
-                        this.Close();
+                        int id = Business.Logic.ABMdocente.altaDocente(doc);
+                        if (id != -1)
+                        {
+                            doc.IDPersona = id;
+                            bool val = Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, doc);
+                            this.saved = true;
+                            MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(this.Owner, "no se pudo guardar, es probable que exista otro docente con ese legajo", "Sin Exito", MessageBoxButtons.OK);
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        MessageBox.Show(this.Owner, "no se pudo guardar, es probable que exista otro docente con ese legajo", "Sin Exito", MessageBoxButtons.OK);
+                        MessageBox.Show(this.Owner, "No se pudo guardar", "Sin Exito", MessageBoxButtons.OK);
                     }
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show(this.Owner, "No se pudo guardar", "Sin Exito", MessageBoxButtons.OK);
+                    MessageBox.Show(this.Owner, "no se pudo guardar, es probable que exista otro docente con ese usuario", "Sin Exito", MessageBoxButtons.OK);
                 }
             }
         }

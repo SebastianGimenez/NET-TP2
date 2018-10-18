@@ -30,7 +30,6 @@
         {
             this.grv_Cursos = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_inscripcion = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -55,15 +54,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(227, 327);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Con el loguin hecho esto no va";
             // 
             // label2
             // 
@@ -111,7 +101,6 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.btn_inscripcion);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.grv_Cursos);
             this.Name = "frm_InscripcionCursoAlumno";
@@ -126,7 +115,6 @@
 
         private System.Windows.Forms.DataGridView grv_Cursos;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_inscripcion;
         private System.Windows.Forms.TextBox txtNombre;

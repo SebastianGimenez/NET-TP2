@@ -15,9 +15,18 @@ namespace UI.Desktop
         public frm_InscripcionCursoAlumno()
         {
             InitializeComponent();
+            if (frm_Principal.PersonaLogueada.TipoUsuario == Business.Entities.tipoUsuario.ALUMNO)
+            {
+                this.Controls.Remove(label2);
+                this.Controls.Remove(comboBox1);
+            }
+            else
+            { 
             this.comboBox1.DataSource = Business.Logic.ABMalumno.listarAlumnos();
             this.comboBox1.DisplayMember = "legajo";
             this.comboBox1.ValueMember = "idPersona";
+            
+            }
             this.grv_Cursos.DataSource = Business.Logic.ABMcurso.listarCursos();
         }
 
@@ -36,7 +45,13 @@ namespace UI.Desktop
         {
             try
             {
-                int idAlumno = (int)this.comboBox1.SelectedValue;
+                int idAlumno;
+                if (frm_Principal.PersonaLogueada.TipoUsuario == Business.Entities.tipoUsuario.ADMIN)
+                { idAlumno = (int)this.comboBox1.SelectedValue; }
+                else
+                {
+                    idAlumno = frm_Principal.PersonaLogueada.IDPersona;
+                }
                 DataGridViewRow row = grv_Cursos.CurrentRow;
                 DataGridViewCellCollection celdas = row.Cells;
                 int idCurso = (int)celdas["idCurso"].Value;

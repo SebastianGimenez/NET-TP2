@@ -56,7 +56,16 @@ namespace Data.Database
                     int idPlan = (int)reader.GetValue(0);
                     String nombre = reader.GetString(1);
                     String desc = reader.GetString(2);
+                    
                     Business.Entities.Plan plan = new Plan(nombre, desc);
+                    if (reader["idEsp"] != DBNull.Value)
+                    {
+                        int IdEspecialidad = (int)reader.GetValue(3);
+                        Business.Entities.Especialidad esp = EspecialidadDB.getInstance().buscarEspecialidadPorId(IdEspecialidad);
+                        plan.Especialidad = esp;
+
+                    }; 
+                    
                     plan.IdPlan = idPlan;
                     planes.Add(plan);
                 }

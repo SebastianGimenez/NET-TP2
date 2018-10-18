@@ -142,6 +142,12 @@
     <Compile Include="frm_AltaPlan.Designer.cs">
       <DependentUpon>frm_AltaPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Alumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Alumno.Designer.cs">
+      <DependentUpon>frm_Alumno.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_bajaAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_AltaPlan.resx">
       <DependentUpon>frm_AltaPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Alumno.resx">
+      <DependentUpon>frm_Alumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_bajaAlumno.resx">
       <DependentUpon>frm_bajaAlumno.cs</DependentUpon>

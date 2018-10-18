@@ -11,7 +11,8 @@ using System.Windows.Forms;
 namespace UI.Desktop
 {
     public partial class frm_Principal : Form
-    {
+    {   
+        public static Business.Entities.Persona PersonaLogueada { get; set; }
         public frm_Principal()
         {
             InitializeComponent();
@@ -137,13 +138,17 @@ namespace UI.Desktop
             }
             else
             {
+                PersonaLogueada = frm.Persona;
                 switch (frm.Persona.TipoUsuario)
-                {
+                { 
                     case Business.Entities.tipoUsuario.ALUMNO:
-                        MessageBox.Show("login alumno");
+                        new frm_Alumno().ShowDialog();
+                        Application.Exit();
                         break;
                     case Business.Entities.tipoUsuario.DOCENTE:
                         MessageBox.Show("login docente");
+                        break;
+                    case Business.Entities.tipoUsuario.ADMIN:
                         break;
                     default:
                         Application.Exit();

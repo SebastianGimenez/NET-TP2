@@ -89,28 +89,37 @@ namespace Data.Database
 
                 Business.Entities.Persona usu;
                 reader.Read();
+
                     int tipo = (int)Convert.ToInt32(reader.GetValue(3));
+                    int idPersona = (int)reader.GetValue(4);
                     Business.Entities.tipoUsuario tipoUsuario = (Business.Entities.tipoUsuario)tipo;
                     String nombre = reader.GetString(5);
                     String apellido = reader.GetString(6);
                     String legajo = reader.GetString(7);
                     String dni = reader.GetString(8);
                     String telefono = reader.GetString(9);
-                    String mail = reader.GetString(10);                 
-                
+                    String mail = reader.GetString(10);
                 switch (tipoUsuario)
                 {
                     case Business.Entities.tipoUsuario.ALUMNO:
                         usu = new Business.Entities.Alumno(nombre, apellido, legajo, dni, mail, telefono);
+                        usu.IDPersona = idPersona;
+
                         break;
                     case Business.Entities.tipoUsuario.DOCENTE:
                         usu = new Business.Entities.Docente(nombre, apellido, legajo, dni, mail, telefono);
+                        usu.IDPersona = idPersona;
+
+                        break;
+                    case Business.Entities.tipoUsuario.ADMIN:
+                        usu = new Business.Entities.Admin(nombre, apellido, legajo, dni, mail, telefono);
+                        usu.IDPersona = idPersona;
+
                         break;
                     default:
                         usu = null;
                         break;
                 }
-
                 Conexion.getInstance().Disconnect();
                 return usu;
             
@@ -123,6 +132,26 @@ namespace Data.Database
             }
 
         }
+        public bool validarUsuario(string NombreUsuario)
+        {
+            Conexion.getInstance().Connect();
+            string nombreUsuario = NombreUsuario;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("select COUNT( IdUsuario) from dbo.Usuario where CONVERT(VARCHAR,NombreUsuario)='" + nombreUsuario + "'", Conexion.getInstance().Conection);
+                int numero = Convert.ToInt32(cmd.ExecuteScalar());
 
+                Conexion.getInstance().Disconnect();
+
+                return numero==0;
+            }
+            catch (Exception e)
+            {
+
+                Conexion.getInstance().Disconnect();
+                return false;
+            }
+
+        }
     }
 }
