@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_nombreUsuario = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_password = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.err_msg = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.err_msg)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -49,6 +52,7 @@
             // 
             // txt_nombreUsuario
             // 
+            this.txt_nombreUsuario.BackColor = System.Drawing.SystemColors.Window;
             this.txt_nombreUsuario.Location = new System.Drawing.Point(39, 60);
             this.txt_nombreUsuario.MaxLength = 10;
             this.txt_nombreUsuario.Name = "txt_nombreUsuario";
@@ -97,6 +101,10 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // err_msg
+            // 
+            this.err_msg.ContainerControl = this;
+            // 
             // frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -107,6 +115,7 @@
             this.Text = "frm_Login";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.err_msg)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -119,5 +128,6 @@
         private System.Windows.Forms.TextBox txt_password;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ErrorProvider err_msg;
     }
 }
