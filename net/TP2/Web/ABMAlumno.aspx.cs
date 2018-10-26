@@ -13,7 +13,10 @@ namespace Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+                if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+                {
+                    Response.Redirect("~/loguin.aspx");
+                }                           
                 this.grv_Alumnos.DataSource = Business.Logic.ABMalumno.listarAlumnos();
                 this.grv_Alumnos.DataBind();
             

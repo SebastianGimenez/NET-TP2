@@ -9,9 +9,26 @@ namespace Web
 {
     public partial class loguin : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["tipoPersonaLogueada"] != null)
+            {
+                Business.Entities.tipoUsuario tipo = (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"];
+                switch (tipo)
+                {
+                    case Business.Entities.tipoUsuario.ALUMNO:
+                        Response.Redirect("~/indexAlumno.aspx");
+                        break;
+                    case Business.Entities.tipoUsuario.DOCENTE:
+                        Response.Redirect("~/indexDocente.aspx");
+                        break;
 
+                    case Business.Entities.tipoUsuario.ADMIN:
+                        Response.Redirect("~/indexAdmin.aspx");
+                        break;
+                }
+            }
         }
 
         protected void btn_ingresar_Click(object sender, EventArgs e)

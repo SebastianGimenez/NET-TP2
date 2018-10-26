@@ -29,8 +29,8 @@ namespace Web
                         bool val = Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text.Trim(), txtContraseña.Text.Trim(), doc);
                         if (val)
                         {
-                            Response.Write("<script type='text/javascript'> alert('Docente dado de alta correctamente') </script>");
-                            Response.Redirect("~/ABMDocente.aspx");
+                            Response.Write("<script type='text/javascript'> alert('Docente dado de alta correctamente'); location.href = '/ABMDocente.aspx' </script>");
+                          //  Response.Redirect("~/ABMDocente.aspx");
                         }
                         else
                         {
@@ -55,9 +55,6 @@ namespace Web
             }
         }
 
-        protected void btnVolver_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/ABMDocente.aspx");
-        }
+      
     }
 }

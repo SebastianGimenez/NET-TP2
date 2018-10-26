@@ -42,4 +42,17 @@
     <asp:Button ID="btn_guardar" runat="server" OnClick="btn_guardar_Click" Text="Guardar" />
     <asp:Button ID="btn_volver" runat="server" OnClick="btn_volver_Click" Text="Volver" />
     <br />
+    <script>
+        var nota = document.querySelector('select[id$="ddl_nota"]');
+        var estado = document.querySelector('select[id$="ddl_estado"]');
+        if (nota.value < 6) estado.selectedIndex = 0;
+            else if (nota.value < 8) estado.selectedIndex = 1;
+            else estado.selectedIndex = 2;
+        nota.addEventListener("change", function (c) {
+            if (this.value < 6) estado.selectedIndex = 0;
+            else if (this.value < 8) estado.selectedIndex = 1;
+            else estado.selectedIndex = 2;
+        });
+
+    </script>
 </asp:Content>
