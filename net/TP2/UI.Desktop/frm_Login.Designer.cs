@@ -104,7 +104,7 @@
             this.ClientSize = new System.Drawing.Size(450, 366);
             this.Controls.Add(this.groupBox1);
             this.Name = "frm_Login";
-            this.Text = "frm_Login";
+            this.Text = "Loguin";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

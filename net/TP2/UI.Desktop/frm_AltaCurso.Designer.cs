@@ -140,7 +140,7 @@
             this.ClientSize = new System.Drawing.Size(331, 365);
             this.Controls.Add(this.groupBox1);
             this.Name = "frm_AltaCurso";
-            this.Text = "frm_AltaCurso";
+            this.Text = "Alta Curso";
             this.Load += new System.EventHandler(this.frm_AltaCurso_Load);
             this.Controls.SetChildIndex(this.btn_guardar, 0);
             this.Controls.SetChildIndex(this.btn_cancelar, 0);

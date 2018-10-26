@@ -34,7 +34,7 @@ namespace UI.Desktop
             this.cmbPlanes.ValueMember = "idPlan";
             this.cmbPlanes.DisplayMember = "nombrePlan";
             this.cmbPlanes.SelectedValue = Business.Logic.ABMmateria.buscarPlanDeMateria(mate.IdMateria);
-            this.txtNombre.Text = mate.Nombre;
+            this.txtNombre.Text = mate.Nombre.Trim();
             this.txtDescripcion.Text = mate.Descripcion;
             this.txtHsSemanales.Text = mate.HorasSemanales.ToString();
             this.txtHsTotales.Text = mate.HorasTotales.ToString();
@@ -47,7 +47,7 @@ namespace UI.Desktop
         override
         protected void guardar()
         {
-            Business.Entities.Materia mat = new Business.Entities.Materia(txtNombre.Text, txtDescripcion.Text, int.Parse(txtHsSemanales.Text), int.Parse(txtHsTotales.Text));
+            Business.Entities.Materia mat = new Business.Entities.Materia(txtNombre.Text.Trim(), txtDescripcion.Text, int.Parse(txtHsSemanales.Text), int.Parse(txtHsTotales.Text));
             Business.Entities.Plan plan = new Business.Entities.Plan();
             plan.IdPlan = (int)cmbPlanes.SelectedValue;
             mat.Plan = plan;
@@ -56,7 +56,7 @@ namespace UI.Desktop
                 mat.IdMateria = materia.IdMateria;
                 bool guardado = Business.Logic.ABMmateria.modificarMateria(mat);
                 if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo modificar la materia, es probable que ya exista otra materia con ese nombre", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar la materia, es probable que ya exista otra materia con ese nombre o que las horas totales sean menos que las semanales", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
 
@@ -66,7 +66,7 @@ namespace UI.Desktop
 
                 bool guardado = Business.Logic.ABMmateria.altaMateria(mat);
                 if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo guardar materia, es probable que ya exista otra materia con ese nombre", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo guardar materia, es probable que ya exista otra materia con ese nombre o que las horas totales sean menos que las semanales", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
             }

@@ -102,7 +102,7 @@
             this.Controls.Add(this.lblCurso);
             this.Controls.Add(this.lblDocente);
             this.Name = "frm_BajaDocenteCurso";
-            this.Text = "frm_BajaDocenteCurso";
+            this.Text = "Baja Docente de un Curso";
             this.ResumeLayout(false);
             this.PerformLayout();
 

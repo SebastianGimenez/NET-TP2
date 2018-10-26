@@ -84,7 +84,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.grv_Cursos);
             this.Name = "frm_CursosDocente";
-            this.Text = "frm_CursosDocente";
+            this.Text = "Mis cursos";
             ((System.ComponentModel.ISupportInitialize)(this.grv_Cursos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

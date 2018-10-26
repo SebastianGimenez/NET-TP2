@@ -27,7 +27,7 @@ namespace UI.Desktop
             saved = false;
             InitializeComponent();
             ismodi = true;
-            txtNombre.Text = com.NombreComision;
+            txtNombre.Text = com.NombreComision.Trim();
             txtAula.Text = com.Aula;
             comision = com;
         }
@@ -36,7 +36,7 @@ namespace UI.Desktop
         override
                protected void guardar()
         {
-            Business.Entities.Comision com = new Business.Entities.Comision(this.txtNombre.Text, this.txtAula.Text);
+            Business.Entities.Comision com = new Business.Entities.Comision(this.txtNombre.Text.Trim(), this.txtAula.Text);
             if (ismodi)
             {
                 com.IdComision = comision.IdComision;

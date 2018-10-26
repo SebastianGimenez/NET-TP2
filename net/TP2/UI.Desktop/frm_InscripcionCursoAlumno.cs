@@ -58,7 +58,7 @@ namespace UI.Desktop
                 bool agregado = Business.Logic.ABMalumno.inscribirCursoAlumno(idCurso, idAlumno);
                 if (agregado)
                 { MessageBox.Show("Agregado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show("No ha podido agregar, es probable que ya se encuentre inscripto o que el curso ya no tenga cupo disponible.", "Sin exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show("No ha podido agregar, es probable que ya se encuentre inscripto a esa materia o que el curso ya no tenga cupo disponible.", "Sin exito", MessageBoxButtons.OK); }
             }
             catch (Exception)
             {

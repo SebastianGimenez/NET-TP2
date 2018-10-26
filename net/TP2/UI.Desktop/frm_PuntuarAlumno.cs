@@ -85,6 +85,19 @@ namespace UI.Desktop
         private void cmb_Cursos_SelectedValueChanged(object sender, EventArgs e)
         {
             this.actualizarGrilla();
+            try
+            {
+                txtComision.Text = ((Business.Entities.Curso)this.cmb_Cursos.SelectedItem).Comision.NombreComision;
+               
+            }
+            catch
+            {
+                txtComision.Text = "";
+                
+            }
+            try { txtMateria.Text = ((Business.Entities.Curso)this.cmb_Cursos.SelectedItem).Materia.Nombre; }
+            catch { txtMateria.Text = ""; }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -108,7 +121,7 @@ namespace UI.Desktop
             }
             catch (NullReferenceException ex)
             {
-               
+                MessageBox.Show("No ha seleccionado ningun alumno", "Cuidado", MessageBoxButtons.OK);
             }
         }
     }

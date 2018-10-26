@@ -42,7 +42,7 @@ namespace UI.Desktop
             cmbMateria.ValueMember = "idMateria";
             cmbMateria.DisplayMember = "nombre";
             cmbMateria.SelectedValue = Business.Logic.ABMcurso.buscarMateriaCurso(cur.IdCurso);
-            this.txtNombre.Text = cur.Nombre;
+            this.txtNombre.Text = cur.Nombre.Trim();
             this.txtCupo.Text = cur.Cupo.ToString();
             curso = cur;
 
@@ -54,7 +54,7 @@ namespace UI.Desktop
         override
         protected void guardar()
         {
-            Business.Entities.Curso cur = new Business.Entities.Curso(txtNombre.Text, int.Parse(txtCupo.Text));
+            Business.Entities.Curso cur = new Business.Entities.Curso(txtNombre.Text.Trim(), int.Parse(txtCupo.Text));
             Business.Entities.Materia mat = new Business.Entities.Materia();
             mat.IdMateria = (int)cmbMateria.SelectedValue;
             cur.Materia = mat;

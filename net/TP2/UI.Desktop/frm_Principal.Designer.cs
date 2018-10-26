@@ -46,6 +46,7 @@
             this.puntuarAlumnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuracionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lnk_salir = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,16 +195,28 @@
             this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.usuarioToolStripMenuItem.Text = "Usuario";
             // 
+            // lnk_salir
+            // 
+            this.lnk_salir.AutoSize = true;
+            this.lnk_salir.Location = new System.Drawing.Point(411, 9);
+            this.lnk_salir.Name = "lnk_salir";
+            this.lnk_salir.Size = new System.Drawing.Size(27, 13);
+            this.lnk_salir.TabIndex = 1;
+            this.lnk_salir.TabStop = true;
+            this.lnk_salir.Text = "Salir";
+            this.lnk_salir.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_salir_LinkClicked);
+            // 
             // frm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 366);
+            this.Controls.Add(this.lnk_salir);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frm_Principal";
             this.ShowIcon = false;
-            this.Text = "App";
+            this.Text = "Principal";
             this.Activated += new System.EventHandler(this.frm_Principal_Activated);
             this.Load += new System.EventHandler(this.frm_Principal_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -233,6 +246,7 @@
         private System.Windows.Forms.ToolStripMenuItem configuracionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem puntuarAlumnosToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel lnk_salir;
     }
 }
 

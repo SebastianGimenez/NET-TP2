@@ -15,6 +15,10 @@ namespace Business.Entities
         Materia materia;
         List<Docente> docentes;
         int nota;
+        public override string ToString()
+        {
+            return this.nombre;
+        }
 
         public Curso()
         { docentes = new List<Docente>(); }

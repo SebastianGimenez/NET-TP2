@@ -96,7 +96,7 @@
             this.ClientSize = new System.Drawing.Size(346, 293);
             this.Controls.Add(this.groupBox1);
             this.Name = "frm_AltaComision";
-            this.Text = "frm_AltaComision";
+            this.Text = "Alta Comision";
             this.Load += new System.EventHandler(this.frm_AltaComision_Load);
             this.Controls.SetChildIndex(this.btn_guardar, 0);
             this.Controls.SetChildIndex(this.btn_cancelar, 0);

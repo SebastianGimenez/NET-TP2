@@ -17,7 +17,7 @@ namespace UI.Desktop
         public frm_AltaDocenteCurso(Business.Entities.Curso cur)
         {
             InitializeComponent();
-            this.txt_NombreCurso.Text = cur.Nombre;
+            this.txt_NombreCurso.Text = cur.Nombre.Trim();
             this.txt_NombreCurso.Enabled = false;
             this.cmb_Legajos.DataSource = Business.Logic.ABMdocente.listarDocentes();
             this.cmb_Legajos.DisplayMember = "legajo";

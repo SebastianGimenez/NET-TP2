@@ -8,6 +8,7 @@ namespace Business.Entities
 {
     abstract public class Persona: Usuario
     {
+        public Persona() { }
         public Persona(tipoUsuario tipo, string nom, string ape, string legajo, string dni, string email, string telefono)
 		:base(tipo)
 		{

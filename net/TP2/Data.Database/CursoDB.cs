@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,10 +61,18 @@ namespace Data.Database
                     int idCurso = (int)reader.GetValue(0);
                     string nombre = reader.GetString(1);
                     int cupo = (int)reader.GetValue(2);
-                    //int idMateria = (int)reader.GetValue(3);
-                    //int idComision = (int)reader.GetValue(4);
                     Business.Entities.Curso cur = new Curso(nombre, cupo);
-                    //agregar los valores del comision y de la materia
+                    if (reader["idMateria"] != DBNull.Value)
+                    {
+                        Business.Entities.Materia mat = MateriaDB.getInstance().buscarMateriaPorId((int)reader.GetValue(3));
+                        cur.Materia = mat;
+                    }
+                    if (reader["idComision"] != DBNull.Value)
+                    {
+                        Business.Entities.Comision com = ComisionDB.getInstance().buscarComisionPorId((int)reader.GetValue(4));
+                        cur.Comision = com;
+                    }
+         
                     cur.IdCurso = idCurso;
                    
                     cursos.Add(cur);
@@ -96,6 +105,16 @@ namespace Data.Database
                     int idMateria = (int)reader.GetValue(3);
                     int idComision = (int)reader.GetValue(4);
                     Business.Entities.Curso cur = new Curso(nom, cupo);
+                    if (reader["idMateria"] != DBNull.Value)
+                    {
+                        Business.Entities.Materia mat = MateriaDB.getInstance().buscarMateriaPorId((int)reader.GetValue(3));
+                        cur.Materia = mat;
+                    }
+                    if (reader["idComision"] != DBNull.Value)
+                    {
+                        Business.Entities.Comision com = ComisionDB.getInstance().buscarComisionPorId((int)reader.GetValue(4));
+                        cur.Comision = com;
+                    }
                     //agregar los valores del comision y de la materia
                     cur.IdCurso = idCurso;
 
@@ -369,6 +388,16 @@ namespace Data.Database
                 string nom = reader.GetString(1);
                 int cupo = (int)reader.GetValue(2);
                 Business.Entities.Curso cur = new Curso(nom, cupo);
+                if (reader["idMateria"] != DBNull.Value)
+                {
+                    Business.Entities.Materia mat = MateriaDB.getInstance().buscarMateriaPorId((int)reader.GetValue(3));
+                    cur.Materia = mat;
+                }
+                if (reader["idComision"] != DBNull.Value)
+                {
+                    Business.Entities.Comision com = ComisionDB.getInstance().buscarComisionPorId((int)reader.GetValue(4));
+                    cur.Comision = com;
+                }
                 //agregar los valores del comision y de la materia
                 cur.IdCurso = idCurso;
                 Conexion.getInstance().Disconnect();
@@ -406,6 +435,22 @@ namespace Data.Database
             }
 
         }
+        public bool validarInscripcionAlumnoMateria(int idAlu, int idMat)
+        {
+            try
+            {
+                Conexion.getInstance().Connect();
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Alumno_Inscripcion al inner join Curso cu on cu.idCurso=al.idCurso where al.idAlumno='"+idAlu+"' and idMateria='"+idMat+"'", Conexion.getInstance().Conection);
+                int cant = Convert.ToInt32(cmd.ExecuteScalar());          
+                Conexion.getInstance().Disconnect();
+                return cant>0;
+            }
+            catch (Exception e)
+            {
+                Conexion.getInstance().Disconnect();
+                return false;
+            }
 
+        }
     }
 }

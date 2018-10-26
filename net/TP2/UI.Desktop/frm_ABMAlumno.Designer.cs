@@ -57,6 +57,7 @@
             this.Controls.Add(this.txtLegajo);
             this.Controls.Add(this.label1);
             this.Name = "frm_ABMAlumno";
+            this.Text = "ABM Alumno";
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtLegajo, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();

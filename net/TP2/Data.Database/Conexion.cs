@@ -38,7 +38,7 @@ namespace Data.Database
         {
             try
             {
-                cn = new SqlConnection("Data Source=.;Initial Catalog='NET TP2';Integrated Security=True");
+                cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DB"].ConnectionString);
                 cn.Open();
                
                 return true;

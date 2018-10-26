@@ -32,7 +32,7 @@ namespace UI.Desktop
             this.cmbEspecialidades.ValueMember = "idEspecialidad";
             this.cmbEspecialidades.DisplayMember = "nombreEspecialidad";
             ismodi = true;
-            txtNombre.Text = pl.NombrePlan;
+            txtNombre.Text = pl.NombrePlan.Trim();
             txtDescripcion.Text= pl.DescripcionPlan;
             cmbEspecialidades.SelectedValue = Business.Logic.ABMplan.buscarEspDelPlan(pl.IdPlan);
             plan = pl;
@@ -42,7 +42,7 @@ namespace UI.Desktop
         override
         protected void guardar()
         {
-            Business.Entities.Plan pl = new Business.Entities.Plan(txtNombre.Text, txtDescripcion.Text);
+            Business.Entities.Plan pl = new Business.Entities.Plan(txtNombre.Text.Trim(), txtDescripcion.Text);
             Business.Entities.Especialidad esp = new Business.Entities.Especialidad();
             esp.IdEspecialidad = (int)this.cmbEspecialidades.SelectedValue;
             pl.Especialidad = esp;

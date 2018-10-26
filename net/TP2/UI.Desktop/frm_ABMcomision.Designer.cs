@@ -58,7 +58,7 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
             this.Name = "frm_ABMcomision";
-            this.Text = "frm_ABMcomision";
+            this.Text = "ABM comision";
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtNombre, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();

@@ -32,6 +32,7 @@
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.misCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.puntuarAlumnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lnk_salir = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,26 +58,38 @@
             // misCursosToolStripMenuItem
             // 
             this.misCursosToolStripMenuItem.Name = "misCursosToolStripMenuItem";
-            this.misCursosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.misCursosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.misCursosToolStripMenuItem.Text = "Mis cursos";
             this.misCursosToolStripMenuItem.Click += new System.EventHandler(this.misCursosToolStripMenuItem_Click);
             // 
             // puntuarAlumnosToolStripMenuItem
             // 
             this.puntuarAlumnosToolStripMenuItem.Name = "puntuarAlumnosToolStripMenuItem";
-            this.puntuarAlumnosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.puntuarAlumnosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.puntuarAlumnosToolStripMenuItem.Text = "Puntuar Alumnos";
             this.puntuarAlumnosToolStripMenuItem.Click += new System.EventHandler(this.puntuarAlumnosToolStripMenuItem_Click);
+            // 
+            // lnk_salir
+            // 
+            this.lnk_salir.AutoSize = true;
+            this.lnk_salir.Location = new System.Drawing.Point(358, 9);
+            this.lnk_salir.Name = "lnk_salir";
+            this.lnk_salir.Size = new System.Drawing.Size(27, 13);
+            this.lnk_salir.TabIndex = 2;
+            this.lnk_salir.TabStop = true;
+            this.lnk_salir.Text = "Salir";
+            this.lnk_salir.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_salir_LinkClicked);
             // 
             // frm_Docente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 450);
+            this.Controls.Add(this.lnk_salir);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frm_Docente";
-            this.Text = "frm_Docente";
+            this.Text = "Docente Principal";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -90,5 +103,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem misCursosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem puntuarAlumnosToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel lnk_salir;
     }
 }

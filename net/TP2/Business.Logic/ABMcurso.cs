@@ -163,5 +163,10 @@ namespace Business.Logic
         {
             return Data.Database.CursoDB.getInstance().buscarCursoPorId(id);
         }
+
+        public static bool validarInscAlumnoMateria(int idAl, int idMat)
+        {
+            return Data.Database.CursoDB.getInstance().validarInscripcionAlumnoMateria(idAl, idMat);
+        }
     }
 }

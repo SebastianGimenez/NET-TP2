@@ -58,12 +58,13 @@ namespace Data.Database
                     string desc = reader.GetString(2);
                     int hsSem = (int)reader.GetValue(3);
                     int hsTot = (int)reader.GetValue(4);
-                    //int idPlan = (int)reader.GetValue(5);
                     Business.Entities.Materia mat = new Materia(nombre, desc, hsSem, hsTot);
                     mat.IdMateria = idMateria;
-                    //Business.Entities.Plan plan = new Plan();
-                    //plan.IdPlan = idPlan;
-                    //mat.Plan = plan;
+                    if (reader["idPlan"] != DBNull.Value)
+                    {
+                        Business.Entities.Plan plan = PlanDB.getInstance().buscarPlanPorId((int)reader.GetValue(5));
+                        mat.Plan = plan;
+                    }
                     materias.Add(mat);          
                 }
                 Conexion.getInstance().Disconnect();
@@ -97,9 +98,11 @@ namespace Data.Database
                     int idPlan = (int)reader.GetValue(5);
                     Business.Entities.Materia mat = new Materia(nom, desc, hsSem, hsTot);
                     mat.IdMateria = idMateria;
-                    //Business.Entities.Plan plan = new Plan();
-                    //plan.IdPlan = idPlan;
-                    //mat.Plan = plan;
+                    if (reader["idPlan"] != DBNull.Value)
+                    {
+                        Business.Entities.Plan plan = PlanDB.getInstance().buscarPlanPorId((int)reader.GetValue(5));
+                        mat.Plan = plan;
+                    }
                     materias.Add(mat);
                 }
                 Conexion.getInstance().Disconnect();

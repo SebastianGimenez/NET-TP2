@@ -28,5 +28,11 @@ namespace UI.Desktop
             
         }
 
+        private void lnk_salir_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Dispose();
+            new frm_Principal().Show();
+           
+        }
     }
 }

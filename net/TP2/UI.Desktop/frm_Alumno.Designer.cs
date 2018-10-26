@@ -32,6 +32,7 @@
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inscribirseAUnaMateriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verMisNotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lnk_salir = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,15 +69,27 @@
             this.verMisNotasToolStripMenuItem.Text = "Ver mis notas";
             this.verMisNotasToolStripMenuItem.Click += new System.EventHandler(this.verMisNotasToolStripMenuItem_Click);
             // 
+            // lnk_salir
+            // 
+            this.lnk_salir.AutoSize = true;
+            this.lnk_salir.Location = new System.Drawing.Point(352, 9);
+            this.lnk_salir.Name = "lnk_salir";
+            this.lnk_salir.Size = new System.Drawing.Size(27, 13);
+            this.lnk_salir.TabIndex = 1;
+            this.lnk_salir.TabStop = true;
+            this.lnk_salir.Text = "Salir";
+            this.lnk_salir.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_salir_LinkClicked);
+            // 
             // frm_Alumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(391, 450);
+            this.Controls.Add(this.lnk_salir);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frm_Alumno";
-            this.Text = "frm_Alumno";
+            this.Text = "Alumno Principal";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -90,5 +103,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inscribirseAUnaMateriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verMisNotasToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel lnk_salir;
     }
 }

@@ -177,7 +177,7 @@
             this.Controls.Add(this.btnPuntuar);
             this.Controls.Add(this.groupBox1);
             this.Name = "frm_PuntuacionAlumno";
-            this.Text = "frm_PuntuacionAlumno";
+            this.Text = "Puntuacion Alumno";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

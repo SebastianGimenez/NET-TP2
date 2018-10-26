@@ -27,7 +27,7 @@ namespace UI.Desktop
             saved = false;
             InitializeComponent();
             ismodi = true;
-            txtNombre.Text = esp.NombreEspecialidad;
+            txtNombre.Text = esp.NombreEspecialidad.Trim();
             txtDescripcion.Text = esp.Descripcion;
             especialidad = esp;
         }
@@ -37,7 +37,7 @@ namespace UI.Desktop
         override
         protected void guardar()
         {
-            Business.Entities.Especialidad esp = new Business.Entities.Especialidad(this.txtNombre.Text, this.txtDescripcion.Text);
+            Business.Entities.Especialidad esp = new Business.Entities.Especialidad(this.txtNombre.Text.Trim(), this.txtDescripcion.Text);
             if (ismodi)
             {
                 esp.IdEspecialidad = especialidad.IdEspecialidad;

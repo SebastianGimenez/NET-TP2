@@ -27,11 +27,11 @@ namespace UI.Desktop
         {
             ismodi = true;
             InitializeComponent();
-            txtUsuario.Text = al.NombreUsuario;
-            txtContraseña.Text = al.Contraseña;
+            txtUsuario.Text = al.NombreUsuario.Trim();
+            txtContraseña.Text = al.Contraseña.Trim();
             txt_apellido.Text = al.Apellido;
-            txt_dni.Text = al.Dni;
-            txt_legajo.Text = al.Legajo;
+            txt_dni.Text = al.Dni.Trim();
+            txt_legajo.Text = al.Legajo.Trim();
             txt_legajo.Enabled = false;
             txt_nombre.Text = al.Nombre;
             txt_telefono.Text = al.Telefono;
@@ -44,29 +44,29 @@ namespace UI.Desktop
         protected void guardar()
         {
            
-            Business.Entities.Alumno al = new Business.Entities.Alumno(txt_nombre.Text,txt_apellido.Text, txt_legajo.Text, txt_dni.Text, txt_email.Text, txt_telefono.Text);
+            Business.Entities.Alumno al = new Business.Entities.Alumno(txt_nombre.Text,txt_apellido.Text.Trim(), txt_legajo.Text.Trim(), txt_dni.Text, txt_email.Text, txt_telefono.Text);
             if (ismodi)
             {
                 al.IDPersona = alumno.IDPersona;
-                al.NombreUsuario = txtUsuario.Text;
+                al.NombreUsuario = txtUsuario.Text.Trim(); 
                 al.Contraseña = txtContraseña.Text;
                 bool modi = Business.Logic.ABMalumno.modi(al);
                 if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo modificar ", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otro usuario con ese nombre", "Sin Exito", MessageBoxButtons.OK); }
                 this.Close();
             }
             else
             {
-                bool valido = Business.Logic.ABMUsuario.validarUsuario(txtUsuario.Text);
+                bool valido = Business.Logic.ABMUsuario.validarUsuario(txtUsuario.Text.Trim());
                 if (valido)
                 {
                     try
-                    {
+                    {                      
                         int id = Business.Logic.ABMalumno.altaAlumno(al);
                         if (id != -1)
                         {
                             al.IDPersona = id;
-                            Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, al);
+                            Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text.Trim(), txtContraseña.Text.Trim(), al);
                             MessageBox.Show(this.Owner, "Cargado con exito", "Exito", MessageBoxButtons.OK);
                             this.Close();
                         }

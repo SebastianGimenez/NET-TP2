@@ -16,6 +16,7 @@ namespace Business.Entities
         {
             return this.Nombre;
         }
+        public Docente() { }
 
     }
 }

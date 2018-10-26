@@ -93,6 +93,10 @@ namespace UI.Desktop
                 {
                     txtComision.Text = com.NombreComision;
                 }
+                else
+                {
+                    txtComision.Text = "";
+                }
                 if (idMateria != -1)
                 {
                     Business.Entities.Materia mat = Business.Logic.ABMmateria.buscarMateriaPorId(idMateria);
@@ -100,7 +104,12 @@ namespace UI.Desktop
                     {
                         txtMateria.Text = mat.Nombre;
                     }
+                    else
+                    {
+                        txtMateria.Text = "";
+                    }
                 }
+
                 this.actualizarGrilla();
             }
         }

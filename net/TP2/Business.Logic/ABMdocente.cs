@@ -47,10 +47,14 @@ namespace Business.Logic
 
         public static bool modi(Business.Entities.Docente doc)
         {
-            Business.Entities.Docente docente = buscarDocente(doc.Legajo);
-            if (docente == null || docente.IDPersona==doc.IDPersona)
+            int idP = ABMUsuario.buscarIdpersonaPorUsuario(doc.NombreUsuario);
+            if (idP == 0 || idP == doc.IDPersona)
             {
-                return Data.Database.DocenteDB.getInstance().modi(doc);
+                Business.Entities.Docente docente = buscarDocente(doc.Legajo);
+                if (docente == null || docente.IDPersona == doc.IDPersona)
+                {
+                    return Data.Database.DocenteDB.getInstance().modi(doc);
+                }
             }
             return false;
             

@@ -13,7 +13,7 @@ namespace Business.Entities
         tipoUsuario tipoUsuario;
         int idUsuario;
 
-
+        public Usuario() { }
         protected Usuario(tipoUsuario tipo, string nombreUsuario, string contraseña)
         {
             this.tipoUsuario = tipo;

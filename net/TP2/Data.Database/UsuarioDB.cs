@@ -138,7 +138,7 @@ namespace Data.Database
             string nombreUsuario = NombreUsuario;
             try
             {
-                SqlCommand cmd = new SqlCommand("select COUNT( IdUsuario) from dbo.Usuario where CONVERT(VARCHAR,NombreUsuario)='" + nombreUsuario + "'", Conexion.getInstance().Conection);
+                SqlCommand cmd = new SqlCommand("select COUNT( IdUsuario) from dbo.Usuario where LTRIM(RTRIM(CONVERT(VARCHAR,NombreUsuario)))='" + nombreUsuario + "'", Conexion.getInstance().Conection);
                 int numero = Convert.ToInt32(cmd.ExecuteScalar());
 
                 Conexion.getInstance().Disconnect();
@@ -150,6 +150,26 @@ namespace Data.Database
 
                 Conexion.getInstance().Disconnect();
                 return false;
+            }
+
+        }
+
+        public int buscarIdpersonaPorUsuario(string NombreUsuario)
+        {
+            Conexion.getInstance().Connect();
+            string nombreUsuario = NombreUsuario;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("select idPersona from dbo.Usuario where  LTRIM(RTRIM(CONVERT(VARCHAR,NombreUsuario)))='" + nombreUsuario + "'", Conexion.getInstance().Conection);
+                int id = Convert.ToInt32(cmd.ExecuteScalar());
+                Conexion.getInstance().Disconnect();
+                return id;
+            }
+            catch (Exception e)
+            {
+
+                Conexion.getInstance().Disconnect();
+                return -1;
             }
 
         }

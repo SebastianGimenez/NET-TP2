@@ -26,10 +26,17 @@ namespace Business.Logic
         {
             return Data.Database.UsuarioDB.getInstance().validarUsuarioContraseña(username,password);
         }
+
         public static bool validarUsuario(string nombreUsuario)
         {
-            return Data.Database.UsuarioDB.getInstance().validarUsuario(nombreUsuario);
+            return Data.Database.
+                UsuarioDB.getInstance().validarUsuario(nombreUsuario);
+        }
+        public static int buscarIdpersonaPorUsuario(string NombreUsuario)
+        {
+            return Data.Database.UsuarioDB.getInstance().buscarIdpersonaPorUsuario(NombreUsuario);
         }
     }
+
     
 }

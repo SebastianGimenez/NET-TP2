@@ -11,13 +11,16 @@ namespace Business.Logic
 
         public static bool altaMateria(Business.Entities.Materia ma)
         {
-            Business.Entities.Plan plan = Business.Logic.ABMplan.buscarPlanPorId(ma.Plan.IdPlan);
-            if (plan != null)
+            if (ma.HorasSemanales < ma.HorasTotales)
             {
-                Business.Entities.Materia mate = buscarMateriaPorNombre(ma.Nombre);
-                if (mate == null)
+                Business.Entities.Plan plan = Business.Logic.ABMplan.buscarPlanPorId(ma.Plan.IdPlan);
+                if (plan != null)
                 {
-                    return Data.Database.MateriaDB.getInstance().altaMateria(ma);
+                    Business.Entities.Materia mate = buscarMateriaPorNombre(ma.Nombre);
+                    if (mate == null)
+                    {
+                        return Data.Database.MateriaDB.getInstance().altaMateria(ma);
+                    }
                 }
             }
             return false;
@@ -59,14 +62,16 @@ namespace Business.Logic
         }
 
         public static bool modificarMateria(Business.Entities.Materia mat)
-        {
-            Business.Entities.Plan plan = Business.Logic.ABMplan.buscarPlanPorId(mat.Plan.IdPlan);
-            if (plan != null)
+        {if (mat.HorasSemanales < mat.HorasTotales)
             {
-                Business.Entities.Materia mate = buscarMateriaPorNombre(mat.Nombre);
-                if (mate == null || mate.IdMateria==mat.IdMateria)
+                Business.Entities.Plan plan = Business.Logic.ABMplan.buscarPlanPorId(mat.Plan.IdPlan);
+                if (plan != null)
                 {
-                    return Data.Database.MateriaDB.getInstance().modificarMateria(mat);
+                    Business.Entities.Materia mate = buscarMateriaPorNombre(mat.Nombre);
+                    if (mate == null || mate.IdMateria == mat.IdMateria)
+                    {
+                        return Data.Database.MateriaDB.getInstance().modificarMateria(mat);
+                    }
                 }
             }
             return false;

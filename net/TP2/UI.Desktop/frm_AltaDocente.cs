@@ -28,11 +28,11 @@ namespace UI.Desktop
             saved = false;
             InitializeComponent();
             ismodi = true;
-            txtUsuario.Text = doc.NombreUsuario;
-            txtContraseña.Text = doc.Contraseña;
+            txtUsuario.Text = doc.NombreUsuario.Trim();
+            txtContraseña.Text = doc.Contraseña.Trim();
             txt_apellido.Text = doc.Apellido;
-            txt_dni.Text = doc.Dni;
-            txt_legajo.Text = doc.Legajo;
+            txt_dni.Text = doc.Dni.Trim();
+            txt_legajo.Text = doc.Legajo.Trim();
             txt_legajo.Enabled = false;
             txt_nombre.Text = doc.Nombre;
             txt_telefono.Text = doc.Telefono;
@@ -45,21 +45,21 @@ namespace UI.Desktop
         override protected void guardar()
         {
 
-            Business.Entities.Docente doc = new Business.Entities.Docente(txt_nombre.Text, txt_apellido.Text, txt_legajo.Text, txt_dni.Text, txt_email.Text, txt_telefono.Text);
+            Business.Entities.Docente doc = new Business.Entities.Docente(txt_nombre.Text, txt_apellido.Text, txt_legajo.Text.Trim(), txt_dni.Text.Trim(), txt_email.Text, txt_telefono.Text);
             if (ismodi)
             {
                 doc.IDPersona = docente.IDPersona;
-                doc.NombreUsuario = txtUsuario.Text;
-                doc.Contraseña = txtContraseña.Text;
+                doc.NombreUsuario = txtUsuario.Text.Trim();
+                doc.Contraseña = txtContraseña.Text.Trim();
                 bool modi = Business.Logic.ABMdocente.modi(doc);
                 if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otro docente con ese legajo ", "Sin Exito", MessageBoxButtons.OK); }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otro docente con ese usuario ", "Sin Exito", MessageBoxButtons.OK); }
                 this.saved = true;
                 this.Close();
             }
             else
             {
-                bool valido = Business.Logic.ABMUsuario.validarUsuario(txtUsuario.Text);
+                bool valido = Business.Logic.ABMUsuario.validarUsuario(txtUsuario.Text.Trim());
                 if (valido)
                 {
                     try
@@ -68,7 +68,7 @@ namespace UI.Desktop
                         if (id != -1)
                         {
                             doc.IDPersona = id;
-                            bool val = Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text, txtContraseña.Text, doc);
+                            bool val = Business.Logic.ABMUsuario.altaUsuario(txtUsuario.Text.Trim(), txtContraseña.Text, doc);
                             this.saved = true;
                             MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK);
                             this.Close();

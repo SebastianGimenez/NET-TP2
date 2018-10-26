@@ -28,13 +28,18 @@ namespace Business.Logic
 
         public static bool inscribirCursoAlumno(int idCurso, int idAlumno)
         {
-            bool cupo = Business.Logic.ABMcurso.validarCupo(idCurso);
-            if (cupo)
-            { 
-                int enc = Business.Logic.ABMcurso.buscarAlumnoCurso(idAlumno, idCurso);
-                if (enc == -1 || enc == 0)
+            int idMat = Logic.ABMcurso.buscarMateriaCurso(idCurso);
+            bool inscriptoEnMateria = ABMcurso.validarInscAlumnoMateria(idAlumno, idMat);
+            if (!inscriptoEnMateria)
+            {
+                bool cupo = Business.Logic.ABMcurso.validarCupo(idCurso);
+                if (cupo)
                 {
-                    return Data.Database.AlumnoDB.getInstance().inscribirCurso(idCurso, idAlumno);
+                    int enc = Business.Logic.ABMcurso.buscarAlumnoCurso(idAlumno, idCurso);
+                    if (enc == -1 || enc == 0)
+                    {
+                        return Data.Database.AlumnoDB.getInstance().inscribirCurso(idCurso, idAlumno);
+                    }
                 }
             }
             return false;
@@ -72,7 +77,17 @@ namespace Business.Logic
 
         public static bool modi(Alumno alu)
         {
-            return Data.Database.AlumnoDB.getInstance().modi(alu);
+            int idP = ABMUsuario.buscarIdpersonaPorUsuario(alu.NombreUsuario);
+            if (idP==0 ||  idP == alu.IDPersona)
+            {
+                Business.Entities.Alumno al = buscarAlumno(alu.Legajo);
+                if (al == null || al.IDPersona == alu.IDPersona)
+                {
+                    return Data.Database.AlumnoDB.getInstance().modi(alu);
+                }
+            }
+            return false;
+            
         }
 
         public static List<Business.Entities.Alumno> listarAlumnosPorLegajo(string legajo)
