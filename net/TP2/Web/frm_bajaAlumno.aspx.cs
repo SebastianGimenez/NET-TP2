@@ -11,6 +11,10 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             if (!IsPostBack)
             {
                 List<Business.Entities.Alumno> lista = Business.Logic.ABMalumno.listarAlumnos();
@@ -30,8 +34,7 @@ namespace Web
             if (val)
             {//el cartel de que se dio de baja bien no se ve
                 Session.Remove("legajo");
-                Response.Write("<script type='text/javascript'> alert('dado de baja correctamente')</script>");
-                Response.Redirect("~/ABMAlumno.aspx");           
+                Response.Write("<script type='text/javascript'> alert('dado de baja correctamente'); location.href = '/ABMAlumno.aspx'</script>");
             }
             else
             {

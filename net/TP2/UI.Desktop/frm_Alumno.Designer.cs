@@ -90,6 +90,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frm_Alumno";
             this.Text = "Alumno Principal";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_Alumno_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

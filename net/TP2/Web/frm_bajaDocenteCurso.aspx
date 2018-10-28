@@ -12,5 +12,5 @@
     <br />
     <br />
     <asp:Button ID="btn_agregar" runat="server" OnClick="btn_agregar_Click" Text="Dar de Baja" />
-    <asp:Button ID="btn_volver" runat="server" OnClick="btn_volver_Click" Text="Volver" />
+<asp:LinkButton ID="LinkButton1" runat="server" href="/ABMDocenteCurso.aspx">Volver</asp:LinkButton>    </p>
 </asp:Content>

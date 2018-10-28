@@ -15,6 +15,5 @@
         <asp:Button ID="btn_baja" runat="server"  Text="Baja" OnClick="btn_baja_Click" Width="114px" />
     </p>
     <p>
-        <asp:Button ID="btn_volver" runat="server" Text="Volver" OnClick="btn_volver_Click" Width="115px" />
-    </p>
+<asp:LinkButton ID="LinkButton1" runat="server" href="/indexAdmin.aspx">Volver</asp:LinkButton>    </p>
 </asp:Content>

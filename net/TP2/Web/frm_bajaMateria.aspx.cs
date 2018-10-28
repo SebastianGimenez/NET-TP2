@@ -11,6 +11,10 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             if (!IsPostBack)
             {
                 this.ddl_materias.DataSource = Business.Logic.ABMmateria.listarMaterias();
@@ -34,8 +38,7 @@ namespace Web
             {
                 Session.Remove("idMateria");
                 //no se muestra el mensaje
-                Response.Write("<script type='text/javascript'> alert('dado de baja con exito') </script>");
-                Response.Redirect("~/ABMMateria.aspx");
+                Response.Write("<script type='text/javascript'> alert('dado de baja con exito'); location.href = '/ABMMateria.aspx' </script>");
             }
             else
             {

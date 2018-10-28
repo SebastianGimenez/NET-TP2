@@ -9,7 +9,7 @@
     <br />
     <asp:Button ID="btn_baja" runat="server" OnClick="btn_baja_Click" Text="Baja" />
     <br />
-    <asp:Button ID="btn_Volver" runat="server" OnClick="btn_Volver_Click" Text="Volver" />
+<asp:LinkButton ID="LinkButton1" runat="server" href="/indexAlumno.aspx">Volver</asp:LinkButton>    </p>
     <br />
     <br />
     <br />

@@ -11,6 +11,10 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             this.grv_Docentes.DataSource = Business.Logic.ABMdocente.listarDocentes();
             this.grv_Docentes.DataBind();
         }

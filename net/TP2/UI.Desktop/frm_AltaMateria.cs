@@ -47,6 +47,36 @@ namespace UI.Desktop
         override
         protected void guardar()
         {
+            Boolean camposValidos = true;
+            if (!Util.Validate.Text(txtNombre.Text.Trim()))
+            {
+                ErrorManager.SetError(txtNombre, "El nombre no debe estar vacio y debe contener solo letras");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txtNombre, "");
+            }
+            if (!Util.Validate.Legajo(txtDescripcion.Text))
+            {
+                ErrorManager.SetError(txtDescripcion, "La descripcion no puede estar vacia");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txtDescripcion, "");
+            }
+            if (!Util.Validate.Horas(txtHsSemanales.Text,txtHsTotales.Text))
+            {
+                ErrorManager.SetError(txtHsTotales, "Las horas totales deben ser mayor que las horas semanales");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txtDescripcion, "");
+            }
+
+            if (!camposValidos) return;
             Business.Entities.Materia mat = new Business.Entities.Materia(txtNombre.Text.Trim(), txtDescripcion.Text, int.Parse(txtHsSemanales.Text), int.Parse(txtHsTotales.Text));
             Business.Entities.Plan plan = new Business.Entities.Plan();
             plan.IdPlan = (int)cmbPlanes.SelectedValue;
@@ -55,20 +85,24 @@ namespace UI.Desktop
             {
                 mat.IdMateria = materia.IdMateria;
                 bool guardado = Business.Logic.ABMmateria.modificarMateria(mat);
-                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo modificar la materia, es probable que ya exista otra materia con ese nombre o que las horas totales sean menos que las semanales", "Sin Exito", MessageBoxButtons.OK); }
-                this.saved = true;
-                this.Close();
+                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK);
+                    this.saved = true;
+                    this.Close();
+                }
+                else { MessageBox.Show(this.Owner, "No se pudo modificar la materia, es probable que ya exista otra materia con ese nombre ", "Sin Exito", MessageBoxButtons.OK); }
+                
 
             }
             else
             {
 
                 bool guardado = Business.Logic.ABMmateria.altaMateria(mat);
-                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
-                else { MessageBox.Show(this.Owner, "No se pudo guardar materia, es probable que ya exista otra materia con ese nombre o que las horas totales sean menos que las semanales", "Sin Exito", MessageBoxButtons.OK); }
-                this.saved = true;
-                this.Close();
+                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK);
+                    this.saved = true;
+                    this.Close();
+                }
+                else { MessageBox.Show(this.Owner, "No se pudo guardar materia, es probable que ya exista otra materia con ese nombre", "Sin Exito", MessageBoxButtons.OK); }
+               
             }
         }
 

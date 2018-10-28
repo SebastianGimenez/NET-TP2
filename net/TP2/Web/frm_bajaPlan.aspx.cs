@@ -11,6 +11,10 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             if (!IsPostBack)
             {
                 ddl_planes.DataSource = Business.Logic.ABMplan.listarPlanes();
@@ -27,8 +31,7 @@ namespace Web
             if (val)
             {
                 Session.Remove("idPlan");
-                Response.Write("<script type='text/javascript'> alert('dado de baja con exito') </script>");
-                Response.Redirect("~/ABMPlan.aspx");
+                Response.Write("<script type='text/javascript'> alert('dado de baja con exito'); location.href = '/ABMPlan.aspx' </script>");
             }
             else
             {

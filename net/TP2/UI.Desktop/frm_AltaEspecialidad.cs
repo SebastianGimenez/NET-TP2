@@ -37,15 +37,38 @@ namespace UI.Desktop
         override
         protected void guardar()
         {
+            Boolean camposValidos = true;
+            if (!Util.Validate.Text(txtNombre.Text))
+            {
+                ErrorManager.SetError(txtNombre, "El nombre no debe estar vacio y debe ser solo texto");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txtNombre, "");
+            }
+            if (!Util.Validate.Legajo(txtDescripcion.Text))
+            {
+                ErrorManager.SetError(txtDescripcion, "La descripcion no debe estar vacia");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txtDescripcion, "");
+            }
+            if (!camposValidos) return;
             Business.Entities.Especialidad esp = new Business.Entities.Especialidad(this.txtNombre.Text.Trim(), this.txtDescripcion.Text);
             if (ismodi)
             {
                 esp.IdEspecialidad = especialidad.IdEspecialidad;
                 bool modi=Business.Logic.ABMespecialidad.modificarEspecialidad(esp);
-                if (modi) { MessageBox.Show(this.Owner, "Modificado con exito", "Exito", MessageBoxButtons.OK); }
+                if (modi) {
+                    MessageBox.Show(this.Owner, "Modificado con exito", "Exito", MessageBoxButtons.OK);
+                    this.saved = true;
+                    this.Close();
+                }
                 else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otra especialidad con ese nombre ", "Sin Exito", MessageBoxButtons.OK); }
-                this.saved = true;
-                this.Close();
+                
             }
             else
             {
@@ -54,9 +77,10 @@ namespace UI.Desktop
                 if (guardado)
                 {
                     MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK);
+                    this.Close();
                 }
                 else { { MessageBox.Show(this.Owner, "No se pudo guardar, es probable que ya exista otra especialidad con ese nombre", "Fracaso", MessageBoxButtons.OK); } }
-                this.Close();
+                
             }
         }
 

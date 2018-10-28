@@ -7,6 +7,6 @@
     <br />
     <br />
     <asp:Button ID="btn_baja" runat="server" OnClick="btn_baja_Click" Text="Dar de baja" />
-    <asp:Button ID="btn_volver" runat="server" OnClick="btn_volver_Click" Text="Volver" />
+<asp:LinkButton ID="LinkButton1" runat="server" href="/ABMEspecialidad.aspx">Volver</asp:LinkButton>    </p>
     <br />
 </asp:Content>

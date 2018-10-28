@@ -22,7 +22,7 @@
     <br />
     <br />
     <asp:Button ID="btn_agregar" runat="server" OnClick="btn_agregar_Click" Text="Agregar" />
-    <asp:Button ID="btn_baja" runat="server" OnClick="btn_baja_Click" Text="Volver" />
+<asp:LinkButton ID="LinkButton1" runat="server" href="/ABMCurso.aspx">Volver</asp:LinkButton>    </p>
     <br />
     <br />
     <br />

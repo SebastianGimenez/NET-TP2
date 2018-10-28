@@ -28,7 +28,7 @@
     </p>
     <p>
         <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" style="height: 26px" />
-        <asp:LinkButton ID="LinkButton1" runat="server" href="/indexAdmin.aspx">Volver</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton1" runat="server" href="/ABMDocente.aspx">Volver</asp:LinkButton>
     
     </p>
 </asp:Content>

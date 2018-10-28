@@ -13,6 +13,10 @@ namespace Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             comision = Business.Logic.ABMcomision.buscarComisionPorId(int.Parse((string)Session["idCom"]));
             if (!IsPostBack)
             {
@@ -31,8 +35,7 @@ namespace Web
             if (val)
             {
                 Session.Remove("idCom");
-                Response.Write("<script type='text/javascript'> alert('modificado correctamente') </script>");
-                Response.Redirect("~/ABMComision.aspx");
+                Response.Write("<script type='text/javascript'> alert('modificado correctamente'); location.href = '/ABMComision.aspx' </script>");
             }
             else
             {

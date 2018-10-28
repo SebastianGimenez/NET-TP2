@@ -11,7 +11,10 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
         }
 
         protected void btn_agregar_Click(object sender, EventArgs e)
@@ -22,8 +25,7 @@ namespace Web
             bool val = Business.Logic.ABMcomision.altaComision(com);
             if (val)
             {
-                Response.Write("<script type='text/javascript'> alert('Dado de alta correctamente') </script>");
-                Response.Redirect("~/ABMComision.aspx");
+                Response.Write("<script type='text/javascript'> alert('Dado de alta correctamente'); location.href = '/ABMComision.aspx' </script>");
             }
             else
             {

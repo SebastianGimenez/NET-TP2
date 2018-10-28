@@ -11,6 +11,10 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             if (!IsPostBack)
             {
                 this.ddl_comisiones.DataSource = Business.Logic.ABMcomision.listarComisiones();
@@ -41,8 +45,7 @@ namespace Web
             bool val = Business.Logic.ABMcurso.altaCurso(cur);
             if (val)
             {
-                Response.Write("<script type='text/javascript'> alert('Dado de alta correctamente') </script>");
-                Response.Redirect("~/ABMCurso.aspx");
+                Response.Write("<script type='text/javascript'> alert('Dado de alta correctamente'); location.href = '/ABMCurso.aspx' </script>");
             }
             else
             {

@@ -10,7 +10,12 @@ namespace Web
     public partial class frm_puntuacionAlumno : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {if (!IsPostBack)
+        {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.DOCENTE)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
+            if (!IsPostBack)
             {
                 try
                 {

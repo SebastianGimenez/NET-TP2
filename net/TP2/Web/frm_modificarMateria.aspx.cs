@@ -12,6 +12,10 @@ namespace Web
         Business.Entities.Materia materia;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             materia = Business.Logic.ABMmateria.buscarMateriaPorId(int.Parse((string)Session["idMateria"]));
             if (!IsPostBack)
             {
@@ -44,8 +48,7 @@ namespace Web
             bool val = Business.Logic.ABMmateria.modificarMateria(mate);
             if (val)
             {
-                Response.Write("<script type='text/javascript'> alert('Modificado correctamente') </script>");
-                Response.Redirect("~/ABMMateria.aspx");
+                Response.Write("<script type='text/javascript'> alert('Modificado correctamente'); location.href = '/ABMMateria.aspx' </script>");
             }
             else
             {

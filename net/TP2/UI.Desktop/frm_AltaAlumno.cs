@@ -56,6 +56,7 @@ namespace UI.Desktop
                 //reset error
                 ErrorManager.SetError(txtContraseña, "");
             }
+
             if (!Util.Validate.Username(txtUsuario.Text))
             {
                 ErrorManager.SetError(txtUsuario, "Este campo no puede estar vacio o ser mayor a 12 caracteres");
@@ -91,7 +92,7 @@ namespace UI.Desktop
 
             if (!Util.Validate.Phone(txt_telefono.Text))
             {
-                ErrorManager.SetError(txt_telefono, "Proporcione un telefono valido");
+                ErrorManager.SetError(txt_telefono, "Proporcione un telefono valido(10 digitos) ");
                 camposValidos = false;
             }
             else
@@ -109,6 +110,7 @@ namespace UI.Desktop
             {
                 ErrorManager.SetError(txt_nombre, "");
             }
+
             if (!Util.Validate.Text(txt_apellido.Text))
             {
                 ErrorManager.SetError(txt_apellido, "El apellido debe contener solo letras");
@@ -117,6 +119,16 @@ namespace UI.Desktop
             else
             {
                 ErrorManager.SetError(txt_apellido, "");
+            }
+
+            if (!Util.Validate.Legajo(txt_legajo.Text))
+            {
+                ErrorManager.SetError(txt_legajo, "El legajo no debe estar vacio");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txt_legajo, "");
             }
 
             if (!camposValidos) return;
@@ -129,9 +141,12 @@ namespace UI.Desktop
                 al.NombreUsuario = txtUsuario.Text.Trim(); 
                 al.Contraseña = txtContraseña.Text;
                 bool modi = Business.Logic.ABMalumno.modi(al);
-                if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
+                if (modi) {
+                    MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK);
+                    this.Close();
+                }
                 else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otro usuario con ese nombre", "Sin Exito", MessageBoxButtons.OK); }
-                this.Close();
+                
             }
             else
             {

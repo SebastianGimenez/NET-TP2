@@ -6,6 +6,7 @@
     </asp:GridView>
     <br />
     <br />
-    <asp:Button ID="btn_volver" runat="server" OnClick="btn_volver_Click" Text="Volver" />
+    <asp:LinkButton ID="LinkButton1" runat="server" href="/indexDocente.aspx">Volver</asp:LinkButton>    </p>
+
     <br />
 </asp:Content>

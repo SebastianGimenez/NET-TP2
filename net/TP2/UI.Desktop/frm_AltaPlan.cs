@@ -42,6 +42,29 @@ namespace UI.Desktop
         override
         protected void guardar()
         {
+            Boolean camposValidos = true;
+            if (!Util.Validate.Legajo(txtNombre.Text.Trim()))
+            {
+                ErrorManager.SetError(txtNombre, "El nombre no debe estar vacio y debe contener solo letras");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txtNombre, "");
+            }
+            if (!Util.Validate.Legajo(txtDescripcion.Text))
+            {
+                ErrorManager.SetError(txtDescripcion, "La descripcion no puede estar vacia");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txtDescripcion, "");
+            }
+
+
+            if (!camposValidos) return;
+
             Business.Entities.Plan pl = new Business.Entities.Plan(txtNombre.Text.Trim(), txtDescripcion.Text);
             Business.Entities.Especialidad esp = new Business.Entities.Especialidad();
             esp.IdEspecialidad = (int)this.cmbEspecialidades.SelectedValue;
@@ -50,19 +73,23 @@ namespace UI.Desktop
             {
                 pl.IdPlan = plan.IdPlan;
                 bool modi=Business.Logic.ABMplan.modificarPlan(pl);
-                if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
+                if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK);
+                    this.saved = true;
+                    this.Close();
+                }
                 else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otro plan con ese nombre ", "Sin Exito", MessageBoxButtons.OK); }
-                this.saved = true;
-                this.Close();
+                
             }
             else
             {
 
                 bool guardado = Business.Logic.ABMplan.altaPlan(pl);
-                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
+                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK);
+                    this.saved = true;
+                    this.Close();
+                }
                 else { MessageBox.Show(this.Owner, "No se pudo guardar, es probable que ya exista otro plan con ese nombre ", "Sin Exito", MessageBoxButtons.OK); }
-                this.saved = true;
-                this.Close();
+                
             }
         }
 

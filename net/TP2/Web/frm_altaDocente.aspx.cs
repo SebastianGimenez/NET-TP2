@@ -11,7 +11,10 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -30,7 +33,6 @@ namespace Web
                         if (val)
                         {
                             Response.Write("<script type='text/javascript'> alert('Docente dado de alta correctamente'); location.href = '/ABMDocente.aspx' </script>");
-                          //  Response.Redirect("~/ABMDocente.aspx");
                         }
                         else
                         {

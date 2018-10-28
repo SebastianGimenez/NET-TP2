@@ -163,5 +163,10 @@ namespace UI.Desktop
             this.Dispose();
             new frm_Principal().Show();           
         }
+
+        private void frm_Principal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

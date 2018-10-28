@@ -26,7 +26,7 @@
     <br />
     <br />
     <asp:Button ID="btn_agregar" runat="server" OnClick="btn_agregar_Click" Text="Agregar" />
-    <asp:Button ID="btn_Volver" runat="server" OnClick="btn_Volver_Click" Text="Volver" />
+<asp:LinkButton ID="LinkButton1" runat="server" href="/ABMMateria.aspx">Volver</asp:LinkButton>    </p>
     <br />
     <br />
     <br />

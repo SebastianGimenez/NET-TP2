@@ -40,7 +40,8 @@
     <br />
     <br />
     <asp:Button ID="btn_guardar" runat="server" OnClick="btn_guardar_Click" Text="Guardar" />
-    <asp:Button ID="btn_volver" runat="server" OnClick="btn_volver_Click" Text="Volver" />
+    <asp:LinkButton ID="LinkButton1" runat="server" href="/frm_puntuacionAlumno.aspx">Volver</asp:LinkButton>    </p>
+
     <br />
     <script>
         var nota = document.querySelector('select[id$="ddl_nota"]');

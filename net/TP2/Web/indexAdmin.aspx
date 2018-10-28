@@ -14,8 +14,6 @@
                 <asp:MenuItem Text="ABM Curso" Value="ABM Curso" NavigateUrl="~/ABMCurso.aspx"></asp:MenuItem>
                 <asp:MenuItem NavigateUrl="~/ABMDocenteCurso.aspx" Text="Agregar Docente a Curso" Value="Agregar Docente a Curso"></asp:MenuItem>
             </asp:MenuItem>
-            <asp:MenuItem Text="Alumno" Value="Alumno"></asp:MenuItem>
-            <asp:MenuItem Text="Docente" Value="Docente"></asp:MenuItem>
         </Items>
     </asp:Menu>
 </asp:Content>

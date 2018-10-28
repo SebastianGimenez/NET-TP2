@@ -54,6 +54,27 @@ namespace UI.Desktop
         override
         protected void guardar()
         {
+            Boolean camposValidos = true;
+            if (!Util.Validate.Text(txtNombre.Text.Trim()))
+            {
+                ErrorManager.SetError(txtNombre, "El nombre no debe estar vacio y debe contener solo letras");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txtNombre, "");
+            }
+                if (!Util.Validate.Cupo(txtCupo.Text))
+                {
+                    ErrorManager.SetError(txtCupo, "El cupo debe ser mayor a 0 y menor a 100");
+                    camposValidos = false;
+                }
+                else
+                {
+                    ErrorManager.SetError(txtCupo, "");
+                }
+   
+            if (!camposValidos) return;
             Business.Entities.Curso cur = new Business.Entities.Curso(txtNombre.Text.Trim(), int.Parse(txtCupo.Text));
             Business.Entities.Materia mat = new Business.Entities.Materia();
             mat.IdMateria = (int)cmbMateria.SelectedValue;
@@ -65,20 +86,24 @@ namespace UI.Desktop
             {
                 cur.IdCurso = curso.IdCurso;
                 bool guardado = Business.Logic.ABMcurso.modificarCurso(cur);
-                if (guardado) { MessageBox.Show(this.Owner, "Modificado con exito", "Exito", MessageBoxButtons.OK); }
+                if (guardado) { MessageBox.Show(this.Owner, "Modificado con exito", "Exito", MessageBoxButtons.OK);
+                    this.saved = true;
+                    this.Close();
+                }
                 else { MessageBox.Show(this.Owner, "No se pudo modificar el curso, es probable que ya exista otro curso con ese mismo nombre", "Sin Exito", MessageBoxButtons.OK); }
-                this.saved = true;
-                this.Close();
+                
 
             }
             else
             {
 
                 bool guardado=Business.Logic.ABMcurso.altaCurso(cur);
-                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK); }
+                if (guardado) { MessageBox.Show(this.Owner, "Guardado con exito", "Exito", MessageBoxButtons.OK);
+                    this.saved = true;
+                    this.Close();
+                }
                 else { MessageBox.Show(this.Owner, "No se pudo guardar curso, es probable que ya exista otro curso con ese nombre", "Sin Exito", MessageBoxButtons.OK); }
-                this.saved = true;
-                this.Close();
+                
             }
         }
 

@@ -7,5 +7,5 @@
     <br />
     <br />
     <asp:Button ID="btn_baja" runat="server" OnClick="btn_baja_Click" Text="Baja" />
-    <asp:Button ID="btn_volver" runat="server" OnClick="btn_volver_Click" Text="Volver" />
+<asp:LinkButton ID="LinkButton1" runat="server" href="/ABMMateria.aspx">Volver</asp:LinkButton>    </p>
 </asp:Content>

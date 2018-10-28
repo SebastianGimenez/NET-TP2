@@ -12,6 +12,10 @@ namespace Web
         protected Business.Entities.Docente doc;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             doc = Business.Logic.ABMdocente.buscarDocente((string)Session["legajo"]);
             if (!IsPostBack)
             {
@@ -46,8 +50,7 @@ namespace Web
             if (val)
             {
                 Session.Remove("legajo");
-                Response.Write("<script type='text/javascript'> alert('Docente modificado correctamente') </script>");
-                Response.Redirect("~/ABMDocente.aspx");
+                Response.Write("<script type='text/javascript'> alert('Docente modificado correctamente'); location.href = '/ABMDocente.aspx' </script>");
             }
             else
             {              

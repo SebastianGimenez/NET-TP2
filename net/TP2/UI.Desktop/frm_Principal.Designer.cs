@@ -218,6 +218,7 @@
             this.ShowIcon = false;
             this.Text = "Principal";
             this.Activated += new System.EventHandler(this.frm_Principal_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_Principal_FormClosing);
             this.Load += new System.EventHandler(this.frm_Principal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

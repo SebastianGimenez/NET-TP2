@@ -34,25 +34,49 @@ namespace UI.Desktop
 
 
         override
-               protected void guardar()
+        protected void guardar()
         {
+            Boolean camposValidos = true;
+            if (!Util.Validate.Text(txtNombre.Text.Trim()))
+            {
+                ErrorManager.SetError(txtNombre, "El nombre no debe estar vacio y debe contener solo letras");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txtNombre, "");
+            }
+            if (!Util.Validate.Legajo(txtAula.Text))
+            {
+                ErrorManager.SetError(txtAula, "El aula no es correcta");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txtAula, "");
+            }
+            if (!camposValidos) return;
             Business.Entities.Comision com = new Business.Entities.Comision(this.txtNombre.Text.Trim(), this.txtAula.Text);
             if (ismodi)
             {
                 com.IdComision = comision.IdComision;
                 bool modi=Business.Logic.ABMcomision.modificarComision(com);
-                if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
+                if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK);
+                    this.saved = true;
+                    this.Close();
+                }
                 else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otra comision con ese nombre ", "Sin Exito", MessageBoxButtons.OK); }
-                this.saved = true;
-                this.Close();
+                
             }
             else
             {
                 bool agregado=Business.Logic.ABMcomision.altaComision(com);
-                if (agregado) { MessageBox.Show(this.Owner, "Agregado con exito", "Exito", MessageBoxButtons.OK); }
+                if (agregado) { MessageBox.Show(this.Owner, "Agregado con exito", "Exito", MessageBoxButtons.OK);
+                    this.saved = true;
+                    this.Close();
+                }
                 else { MessageBox.Show(this.Owner, "No se pudo agregar, es probable que ya exista otra comision con el mismo nombre ", "Sin Exito", MessageBoxButtons.OK); }
-                this.saved = true;
-                this.Close();
+               
             }
         }
 

@@ -12,6 +12,10 @@ namespace Web
         protected Business.Entities.Alumno alu;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             alu = Business.Logic.ABMalumno.buscarAlumno((string)Session["legajo"]);
             if (!IsPostBack)
             {
@@ -45,8 +49,7 @@ namespace Web
             if (val)
             {
                 Session.Remove("legajo");
-                Response.Write("<script type='text/javascript'> alert('Alumno modificado correctamente') </script>");
-                Response.Redirect("~/ABMAlumno.aspx");
+                Response.Write("<script type='text/javascript'> alert('Alumno modificado correctamente'); location.href = '/ABMAlumno.aspx' </script>");
 
             }
             else

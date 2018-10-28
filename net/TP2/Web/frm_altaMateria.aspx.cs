@@ -11,6 +11,10 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             if (!IsPostBack)
             {
                 this.ddl_planes.DataSource = Business.Logic.ABMplan.listarPlanes();
@@ -34,8 +38,7 @@ namespace Web
             bool val = Business.Logic.ABMmateria.altaMateria(materia);
             if (val)
             {
-                Response.Write("<script type='text/javascript'> alert('Dado de alta correctamente') </script>");
-                Response.Redirect("~/ABMMateria.aspx");
+                Response.Write("<script type='text/javascript'> alert('Dado de alta correctamente'); location.href = '/ABMMateria.aspx' </script>");
             }
             else
             {

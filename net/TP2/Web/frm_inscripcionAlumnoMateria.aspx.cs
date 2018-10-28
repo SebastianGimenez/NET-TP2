@@ -11,6 +11,10 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ALUMNO)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             gv_cursos.DataSource = Business.Logic.ABMcurso.listarCursos();
             gv_cursos.DataBind();
         }
@@ -25,8 +29,7 @@ namespace Web
                 bool agregado = Business.Logic.ABMalumno.inscribirCursoAlumno(idCurso, idAlumno);
                 if (agregado)
                 {
-                    Response.Write("<script type='text/javascript'> alert('Alumno inscripto correctamente') </script>");
-                    Response.Redirect("~/frm_inscripcionAlumnoMateria.aspx");
+                    Response.Write("<script type='text/javascript'> alert('Alumno inscripto correctamente'); location.href = '/frm_inscripcionAlumnoMateria.aspx' </script>");
                 }
                 else
                 {

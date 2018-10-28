@@ -10,7 +10,12 @@ namespace Web
     public partial class frm_bajaDocenteCurso : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {if (!IsPostBack)
+        {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
+            if (!IsPostBack)
             {
                 Business.Entities.Curso cur = Business.Logic.ABMcurso.buscarCursoPorId((int)Session["idCurso"]);
                 Business.Entities.Docente doc = Business.Logic.ABMdocente.buscarDocentePorId((int)Session["idDocente"]);
@@ -30,8 +35,7 @@ namespace Web
             {
                 Session.Remove("idCurso");
                 Session.Remove("idDocente");
-                Response.Write("<script type='text/javascript'> alert('docente eliminado del curso correctamente') </script>");
-                Response.Redirect("~/ABMDocenteCurso.aspx");
+                Response.Write("<script type='text/javascript'> alert('docente eliminado del curso correctamente'); location.href = '/ABMDocenteCurso.aspx' </script>");
             }
             else
             {

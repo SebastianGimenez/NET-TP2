@@ -44,6 +44,93 @@ namespace UI.Desktop
 
         override protected void guardar()
         {
+            Boolean camposValidos = true;
+            if (!Util.Validate.Password(txtContraseña.Text))
+            {
+                ErrorManager.SetError(txtContraseña, "Debe contener como minimo 5 caracteres, al menos una mayuscula y un número");
+                camposValidos = false;
+            }
+            else
+            {
+                //reset error
+                ErrorManager.SetError(txtContraseña, "");
+            }
+
+            if (!Util.Validate.Username(txtUsuario.Text))
+            {
+                ErrorManager.SetError(txtUsuario, "Este campo no puede estar vacio o ser mayor a 12 caracteres");
+                camposValidos = false;
+            }
+            else
+            {
+                //reset error
+                ErrorManager.SetError(txtUsuario, "");
+            }
+
+            if (!Util.Validate.DNI(txt_dni.Text))
+            {
+                ErrorManager.SetError(txt_dni, "dni invalido");
+                camposValidos = false;
+            }
+            else
+            {
+                //reset error
+                ErrorManager.SetError(txt_dni, "");
+            }
+
+            if (!Util.Validate.Email(txt_email.Text))
+            {
+                ErrorManager.SetError(txt_email, "Proporcione un email valido");
+                camposValidos = false;
+            }
+            else
+            {
+                //reset error
+                ErrorManager.SetError(txt_email, "");
+            }
+
+            if (!Util.Validate.Phone(txt_telefono.Text))
+            {
+                ErrorManager.SetError(txt_telefono, "Proporcione un telefono valido(10 digitos) ");
+                camposValidos = false;
+            }
+            else
+            {
+                //reset error
+                ErrorManager.SetError(txt_telefono, "");
+            }
+
+            if (!Util.Validate.Text(txt_nombre.Text))
+            {
+                ErrorManager.SetError(txt_nombre, "El nombre debe contener solo letras");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txt_nombre, "");
+            }
+
+            if (!Util.Validate.Text(txt_apellido.Text))
+            {
+                ErrorManager.SetError(txt_apellido, "El apellido debe contener solo letras");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txt_apellido, "");
+            }
+
+            if (!Util.Validate.Legajo(txt_legajo.Text))
+            {
+                ErrorManager.SetError(txt_legajo, "El legajo no debe estar vacio");
+                camposValidos = false;
+            }
+            else
+            {
+                ErrorManager.SetError(txt_legajo, "");
+            }
+
+            if (!camposValidos) return;
 
             Business.Entities.Docente doc = new Business.Entities.Docente(txt_nombre.Text, txt_apellido.Text, txt_legajo.Text.Trim(), txt_dni.Text.Trim(), txt_email.Text, txt_telefono.Text);
             if (ismodi)
@@ -52,10 +139,13 @@ namespace UI.Desktop
                 doc.NombreUsuario = txtUsuario.Text.Trim();
                 doc.Contraseña = txtContraseña.Text.Trim();
                 bool modi = Business.Logic.ABMdocente.modi(doc);
-                if (modi) { MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK); }
+                if (modi) {
+                    MessageBox.Show(this.Owner, "modificado con exito", "Exito", MessageBoxButtons.OK);
+                    this.saved = true;
+                    this.Close();
+                }
                 else { MessageBox.Show(this.Owner, "No se pudo modificar, es probable que ya exista otro docente con ese usuario ", "Sin Exito", MessageBoxButtons.OK); }
-                this.saved = true;
-                this.Close();
+
             }
             else
             {

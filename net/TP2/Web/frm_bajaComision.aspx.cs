@@ -11,7 +11,11 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
+            if (!IsPostBack)
             {
                 ddl_Comisiones.DataSource = Business.Logic.ABMcomision.listarComisiones();
                 ddl_Comisiones.DataTextField = "nombreComision";
@@ -27,8 +31,7 @@ namespace Web
             if (val)
             {
                 Session.Remove("idCom");
-                Response.Write("<script type='text/javascript'> alert('dada de baja con exito') </script>");
-                Response.Redirect("~/ABMComision.aspx");
+                Response.Write("<script type='text/javascript'> alert('dada de baja con exito'); location.href = '/ABMComision.aspx' </script>");
             }
             else
             {

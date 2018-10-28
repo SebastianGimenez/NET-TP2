@@ -13,6 +13,10 @@ namespace Web
         {
             if (!IsPostBack)
             {
+                if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+                {
+                    Response.Redirect("~/loguin.aspx");
+                }
                 ddl_cursos.DataSource = Business.Logic.ABMcurso.listarCursos();
                 ddl_cursos.DataTextField = "nombre";
                 ddl_cursos.DataValueField = "idCurso";
@@ -27,8 +31,7 @@ namespace Web
             if (val)
             {
                 Session.Remove("idCurso");
-                Response.Write("<script type='text/javascript'> alert('dado de baja con exito') </script>");
-                Response.Redirect("~/ABMCurso.aspx");
+                Response.Write("<script type='text/javascript'> alert('dado de baja con exito'); location.href = '/ABMCurso.aspx' </script>");
             }
             else
             {

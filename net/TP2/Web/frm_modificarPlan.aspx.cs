@@ -11,6 +11,10 @@ namespace Web
     { Business.Entities.Plan plan;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             plan = Business.Logic.ABMplan.buscarPlanPorId(int.Parse((string)Session["idPlan"]));
             if (!IsPostBack)
             {
@@ -39,8 +43,7 @@ namespace Web
             bool val = Business.Logic.ABMplan.modificarPlan(pla);
             if (val)
             {
-                Response.Write("<script type='text/javascript'> alert('Modificado correctamente') </script>");
-                Response.Redirect("~/ABMPlan.aspx");
+                Response.Write("<script type='text/javascript'> alert('Modificado correctamente'); location.href = '/ABMPlan.aspx' </script>");
             }
             else
             {

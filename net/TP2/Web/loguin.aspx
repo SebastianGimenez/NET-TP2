@@ -7,7 +7,7 @@
     <br />
     <br />
     <asp:Label ID="lbl_contraseña" runat="server" Text="Contraseña"></asp:Label>
-    <asp:TextBox ID="txt_Contra" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txt_Contra" runat="server" TextMode="Password"></asp:TextBox>
     <br />
     <br />
     <br />

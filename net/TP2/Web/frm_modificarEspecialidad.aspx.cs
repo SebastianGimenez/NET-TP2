@@ -12,6 +12,10 @@ namespace Web
         protected Business.Entities.Especialidad especialidad;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             especialidad = Business.Logic.ABMespecialidad.buscarEspecialidadPorId(int.Parse((string)Session["idEsp"]));
             if (!IsPostBack)
             {
@@ -30,8 +34,7 @@ namespace Web
             if (val)
             {
                 Session.Remove("idEsp");
-                Response.Write("<script type='text/javascript'> alert('modificado correctamente') </script>");
-                Response.Redirect("~/ABMEspecialidad.aspx");
+                Response.Write("<script type='text/javascript'> alert('modificado correctamente'); location.href = '/ABMEspecialidad.aspx' </script>");
             }
             else
             {

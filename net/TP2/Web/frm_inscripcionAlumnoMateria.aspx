@@ -8,7 +8,8 @@
     <br />
     <br />
     <asp:Button ID="btn_inscribir" runat="server" OnClick="btn_inscribir_Click" Text="Inscribirse" />
-    <asp:Button ID="btn_volver" runat="server" OnClick="btn_volver_Click" Text="Volver" />
+    <asp:LinkButton ID="LinkButton1" runat="server" href="/indexAlumno.aspx">Volver</asp:LinkButton>    </p>
+
     <br />
     <br />
 </asp:Content>

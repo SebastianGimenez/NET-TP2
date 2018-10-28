@@ -12,6 +12,10 @@ namespace Web
         Business.Entities.Curso curso;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
             curso = Business.Logic.ABMcurso.buscarCursoPorId(int.Parse((string)Session["idCurso"]));
             if (!IsPostBack)
             {
@@ -48,8 +52,7 @@ namespace Web
             bool val = Business.Logic.ABMcurso.modificarCurso(cur);
             if (val)
             {
-                Response.Write("<script type='text/javascript'> alert('Modificado correctamente') </script>");
-                Response.Redirect("~/ABMCurso.aspx");
+                Response.Write("<script type='text/javascript'> alert('Modificado correctamente'); location.href = '/ABMCurso.aspx' </script>");
             }
             else
             {
