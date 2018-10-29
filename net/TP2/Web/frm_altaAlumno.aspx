@@ -113,7 +113,7 @@
             return true;
         }
         function Estexto(txt) {
-            var valido = txt.value.match(/^[\p{L}]+$/) != null;
+            var valido = txt.value.match(/^[a-zA-Z\s]*$/g) != null;
             if (!valido) {
                 setErrorMessage(txt, "Debe contener solo letras");
                 return false;
