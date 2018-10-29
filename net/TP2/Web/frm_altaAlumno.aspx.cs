@@ -15,11 +15,13 @@ namespace Web
             {
                 Response.Redirect("~/loguin.aspx");
             }
+            
         }
-
+        
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            
             Business.Entities.Alumno al = new Business.Entities.Alumno(txtNombre.Text, txtApellido.Text, txtLegajo.Text.Trim(), txtDNI.Text.Trim(), txtMail.Text, txtTelefono.Text);
             bool valido = Business.Logic.ABMUsuario.validarUsuario(txtUsuario.Text);
             if (valido)

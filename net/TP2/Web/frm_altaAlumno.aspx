@@ -3,6 +3,7 @@
     <title>Alta alumno</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <p id="lblNombre">
         <br />
         Nombre:<asp:TextBox ID="txtNombre" runat="server" required="required"></asp:TextBox>
@@ -29,7 +30,7 @@
         Contraseña:<asp:TextBox ID="txtContraseña" runat="server" required="required"></asp:TextBox>
     </p>
     <p>
-        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" style="height: 26px" />
+        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClientClick="return validar();" OnClick="btnAgregar_Click" style="height: 26px" />
 <asp:LinkButton ID="LinkButton1" runat="server" href="/ABMAlumno.aspx">Volver</asp:LinkButton>    </p>
     <p>
         &nbsp;</p>
@@ -44,7 +45,7 @@
             var usuario = document.querySelector('input[id$="txtUsuario"]');
             var password = document.querySelector('input[id$="txtContraseña"]');
 
-            //corregir validacion de texto 
+        
            var valido = passwordValido(password) &
             telefonoValido(telefono) &
             usuarioValido(usuario) &
@@ -52,16 +53,11 @@
                Estexto(apellido) &
             emailValido(email) &
             dniValido(dni);
-            return (valido);
+            return (valido != 0);
 
         }
 
-        document.querySelector("form").addEventListener("submit", function (e) {
-            e.preventDefault();
-            if (validar())
-                this.submit();
-        });
-
+        
         function setErrorMessage(element, message) {
              var child = element.parentNode.querySelector("label");
             if (child) {
@@ -149,10 +145,7 @@
  
         }
 
-       /* btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("validando los campos");
-        });
-        */
+    
+       
     </script>
 </asp:Content>

@@ -33,7 +33,7 @@ namespace Web
             {
                 //el cartel de que se dio de baja bien no se ve
                 Session.Remove("legajo");
-                Response.Write("<script type='text/javascript'> alert('dado de baja correctamente'); location.href = '/ABMDocetne.aspx'</script>");
+                Response.Write("<script type='text/javascript'> alert('dado de baja correctamente'); location.href = '/ABMDocente.aspx'</script>");
             }
             else
             {

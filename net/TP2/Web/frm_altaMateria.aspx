@@ -23,7 +23,7 @@
     </asp:DropDownList>
          </div>
 
-    <asp:Button ID="btn_agregar" runat="server" OnClick="btn_agregar_Click" Text="Agregar" />
+    <asp:Button ID="btn_agregar" runat="server" OnClientClick="return validar()" OnClick="btn_agregar_Click" Text="Agregar" />
 <asp:LinkButton ID="LinkButton1" runat="server" href="/ABMMateria.aspx">Volver</asp:LinkButton>    </p>
 
     <script>
@@ -33,19 +33,14 @@
             var hs_totales = document.querySelector('input[id$="txt_hsTotales"]');
 
                 //corregir validacion de texto 
-                var valido = esNumero(hs_semanales,40) &
-                    esNumero(hs_totales); 
+                var valido = esNumero(hs_semanales) &
+                    esNumero(hs_totales) & (Number(hs_totales.value) > Number(hs_semanales.value) ? 1 : (setErrorMessage(hs_totales,"debe ser mayor que las semanales"),0)); 
          
-            return valido;
+            return valido != 0;
 
         }
 
-        document.querySelector("form").addEventListener("submit", function (e) {
-            e.preventDefault();
-            if (validar())
-                this.submit();
-        });
-
+   
         function setErrorMessage(element, message) {
              var child = element.parentNode.querySelector("label");
             if (child) {
@@ -67,14 +62,9 @@
       
         function esNumero(num, lessThan) {
             var valido = num.value.match(/^[\d]+$/) != null;
-            if (num.valido <= lessThan) {
-                valido = true;
-            } else if (lessThan)
-                valido = false;
+     
             if (!valido) {
-                if (lessThan)
-                    setErrorMessage(num, "Debe ser un numero menor que " + lessThan);
-                else
+             
                     setErrorMessage(num, "Debe ser un numero");
                 return false;
             } else {
