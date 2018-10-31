@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
+    [Serializable]
     public class Materia
     {
         int idMateria;
@@ -27,10 +28,14 @@ namespace Business.Entities
             this.horasSemanales = horasSemanales;
             this.horasTotales = horasTotales;
         }
-        public void agregarPlan(Plan plan)
+
+        public string NombreMateria
         {
-            this.plan = plan;
+            get { return this.nombre; }
+            set { this.nombre = value; }
         }
+
+       
 
         public int IdMateria
         {
@@ -68,5 +73,11 @@ namespace Business.Entities
             get { return this.plan; }
             set { this.plan = value; }
         }
+
+        public void agregarPlan(Plan plan)
+        {
+            this.plan = plan;
+        }
+
     }
 }

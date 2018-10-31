@@ -168,5 +168,12 @@ namespace UI.Desktop
         {
             Application.Exit();
         }
+
+    
+
+        private void docentesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new frm_Reporte().ShowDialog();
+        }
     }
 }
