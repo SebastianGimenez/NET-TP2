@@ -175,5 +175,10 @@ namespace UI.Desktop
         {
             new frm_Reporte().ShowDialog();
         }
+
+        private void materiaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new frm_ReporteMateria().ShowDialog();
+        }
     }
 }

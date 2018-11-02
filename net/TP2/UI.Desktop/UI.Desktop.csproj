@@ -271,6 +271,12 @@
     <Compile Include="frm_Reporte.Designer.cs">
       <DependentUpon>frm_Reporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_ReporteMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ReporteMateria.Designer.cs">
+      <DependentUpon>frm_ReporteMateria.cs</DependentUpon>
+    </Compile>
     <Compile Include="inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -388,6 +394,9 @@
     <EmbeddedResource Include="frm_Reporte.resx">
       <DependentUpon>frm_Reporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_ReporteMateria.resx">
+      <DependentUpon>frm_ReporteMateria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="inicio.resx">
       <DependentUpon>inicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -401,11 +410,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="reportCursos.rdlc" />
+    <EmbeddedResource Include="reportMaterias.rdlc" />
     <None Include="Properties\DataSources\Business.Entities.Alumno.datasource" />
     <None Include="Properties\DataSources\Business.Entities.Comision.datasource" />
     <None Include="Properties\DataSources\Business.Entities.Curso.datasource" />
     <None Include="Properties\DataSources\Business.Entities.Docente.datasource" />
+    <None Include="Properties\DataSources\Business.Entities.Especialidad.datasource" />
     <None Include="Properties\DataSources\Business.Entities.Materia.datasource" />
+    <None Include="Properties\DataSources\Business.Entities.Plan.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

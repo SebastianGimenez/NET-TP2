@@ -47,6 +47,7 @@
             this.reporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.docentesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.lnk_salir = new System.Windows.Forms.LinkLabel();
+            this.materiaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -184,7 +185,8 @@
             // reporteToolStripMenuItem
             // 
             this.reporteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.docentesToolStripMenuItem1});
+            this.docentesToolStripMenuItem1,
+            this.materiaToolStripMenuItem1});
             this.reporteToolStripMenuItem.Name = "reporteToolStripMenuItem";
             this.reporteToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.reporteToolStripMenuItem.Text = "Reporte";
@@ -206,6 +208,13 @@
             this.lnk_salir.TabStop = true;
             this.lnk_salir.Text = "Salir";
             this.lnk_salir.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_salir_LinkClicked);
+            // 
+            // materiaToolStripMenuItem1
+            // 
+            this.materiaToolStripMenuItem1.Name = "materiaToolStripMenuItem1";
+            this.materiaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.materiaToolStripMenuItem1.Text = "Materia";
+            this.materiaToolStripMenuItem1.Click += new System.EventHandler(this.materiaToolStripMenuItem1_Click);
             // 
             // frm_Principal
             // 
@@ -249,6 +258,7 @@
         private System.Windows.Forms.LinkLabel lnk_salir;
         private System.Windows.Forms.ToolStripMenuItem reporteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem docentesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem materiaToolStripMenuItem1;
     }
 }
 

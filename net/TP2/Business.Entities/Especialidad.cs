@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
+    [Serializable]
     public class Especialidad
     {
         string nombreEspecialidad;
@@ -32,7 +33,7 @@ namespace Business.Entities
 
         public string NombreEspecialidad
         {
-            get { return this.nombreEspecialidad; }
+            get {return this.nombreEspecialidad; }
             set { this.nombreEspecialidad = value; }
         }
 

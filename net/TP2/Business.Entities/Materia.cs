@@ -70,7 +70,7 @@ namespace Business.Entities
 
         public Plan Plan
         {
-            get { return this.plan; }
+            get {return this.plan; }
             set { this.plan = value; }
         }
 

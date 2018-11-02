@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
+    [Serializable]
     public class Plan
     {
         string nombrePlan;
@@ -20,10 +21,11 @@ namespace Business.Entities
             get { return this.idPlan; }
         }
 
-        public override string ToString()
+       public override string ToString()
         {
-            return this.nombrePlan;
+           return this.nombrePlan;
         }
+       
         public Plan(string nombre, string desc)
         {
             this.nombrePlan = nombre;
@@ -39,7 +41,7 @@ namespace Business.Entities
 
         public string NombrePlan
         {
-            get { return this.nombrePlan; }
+            get {return this.nombrePlan; }
             set { this.nombrePlan = value; }
         }
 

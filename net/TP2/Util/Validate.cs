@@ -58,7 +58,7 @@ namespace Util
         public static bool Text(string txt)
         {
             if (txt.Length == 0) return false;
-           return Regex.IsMatch(txt, @"^[\p{L}]+$");
+           return Regex.IsMatch(txt, @"^[\p{L} ]+$");
         }
 
         public static bool Legajo(string legajo)

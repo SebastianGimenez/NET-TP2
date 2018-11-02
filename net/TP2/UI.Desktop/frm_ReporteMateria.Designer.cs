@@ -1,6 +1,6 @@
 ﻿namespace UI.Desktop
 {
-    partial class frm_Reporte
+    partial class frm_ReporteMateria
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -38,10 +38,10 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource3.Name = "Cursos";
-            reportDataSource3.Value = this.bindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "UI.Desktop.reportCursos.rdlc";
+            reportDataSource1.Name = "Materias";
+            reportDataSource1.Value = this.bindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "UI.Desktop.reportMaterias.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
@@ -50,24 +50,23 @@
             // 
             // bindingSource
             // 
-            this.bindingSource.DataSource = typeof(Business.Entities.Curso);
+            this.bindingSource.DataSource = typeof(Business.Entities.Materia);
             // 
-            // frm_Reporte
+            // frm_ReporteMateria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 497);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "frm_Reporte";
+            this.Name = "frm_ReporteMateria";
             this.Text = "Reporte";
-            this.Load += new System.EventHandler(this.frm_Reporte_Load);
+            this.Load += new System.EventHandler(this.frm_ReporteMateria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
-
-        #endregion
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource bindingSource;
+        #endregion
     }
 }
