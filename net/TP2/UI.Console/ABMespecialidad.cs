@@ -91,7 +91,8 @@ namespace UI.Console
         {
             System.Console.Write("ingrese el nombre: ");
             string nombre = System.Console.ReadLine();
-            bool borrado = Business.Logic.ABMespecialidad.borrarEspecialidad(nombre);
+            Business.Entities.Especialidad esp = Business.Logic.ABMespecialidad.buscarEspecialidad(nombre);
+            bool borrado = Business.Logic.ABMespecialidad.borrarEspecialidad(esp.IdEspecialidad);
             if (!borrado)
             {
                 System.Console.WriteLine("No se encontro una especialidad con el nombre {0}", nombre);

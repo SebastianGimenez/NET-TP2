@@ -24,7 +24,7 @@ namespace UI.Console
             System.Console.Write("ingrese el plan: ");
             Business.Entities.Materia materia = new Business.Entities.Materia(nombre, descripcion, horasSemanales, horasTotales);
             string plan = System.Console.ReadLine();
-            bool agregado = Business.Logic.ABMmateria.altaMateria(materia, plan);
+            bool agregado = Business.Logic.ABMmateria.altaMateria(materia);
             if (agregado)
             {
                 System.Console.Write("agregado con exito");

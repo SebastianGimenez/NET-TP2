@@ -10,7 +10,7 @@
 namespace Web {
     
     
-    public partial class reporteMateria {
+    public partial class reporteCurso {
         
         /// <summary>
         /// ScriptManager1 control.

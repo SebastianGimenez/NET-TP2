@@ -13,13 +13,23 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-         ReportViewer1.Reset();
-            ReportDataSource rptDataSource = new ReportDataSource("Materias", Business.Logic.ABMmateria.listarMaterias());
+            if ((Session["tipoPersonaLogueada"] == null) || (Business.Entities.tipoUsuario)Session["tipoPersonaLogueada"] != Business.Entities.tipoUsuario.ADMIN)
+            {
+                Response.Redirect("~/loguin.aspx");
+            }
 
-            this.ReportViewer1.LocalReport.DataSources.Add(rptDataSource);
-            
-          this.ReportViewer1.LocalReport.ReportPath = "Materia.rdlc";
-            this.ReportViewer1.LocalReport.Refresh();
+            if (!IsPostBack)
+            {
+                ReportViewer.Reset();
+                ReportDataSource rptDataSource = new ReportDataSource("Materias", Business.Logic.ABMmateria.listarMaterias());
+
+                this.ReportViewer.LocalReport.DataSources.Add(rptDataSource);
+                this.ReportViewer.LocalReport.ReportPath = "../Reports/reportMaterias.rdlc";
+
+                this.ReportViewer.LocalReport.Refresh();
+
+            }
+
         }
     }
 }
