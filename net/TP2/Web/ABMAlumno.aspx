@@ -11,16 +11,16 @@
             <SelectedRowStyle BackColor="#CCCCCC" />
         </asp:GridView>
         <br />
-        <asp:Button ID="btnAlta" runat="server" OnClick="btnAlta_Click" Text="Alta" Width="139px" />
+        <asp:Button ID="btnAlta" runat="server" OnClick="btnAlta_Click" style="margin-left:50%" Text="Alta" Width="139px" />
     </p>
     <p>
-        <asp:Button ID="btnBaja" runat="server" Text="Baja" Width="138px" OnClick="btnBaja_Click" />
+        <asp:Button ID="btnBaja" runat="server"  style="margin-left:50%" Text="Baja" Width="138px" OnClick="btnBaja_Click" />
     </p>
     <p>
-        <asp:Button ID="btnModificacion" runat="server" Text="Modificacion" Width="138px" OnClick="btnModificacion_Click" />
+        <asp:Button ID="btnModificacion" runat="server"  style="margin-left:50%" Text="Modificacion" Width="138px" OnClick="btnModificacion_Click" />
     </p>
     <p>
-        <asp:LinkButton ID="LinkButton1" runat="server" href="/indexAdmin.aspx">Volver</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton1" runat="server" style="margin-left:50%" href="/indexAdmin.aspx">Volver</asp:LinkButton>
     
     </p>
 

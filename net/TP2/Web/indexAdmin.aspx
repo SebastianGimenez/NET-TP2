@@ -13,6 +13,7 @@
                 <asp:MenuItem Text="ABM Comision" Value="ABM Comision" NavigateUrl="~/ABMComision.aspx"></asp:MenuItem>
                 <asp:MenuItem Text="ABM Curso" Value="ABM Curso" NavigateUrl="~/ABMCurso.aspx"></asp:MenuItem>
                 <asp:MenuItem NavigateUrl="~/ABMDocenteCurso.aspx" Text="Agregar Docente a Curso" Value="Agregar Docente a Curso"></asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/reporteMateria.aspx" Text="Reporte Materias" Value="Reporte Materias"></asp:MenuItem>
             </asp:MenuItem>
         </Items>
     </asp:Menu>
